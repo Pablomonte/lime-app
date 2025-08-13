@@ -12,10 +12,11 @@ import {
 } from "./api";
 import { DEFAULT_COMMUNITY_SETTINGS } from "./constants";
 import queryCache from "./queryCache";
+import { queryKeys } from "./queryKeys";
 import api from "./uhttpd.service";
 
 export function useSession() {
-    return useQuery(["session", "get"], getSession, { staleTime: Infinity });
+    return useQuery(queryKeys.session(), getSession, { staleTime: Infinity });
 }
 
 /**
