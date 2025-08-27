@@ -29,4 +29,13 @@ export const queryKeys = {
 
     // Align plugin - matches ["iwinfo", "assoclist", iface]
     assocList: (iface) => ["iwinfo", "assoclist", iface],
+
+    // Firmware plugin - matches ["lime-utils", "get_upgrade_info"]
+    upgradeInfo: () => ["lime-utils", "get_upgrade_info"],
+
+    // Firmware plugin - matches ["eupgrade", "is_new_version_available"]
+    newVersion: () => ["eupgrade", "is_new_version_available"],
+
+    // Firmware plugin - matches ["eupgrade", "download_status"]
+    downloadStatus: () => ["eupgrade", "download_status"],
 };

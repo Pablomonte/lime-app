@@ -8,12 +8,7 @@ import signalStyle from "components/signalbar/style.less";
 
 import { useBatHost } from "utils/queries";
 
-import {
-    useAssocList,
-    useDisconnectClient,
-    useIwinfo,
-    useStationSignal,
-} from "../../alignQueries";
+import { useAssocList } from "../../alignQueries";
 import { SecondsAgo } from "../../components/secondsAgo";
 import { SignalSpeech } from "../../components/signalSpeech";
 import { ifaceToRadioNumber } from "../../utils";
@@ -86,36 +81,14 @@ const AlignSingle = () => {
     const mac = urlParts[3];
 
     // All hooks must be called before any early returns
-    const { data: bathost } = useBatHost(mac, iface, {
-        enabled: !!mac && !!iface && mac.length === 17,
-    });
+    const { data: bathost } = useBatHost(mac, iface);
     const {
         data: assocList,
         isLoading,
         isError,
     } = useAssocList(iface, {
-        enabled: !!iface,
         refetchInterval: 2000,
     });
-    const { data: iwinfo, isLoading: iwinfoIsLoading } = useIwinfo(iface, {
-        enabled: !!iface,
-    });
-    const { data: station_signal } = useStationSignal(iface, mac, {
-        enabled: !!iface && !!mac,
-    });
-    const { mutateAsync: disconnectClient } = useDisconnectClient();
-
-    // Early return for invalid parameters after all hooks
-    if (!iface || !mac || mac.length !== 17) {
-        return (
-            <div className="container container-center">
-                <Trans>
-                    Invalid parameters - iface: {iface || "null"}, mac:{" "}
-                    {mac || "null"} (length: {mac?.length || "undefined"})
-                </Trans>
-            </div>
-        );
-    }
 
     if (isLoading) {
         return (

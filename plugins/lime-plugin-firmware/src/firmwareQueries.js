@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 import queryCache from "utils/queryCache";
+import { queryKeys } from "utils/queryKeys";
 
 import {
     downloadRelease,
@@ -13,11 +14,11 @@ import {
 } from "./firmwareApi";
 
 export function useUpgradeInfo(params) {
-    return useQuery(["lime-utils", "get_upgrade_info"], getUpgradeInfo, params);
+    return useQuery(queryKeys.upgradeInfo(), getUpgradeInfo, params);
 }
 
 function resetSuCounter() {
-    queryCache.setQueryData(["lime-utils", "get_upgrade_info"], (oldInfo) => ({
+    queryCache.setQueryData(queryKeys.upgradeInfo(), (oldInfo) => ({
         ...oldInfo,
         suCounter: -1,
     }));
@@ -36,21 +37,17 @@ export function useUpgradeRevert() {
 }
 
 export function useNewVersion(params) {
-    return useQuery(
-        ["eupgrade", "is_new_version_available"],
-        getNewVersion,
-        params
-    );
+    return useQuery(queryKeys.newVersion(), getNewVersion, params);
 }
 
 export function useDownloadStatus(params) {
-    return useQuery(["eupgrade", "download_status"], getDownloadStatus, params);
+    return useQuery(queryKeys.downloadStatus(), getDownloadStatus, params);
 }
 
 export function useDownloadRelease() {
     return useMutation(downloadRelease, {
         onSuccess: () =>
-            queryCache.setQueryData(["eupgrade", "download_status"], {
+            queryCache.setQueryData(queryKeys.downloadStatus(), {
                 download_status: "downloading",
             }),
     });
