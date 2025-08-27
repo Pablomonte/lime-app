@@ -2,6 +2,7 @@ import { Trans } from "@lingui/macro";
 import { route } from "preact-router";
 import { useEffect, useState } from "preact/hooks";
 
+import QueryErrorBoundary from "components/QueryErrorBoundary";
 import { List, ListItem } from "components/list";
 import Loading from "components/loading";
 import { SignalBar } from "components/signalbar";
@@ -16,11 +17,14 @@ import style from "./style.less";
 import { ifaceToRadioNumber } from "./utils";
 
 export const AssocRow = ({ station, iface }) => {
+    const isValidMac = station.mac && station.mac.length === 17;
     const {
         data: bathost,
         isLoading,
         isError,
-    } = useBatHost(station.mac, iface);
+    } = useBatHost(station.mac, iface, {
+        enabled: isValidMac,
+    });
 
     function goToAlignSingle() {
         route(`/align-single/${iface}/${station.mac}`);
@@ -85,8 +89,13 @@ export const AssocList = ({ iface }) => {
         isLoading,
         isError,
     } = useAssocList(iface, {
+        enabled: !!iface,
         refetchInterval: 2000,
     });
+
+    if (!iface) {
+        return null;
+    }
 
     if (isLoading) {
         return (
@@ -105,21 +114,31 @@ export const AssocList = ({ iface }) => {
     }
 
     return (
-        <List>
-            {assoclist.length > 0 && (
-                <div className={style.assoclistHeader}>
-                    <Trans>These are the nodes associated on this radio</Trans>
-                </div>
-            )}
-            {assoclist.map((station) => (
-                <AssocRow key={station.mac} station={station} iface={iface} />
-            ))}
-            {assoclist.length === 0 && (
-                <div className="container-center">
-                    <Trans>This radio is not associated with other nodes</Trans>
-                </div>
-            )}
-        </List>
+        <QueryErrorBoundary>
+            <List>
+                {assoclist.length > 0 && (
+                    <div className={style.assoclistHeader}>
+                        <Trans>
+                            These are the nodes associated on this radio
+                        </Trans>
+                    </div>
+                )}
+                {assoclist.map((station) => (
+                    <AssocRow
+                        key={station.mac}
+                        station={station}
+                        iface={iface}
+                    />
+                ))}
+                {assoclist.length === 0 && (
+                    <div className="container-center">
+                        <Trans>
+                            This radio is not associated with other nodes
+                        </Trans>
+                    </div>
+                )}
+            </List>
+        </QueryErrorBoundary>
     );
 };
 

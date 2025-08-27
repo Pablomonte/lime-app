@@ -1,14 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { queryKeys } from "utils/queryKeys";
+
 import { getAssocList, getMeshIfaces } from "./alignApi";
 import { markAssociated, sortBySignal } from "./utils";
 
 export function useMeshIfaces(queryConfig) {
-    return useQuery(
-        ["lime-utils", "get_mesh_ifaces"],
-        getMeshIfaces,
-        queryConfig
-    );
+    return useQuery(queryKeys.meshIfaces(), getMeshIfaces, queryConfig);
 }
 
 async function _getAssocList(iface) {
@@ -20,7 +18,7 @@ async function _getAssocList(iface) {
 
 export function useAssocList(iface, queryConfig) {
     return useQuery(
-        ["iwinfo", "assoclist", iface],
+        queryKeys.assocList(iface),
         async () => await _getAssocList(iface),
         queryConfig
     );

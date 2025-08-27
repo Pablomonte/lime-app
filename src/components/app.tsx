@@ -6,6 +6,8 @@ import Router from "preact-router";
 import { useEffect } from "preact/hooks";
 import { Provider } from "react-redux";
 
+import ErrorBoundary from "components/ErrorBoundary";
+import QueryErrorBoundary from "components/QueryErrorBoundary";
 import { ToastProvider } from "components/toast/toastProvider";
 
 import { Menu } from "containers/Menu";
@@ -31,7 +33,9 @@ const Routes = () => (
             .filter((plugin) => !plugin.isCommunityProtected)
             .map((Component, i) => (
                 <Route key={i} path={Component.name.toLowerCase()}>
-                    <Component.page />
+                    <QueryErrorBoundary>
+                        <Component.page />
+                    </QueryErrorBoundary>
                 </Route>
             ))}
         {/* Protected pages, need to be authenticated */}
@@ -42,7 +46,9 @@ const Routes = () => (
                     key={i}
                     path={Component.name.toLowerCase()}
                 >
-                    <Component.page />
+                    <QueryErrorBoundary>
+                        <Component.page />
+                    </QueryErrorBoundary>
                 </CommunityProtectedRoute>
             ))}
         {/* Additional plugins routes */}
@@ -52,7 +58,9 @@ const Routes = () => (
             .flat()
             .map(([path, Component], index) => (
                 <Route path={path} key={index}>
-                    <Component />
+                    <QueryErrorBoundary>
+                        <Component />
+                    </QueryErrorBoundary>
                 </Route>
             ))}
         {/* Additional plugins protected routes */}
@@ -62,11 +70,15 @@ const Routes = () => (
             .flat()
             .map(([path, Component], index) => (
                 <CommunityProtectedRoute path={path} key={index}>
-                    <Component />
+                    <QueryErrorBoundary>
+                        <Component />
+                    </QueryErrorBoundary>
                 </CommunityProtectedRoute>
             ))}
         <CommunityProtectedRoute path={"/reboot"}>
-            <RebootPage />
+            <QueryErrorBoundary>
+                <RebootPage />
+            </QueryErrorBoundary>
         </CommunityProtectedRoute>
         {/* @ts-ignore */}
         <Redirect default path={"/"} to={"rx"} />
@@ -107,17 +119,19 @@ const AppDefault = () => {
         dynamicActivate(fromNavigator().split("-")[0] as Locales);
     }, []);
     return (
-        <I18nProvider i18n={i18n}>
-            <QueryClientProvider client={queryCache}>
-                <AppContextProvider>
-                    <Provider store={store}>
-                        <ToastProvider>
-                            <App />
-                        </ToastProvider>
-                    </Provider>
-                </AppContextProvider>
-            </QueryClientProvider>
-        </I18nProvider>
+        <ErrorBoundary>
+            <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
+                <QueryClientProvider client={queryCache}>
+                    <AppContextProvider>
+                        <Provider store={store}>
+                            <ToastProvider>
+                                <App />
+                            </ToastProvider>
+                        </Provider>
+                    </AppContextProvider>
+                </QueryClientProvider>
+            </I18nProvider>
+        </ErrorBoundary>
     );
 };
 

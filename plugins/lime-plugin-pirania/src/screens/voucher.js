@@ -101,7 +101,12 @@ const VoucherDetails = ({
     );
 };
 
-const Voucher = ({ id }) => {
+const Voucher = () => {
+    // Get id parameter from URL hash (e.g., #/access/view/voucher123)
+    const currentUrl = window.location.hash;
+    const urlParts = currentUrl.split("/");
+    const id = urlParts[3]; // access/view/ID
+
     const { data: vouchers, isLoading } = useListVouchers();
     const voucher = vouchers && vouchers.filter((v) => v.id === id)[0];
     return (

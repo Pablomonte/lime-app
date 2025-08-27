@@ -5,7 +5,11 @@ import Loading from "components/loading";
 
 import { useInvalidate } from "../piraniaQueries";
 
-const InvalidateVoucher = ({ id }) => {
+const InvalidateVoucher = () => {
+    // Get id parameter from URL hash (e.g., #/access/invalidate/voucher123)
+    const currentUrl = window.location.hash;
+    const urlParts = currentUrl.split("/");
+    const id = urlParts[3]; // access/invalidate/ID
     const { mutateAsync: invalidate, isLoading } = useInvalidate();
 
     const onInvalidate = async () => {

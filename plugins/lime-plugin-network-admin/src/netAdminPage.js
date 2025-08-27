@@ -97,16 +97,37 @@ const NetAdminHOC = () => {
 
     function submitSharedPassword(password) {
         setSubmitting(true);
+        setSuccess(false);
+
         return api
             .call("lime-utils-admin", "set_root_password", { password })
             .then(
                 (result) =>
                     new Promise((res, rej) => {
-                        result.status === "ok" ? res() : rej();
+                        if (result.status === "ok") {
+                            res(result);
+                        } else {
+                            const error = new Error(
+                                result.message || "Failed to set password"
+                            );
+                            // @ts-ignore
+                            error.code = result.code;
+                            rej(error);
+                        }
                     })
             )
-            .then(() => setSuccess(true))
-            .finally(() => setSubmitting(false));
+            .then(() => {
+                setSuccess(true);
+            })
+            .catch((error) => {
+                console.error("Failed to set shared password:", error);
+                setSuccess(false);
+                // Re-throw to allow caller to handle
+                throw error;
+            })
+            .finally(() => {
+                setSubmitting(false);
+            });
     }
 
     return (

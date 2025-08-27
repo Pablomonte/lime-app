@@ -23,4 +23,10 @@ export const queryKeys = {
 
     // Changes tracking - matches ["changes-need-reboot"]
     changes: () => ["changes-need-reboot"],
+
+    // Align plugin - matches ["lime-utils", "get_mesh_ifaces"]
+    meshIfaces: () => ["lime-utils", "get_mesh_ifaces"],
+
+    // Align plugin - matches ["iwinfo", "assoclist", iface]
+    assocList: (iface) => ["iwinfo", "assoclist", iface],
 };

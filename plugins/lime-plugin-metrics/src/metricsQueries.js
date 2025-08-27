@@ -7,6 +7,7 @@ import { getGateway, getLoss, getMetrics, getPath } from "./metricsApi";
 export function useMetrics(ip, params) {
     return useQuery(["lime-metrics", "get_metrics", ip], () => getMetrics(ip), {
         retry: false,
+        enabled: !!ip,
         ...params,
     });
 }
@@ -30,6 +31,7 @@ export function useAllMetrics(ips, params) {
         (query) => getAllMetrics(query.queryKey[2]),
         {
             retry: false,
+            enabled: ips && ips.length > 0,
             ...params,
         }
     );
@@ -46,6 +48,7 @@ export function usePath(params) {
 export function useLoss(ip, params) {
     return useQuery(["lime-metrics", "get_loss", ip], () => getLoss(ip), {
         retry: false,
+        enabled: !!ip,
         ...params,
     });
 }
@@ -66,6 +69,7 @@ export function usePathLoss(nodes, params) {
         (query) => getAllLoss(query.queryKey[2]),
         {
             retry: false,
+            enabled: nodes && nodes.length > 0,
             ...params,
         }
     );

@@ -58,7 +58,12 @@ const EditVoucherForm = ({ name, submitVoucher, isSubmitting }) => {
     );
 };
 
-const EditVoucher = ({ id }) => {
+const EditVoucher = () => {
+    // Get id parameter from URL hash (e.g., #/access/edit/voucher123)
+    const currentUrl = window.location.hash;
+    const urlParts = currentUrl.split("/");
+    const id = urlParts[3]; // access/edit/ID
+
     const {
         mutate: renameVoucher,
         isLoading: isSubmitting,
