@@ -38,4 +38,22 @@ export const queryKeys = {
 
     // Firmware plugin - matches ["eupgrade", "download_status"]
     downloadStatus: () => ["eupgrade", "download_status"],
+
+    // FBW plugin - matches ["lime-fbw", "status"]
+    fbwStatus: () => ["lime-fbw", "status"],
+
+    // FBW plugin - matches ["lime-fbw", "scan-status"]
+    fbwScanStatus: () => ["lime-fbw", "scan-status"],
+
+    // Node-admin plugin - matches ["lime-utils", "get_wifi_data"]
+    wifiData: () => ["lime-utils", "get_wifi_data"],
+
+    // Node-admin plugin - matches ["lime-utils-admin", "get_wifi_data"]
+    adminWifiData: () => ["lime-utils-admin", "get_wifi_data"],
+
+    // Node-admin plugin - matches ["lime-utils", "hotspot_wwan_get_status"]
+    hotspotStatus: () => ["lime-utils", "hotspot_wwan_get_status"],
+
+    // Remotesupport plugin - matches ["tmate", "get_session"]
+    tmateSession: () => ["tmate", "get_session"],
 };

@@ -4,12 +4,14 @@ import style from "./style.less";
 
 export const BannerWithOptions = ({
     title,
+    description,
     cancelOption,
     onNotShowAgain,
     options,
 }) => (
     <div className={style.banner}>
         <h3>{title}</h3>
+        {description && <p>{description}</p>}
         {options.map((option, i) => {
             return <div key={i}>{option}</div>;
         })}

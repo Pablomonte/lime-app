@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 import queryCache from "utils/queryCache";
+import { queryKeys } from "utils/queryKeys";
 
 import {
     createNetwork,
@@ -15,7 +16,7 @@ import {
 export function useDismissFbw() {
     return useMutation(dismissFbw, {
         onSuccess: () =>
-            queryCache.setQueryData(["lime-fbw", "status"], { lock: false }),
+            queryCache.setQueryData(queryKeys.fbwStatus(), { lock: false }),
     });
 }
 
@@ -50,7 +51,12 @@ async function _scanStatus() {
 }
 
 export function useFbwStatus(params) {
-    return useQuery(["lime-fbw", "scan-status"], _scanStatus, params);
+    return useQuery(queryKeys.fbwScanStatus(), _scanStatus, params);
+}
+
+// General status for banner - calls lime-fbw status directly
+export function useFbwGeneralStatus(params) {
+    return useQuery(queryKeys.fbwStatus(), getStatus, params);
 }
 
 // Backend can return status false i some error is found doing
