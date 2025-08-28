@@ -56,4 +56,37 @@ export const queryKeys = {
 
     // Remotesupport plugin - matches ["tmate", "get_session"]
     tmateSession: () => ["tmate", "get_session"],
+
+    // Pirania plugin - matches ["pirania", "get_portal_config"]
+    piraniaPortalConfig: () => ["pirania", "get_portal_config"],
+
+    // Pirania plugin - matches ["pirania", "get_portal_page_content"]
+    piraniaPortalContent: () => ["pirania", "get_portal_page_content"],
+
+    // Pirania plugin - matches ["pirania", "list_vouchers"]
+    piraniaVouchers: () => ["pirania", "list_vouchers"],
+
+    // Pirania plugin - matches ["local-service", "logo_compression"]
+    piraniaLogoCompression: () => ["local-service", "logo_compression"],
+
+    // Locate plugin - matches ["lime-location", "get"]
+    locateLocation: () => ["lime-location", "get"],
+
+    // Locate plugin - matches ["lime-location", "all_nodes_and_links"]
+    locateNodesAndLinks: () => ["lime-location", "all_nodes_and_links"],
+
+    // Locate plugin - matches ["lime-location", "load_leaflet"]
+    locateLeaflet: () => ["lime-location", "load_leaflet"],
+
+    // Metrics plugin - matches ["lime-metrics", "get_metrics", ip]
+    metricsForIp: (ip) => ["lime-metrics", "get_metrics", ip],
+
+    // Metrics plugin - matches ["lime-metrics", "get_gateway"]
+    metricsGateway: () => ["lime-metrics", "get_gateway"],
+
+    // Metrics plugin - matches ["lime-metrics", "get_path"]
+    metricsPath: () => ["lime-metrics", "get_path"],
+
+    // Metrics plugin - matches ["lime-metrics", "get_loss", ip]
+    metricsLossForIp: (ip) => ["lime-metrics", "get_loss", ip],
 };

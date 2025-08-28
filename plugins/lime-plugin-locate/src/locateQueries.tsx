@@ -8,6 +8,7 @@ import {
 } from "plugins/lime-plugin-locate/src/locateApi";
 
 import queryCache from "utils/queryCache";
+import { queryKeys } from "utils/queryKeys";
 
 export interface INodeLocation {
     location: {
@@ -18,7 +19,7 @@ export interface INodeLocation {
 }
 
 export function useLocation(params) {
-    return useQuery<INodeLocation>(["lime-location", "get"], getLocation, {
+    return useQuery<INodeLocation>(queryKeys.locateLocation(), getLocation, {
         placeholderData: {
             default: false,
             location: {
@@ -31,13 +32,9 @@ export function useLocation(params) {
 }
 
 export function useNodesandlinks(params) {
-    return useQuery(
-        ["lime-location", "all_nodes_and_links"],
-        getNodesandlinks,
-        {
-            ...params,
-        }
-    );
+    return useQuery(queryKeys.locateNodesAndLinks(), getNodesandlinks, {
+        ...params,
+    });
 }
 
 interface IChangeUserParams {
@@ -50,7 +47,7 @@ export function useChangeLocation(params) {
         mutationFn: changeLocation,
         onSuccess: (data: { lat: string; lon: string }) => {
             queryCache.setQueryData(
-                ["lime-location", "get"],
+                queryKeys.locateLocation(),
                 (oldData: INodeLocation) =>
                     oldData
                         ? {
@@ -68,7 +65,7 @@ export function useChangeLocation(params) {
 }
 
 export function useLoadLeaflet(params) {
-    return useQuery(["lime-location", "load_leaflet"], loadLeafLet, {
+    return useQuery(queryKeys.locateLeaflet(), loadLeafLet, {
         ...params,
     });
 }

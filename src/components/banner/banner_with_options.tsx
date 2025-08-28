@@ -1,6 +1,15 @@
 import { Trans } from "@lingui/macro";
+import { ComponentChildren } from "preact";
 
 import style from "./style.less";
+
+type BannerWithOptionsProps = {
+    title: ComponentChildren;
+    description?: ComponentChildren;
+    cancelOption: ComponentChildren;
+    onNotShowAgain: (e: Event) => void;
+    options: ComponentChildren[];
+};
 
 export const BannerWithOptions = ({
     title,
@@ -8,7 +17,7 @@ export const BannerWithOptions = ({
     cancelOption,
     onNotShowAgain,
     options,
-}) => (
+}: BannerWithOptionsProps) => (
     <div className={style.banner}>
         <h3>{title}</h3>
         {description && <p>{description}</p>}

@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 import queryCache from "utils/queryCache";
+import { queryKeys } from "utils/queryKeys";
 
 import {
     addVoucher,
@@ -15,46 +16,43 @@ import {
 } from "./piraniaApi";
 
 export const usePortalConfig = () =>
-    useQuery(["pirania", "get_portal_config"], getPortalConfig);
+    useQuery(queryKeys.piraniaPortalConfig(), getPortalConfig);
 
 export const useSetPortalConfig = () =>
     useMutation(setPortalConfig, {
         onSuccess: () =>
-            queryCache.invalidateQueries(["pirania", "get_portal_config"]),
+            queryCache.invalidateQueries(queryKeys.piraniaPortalConfig()),
     });
 
 export const usePortalContent = () =>
-    useQuery(["pirania", "get_portal_page_content"], getPortalContent);
+    useQuery(queryKeys.piraniaPortalContent(), getPortalContent);
 
 export const useSetPortalContent = () =>
     useMutation(setPortalContent, {
         onSuccess: () =>
-            queryCache.invalidateQueries([
-                "pirania",
-                "get_portal_page_content",
-            ]),
+            queryCache.invalidateQueries(queryKeys.piraniaPortalContent()),
     });
 
 export const useLogoCompression = () =>
-    useQuery(["local-service", "logo_compression"]);
+    useQuery(queryKeys.piraniaLogoCompression());
 
 export const useCreateCompression = () =>
     useMutation(createCompression, {
         onSuccess: (compression) =>
             queryCache.setQueryData(
-                ["local-service", "logo_compression"],
+                queryKeys.piraniaLogoCompression(),
                 compression
             ),
     });
 
 export function useListVouchers() {
-    return useQuery(["pirania", "list_vouchers"], listVouchers, {});
+    return useQuery(queryKeys.piraniaVouchers(), listVouchers, {});
 }
 
 export function useAddVoucher() {
     return useMutation(addVoucher, {
         onSuccess: (data) => {
-            queryCache.invalidateQueries(["pirania", "list_vouchers"]);
+            queryCache.invalidateQueries(queryKeys.piraniaVouchers());
             return data;
         },
     });
@@ -63,7 +61,7 @@ export function useAddVoucher() {
 export function useRename() {
     return useMutation(rename, {
         onSuccess: (data) => {
-            queryCache.invalidateQueries(["pirania", "list_vouchers"]);
+            queryCache.invalidateQueries(queryKeys.piraniaVouchers());
             return data;
         },
     });
@@ -72,7 +70,7 @@ export function useRename() {
 export function useInvalidate() {
     return useMutation(invalidate, {
         onSuccess: (data) => {
-            queryCache.invalidateQueries(["pirania", "list_vouchers"]);
+            queryCache.invalidateQueries(queryKeys.piraniaVouchers());
             return data;
         },
     });

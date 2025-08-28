@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 
 import queryCache from "utils/queryCache";
+import { queryKeys } from "utils/queryKeys";
 
 import { getGateway, getLoss, getMetrics, getPath } from "./metricsApi";
 
 export function useMetrics(ip, params) {
-    return useQuery(["lime-metrics", "get_metrics", ip], () => getMetrics(ip), {
+    return useQuery(queryKeys.metricsForIp(ip), () => getMetrics(ip), {
         retry: false,
         enabled: !!ip,
         ...params,
@@ -15,11 +16,7 @@ export function useMetrics(ip, params) {
 export const getAllMetrics = async (ips) => {
     const metrics = [];
     for (const ip of ips) {
-        const metric = await queryCache.fetchQuery([
-            "lime-metrics",
-            "get_metrics",
-            ip,
-        ]);
+        const metric = await queryCache.fetchQuery(queryKeys.metricsForIp(ip));
         metrics.push({ ip: metric });
     }
     return metrics;
@@ -27,7 +24,7 @@ export const getAllMetrics = async (ips) => {
 
 export function useAllMetrics(ips, params) {
     return useQuery(
-        ["lime-metrics", "get_metrics", ips],
+        queryKeys.metricsForIp(ips),
         (query) => getAllMetrics(query.queryKey[2]),
         {
             retry: false,
@@ -38,15 +35,15 @@ export function useAllMetrics(ips, params) {
 }
 
 export function useGateway(params) {
-    return useQuery(["lime-metrics", "get_gateway"], getGateway, params);
+    return useQuery(queryKeys.metricsGateway(), getGateway, params);
 }
 
 export function usePath(params) {
-    return useQuery(["lime-metrics", "get_path"], getPath, params);
+    return useQuery(queryKeys.metricsPath(), getPath, params);
 }
 
 export function useLoss(ip, params) {
-    return useQuery(["lime-metrics", "get_loss", ip], () => getLoss(ip), {
+    return useQuery(queryKeys.metricsLossForIp(ip), () => getLoss(ip), {
         retry: false,
         enabled: !!ip,
         ...params,
@@ -56,7 +53,7 @@ export function useLoss(ip, params) {
 export const getAllLoss = async (nodes) => {
     let losses = {};
     for (const node of nodes) {
-        const queryKey = ["lime-metrics", "get_loss", node.ip];
+        const queryKey = queryKeys.metricsLossForIp(node.ip);
         await queryCache.invalidateQueries(queryKey);
         losses[node.ip] = await queryCache.fetchQuery(queryKey);
     }
@@ -65,7 +62,7 @@ export const getAllLoss = async (nodes) => {
 
 export function usePathLoss(nodes, params) {
     return useQuery(
-        ["lime-metrics", "get_loss", nodes],
+        queryKeys.metricsLossForIp(nodes),
         (query) => getAllLoss(query.queryKey[2]),
         {
             retry: false,
