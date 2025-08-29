@@ -146,3 +146,57 @@ export const createErrorHandler = (context: string) => {
         throw error;
     };
 };
+
+/**
+ * Enhanced error boundary for query operations with centralized keys
+ */
+export const createQueryErrorHandler = (queryKeyName: string) => {
+    return (error: unknown) => {
+        const errorType = getErrorType(error);
+
+        // Add query key context to error logging
+        logError(error, `Query[${queryKeyName}]`);
+
+        // For certain error types, provide fallback data instead of throwing
+        if (
+            errorType === "service_unavailable" ||
+            errorType === "network_offline"
+        ) {
+            // Return empty fallback data structure based on common patterns
+            if (
+                queryKeyName.includes("list") ||
+                queryKeyName.includes("Vouchers")
+            ) {
+                return [];
+            }
+            if (
+                queryKeyName.includes("Status") ||
+                queryKeyName.includes("Info")
+            ) {
+                return null;
+            }
+        }
+
+        throw error;
+    };
+};
+
+/**
+ * Graceful degradation for optional queries
+ */
+export const createOptionalQueryHandler = (
+    queryKeyName: string,
+    fallbackData: any = null
+) => {
+    return (error: unknown) => {
+        const errorType = getErrorType(error);
+
+        // Only log unexpected errors, not service unavailable
+        if (errorType !== "service_unavailable") {
+            logError(error, `OptionalQuery[${queryKeyName}]`);
+        }
+
+        // Always return fallback data for optional queries
+        return fallbackData;
+    };
+};

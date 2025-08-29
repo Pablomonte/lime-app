@@ -1,12 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { getQueryErrorHandler } from "utils/queryErrorHandlers";
 import { queryKeys } from "utils/queryKeys";
 
 import { getAssocList, getMeshIfaces } from "./alignApi";
 import { markAssociated, sortBySignal } from "./utils";
 
-export function useMeshIfaces(queryConfig) {
-    return useQuery(queryKeys.meshIfaces(), getMeshIfaces, queryConfig);
+export function useMeshIfaces(queryConfig = {}) {
+    return useQuery(queryKeys.meshIfaces(), getMeshIfaces, {
+        onError: getQueryErrorHandler("meshIfaces"),
+        ...queryConfig,
+    });
 }
 
 async function _getAssocList(iface) {
@@ -16,10 +20,13 @@ async function _getAssocList(iface) {
     return assoclist;
 }
 
-export function useAssocList(iface, queryConfig) {
+export function useAssocList(iface, queryConfig = {}) {
     return useQuery(
         queryKeys.assocList(iface),
         async () => await _getAssocList(iface),
-        queryConfig
+        {
+            onError: getQueryErrorHandler("assocList"),
+            ...queryConfig,
+        }
     );
 }

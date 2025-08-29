@@ -9,6 +9,7 @@ import {
 
 import queryCache from "utils/queryCache";
 import { queryKeys } from "utils/queryKeys";
+import { getQueryErrorHandler } from "utils/queryErrorHandlers";
 
 export interface INodeLocation {
     location: {
@@ -18,7 +19,7 @@ export interface INodeLocation {
     default: boolean;
 }
 
-export function useLocation(params) {
+export function useLocation(params = {}) {
     return useQuery<INodeLocation>(queryKeys.locateLocation(), getLocation, {
         placeholderData: {
             default: false,
@@ -27,12 +28,14 @@ export function useLocation(params) {
                 lat: "FIXME",
             },
         },
+        onError: getQueryErrorHandler('locateLocation'),
         ...params,
     });
 }
 
-export function useNodesandlinks(params) {
+export function useNodesandlinks(params = {}) {
     return useQuery(queryKeys.locateNodesAndLinks(), getNodesandlinks, {
+        onError: getQueryErrorHandler('locateNodesAndLinks'),
         ...params,
     });
 }
@@ -64,8 +67,9 @@ export function useChangeLocation(params) {
     });
 }
 
-export function useLoadLeaflet(params) {
+export function useLoadLeaflet(params = {}) {
     return useQuery(queryKeys.locateLeaflet(), loadLeafLet, {
+        onError: getQueryErrorHandler('locateLeaflet'),
         ...params,
     });
 }

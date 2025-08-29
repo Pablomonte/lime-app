@@ -6,6 +6,7 @@ import * as timeago from "timeago.js";
 import waitForExpect from "wait-for-expect";
 
 import queryCache from "utils/queryCache";
+import { mockQuery } from "utils/test_queryKeys";
 import { render } from "utils/test_utils";
 
 import { listVouchers } from "../piraniaApi";
@@ -25,6 +26,7 @@ const voucher = {
 
 describe("Voucher details", () => {
     beforeEach(() => {
+        // Mock API calls to return test data
         listVouchers.mockImplementation(async () => [voucher]);
     });
 
@@ -152,9 +154,10 @@ describe("Voucher details", () => {
     each(["active", "available"]).it(
         "shows a button to invalidate the voucher if its %s",
         async (status) => {
-            listVouchers.mockImplementation(async () => [
-                { ...voucher, status },
-            ]);
+            const voucherWithStatus = { ...voucher, status };
+            listVouchers.mockImplementation(async () => [voucherWithStatus]);
+            // Additional mock for this test case
+
             render(<Voucher id={voucher.id} />);
             const button = await screen.findByRole("button", {
                 name: /invalidate/i,
@@ -174,12 +177,10 @@ describe("Voucher details", () => {
     each(["expired", "invalidated"]).it(
         "doesnt show a button to invalidate the voucher if it is %s",
         async (status) => {
-            listVouchers.mockImplementation(async () => [
-                {
-                    ...voucher,
-                    status,
-                },
-            ]);
+            const voucherWithStatus = { ...voucher, status };
+            listVouchers.mockImplementation(async () => [voucherWithStatus]);
+            // Additional mock for this test case
+
             render(<Voucher id={voucher.id} />);
             // wait for something to be rendered.
             // eslint-disable-next-line jest/no-standalone-expect

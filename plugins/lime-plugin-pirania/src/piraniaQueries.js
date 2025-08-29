@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 import queryCache from "utils/queryCache";
+import { getQueryErrorHandler } from "utils/queryErrorHandlers";
 import { queryKeys } from "utils/queryKeys";
 
 import {
@@ -45,8 +46,11 @@ export const useCreateCompression = () =>
             ),
     });
 
-export function useListVouchers() {
-    return useQuery(queryKeys.piraniaVouchers(), listVouchers, {});
+export function useListVouchers(params = {}) {
+    return useQuery(queryKeys.piraniaVouchers(), listVouchers, {
+        onError: getQueryErrorHandler("piraniaVouchers"),
+        ...params,
+    });
 }
 
 export function useAddVoucher() {

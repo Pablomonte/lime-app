@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 import queryCache from "utils/queryCache";
+import { getQueryErrorHandler } from "utils/queryErrorHandlers";
 import { queryKeys } from "utils/queryKeys";
 
 import {
@@ -50,13 +51,19 @@ async function _scanStatus() {
     };
 }
 
-export function useFbwStatus(params) {
-    return useQuery(queryKeys.fbwScanStatus(), _scanStatus, params);
+export function useFbwStatus(params = {}) {
+    return useQuery(queryKeys.fbwScanStatus(), _scanStatus, {
+        onError: getQueryErrorHandler("fbwScanStatus"),
+        ...params,
+    });
 }
 
 // General status for banner - calls lime-fbw status directly
-export function useFbwGeneralStatus(params) {
-    return useQuery(queryKeys.fbwStatus(), getStatus, params);
+export function useFbwGeneralStatus(params = {}) {
+    return useQuery(queryKeys.fbwStatus(), getStatus, {
+        onError: getQueryErrorHandler("fbwStatus"),
+        ...params,
+    });
 }
 
 // Backend can return status false i some error is found doing
