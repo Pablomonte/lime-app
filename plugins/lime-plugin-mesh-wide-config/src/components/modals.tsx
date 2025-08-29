@@ -1,5 +1,6 @@
 import { Trans, t } from "@lingui/macro";
-import { Label } from "@tanstack/react-query-devtools/build/lib/Explorer";
+// Custom Label component replacement for devtools removal
+const Label = ({ children, style, ...props }: any) => <label style={style} {...props}>{children}</label>;
 import { Controller, FormProvider, useForm } from "react-hook-form";
 
 import { Modal, ModalProps } from "components/Modal/Modal";

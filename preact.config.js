@@ -17,6 +17,16 @@ export default function (config, env, helpers) {
     const { source, isProd } = env;
     config.output.publicPath = isProd ? "/app/" : "";
 
+    // Safe optimizations for LibreMesh deployment
+    if (isProd) {
+        // Enable basic optimizations without breaking HTML plugin
+        if (config.optimization) {
+            config.optimization.minimize = true;
+            config.optimization.usedExports = true;
+            config.optimization.sideEffects = false;
+        }
+    }
+
     // Reduce noisy warnings in development (compatible with webpack 4)
     if (!isProd) {
         config.stats = {

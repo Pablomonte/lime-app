@@ -1,7 +1,7 @@
 import { fromNavigator } from "@lingui/detect-locale";
 import { I18nProvider } from "@lingui/react";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// React Query DevTools removed for production build
 import Router from "preact-router";
 import { useEffect } from "preact/hooks";
 
@@ -101,7 +101,7 @@ const App = () => {
 
     return (
         <div id="app">
-            <ReactQueryDevtools />
+            {/* ReactQueryDevtools removed for production */}
             <Header Menu={Menu} />
             <SubHeader />
             <div id="content">
