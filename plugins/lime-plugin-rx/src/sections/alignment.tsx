@@ -1,5 +1,5 @@
-import { Fragment } from "preact";
 import { Trans } from "@lingui/macro";
+import { Fragment } from "preact";
 
 import { Button } from "components/buttons/button";
 

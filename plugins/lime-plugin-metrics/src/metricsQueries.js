@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { useRealtimeQuery } from "utils/optimizedQuery";
 import queryCache from "utils/queryCache";
 import { queryKeys } from "utils/queryKeys";
-import { useRealtimeQuery } from "utils/optimizedQuery";
 
 import { getGateway, getLoss, getMetrics, getPath } from "./metricsApi";
 

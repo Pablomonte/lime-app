@@ -1,8 +1,8 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 
+import { useCriticalQuery, useOptimizedMutation } from "utils/optimizedQuery";
 import queryCache from "utils/queryCache";
 import { getQueryErrorHandler } from "utils/queryErrorHandlers";
-import { useCriticalQuery, useOptimizedMutation } from "utils/optimizedQuery";
 import { queryKeys } from "utils/queryKeys";
 
 import {

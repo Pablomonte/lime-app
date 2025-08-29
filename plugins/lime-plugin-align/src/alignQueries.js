@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getQueryErrorHandler } from "utils/queryErrorHandlers";
 import { useRealtimeQuery } from "utils/optimizedQuery";
+import { getQueryErrorHandler } from "utils/queryErrorHandlers";
 import { queryKeys } from "utils/queryKeys";
 
 import { getAssocList, getMeshIfaces } from "./alignApi";

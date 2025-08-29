@@ -123,13 +123,14 @@ export const AssocList = ({ iface }) => {
                         </Trans>
                     </div>
                 )}
-                {Array.isArray(assoclist) && assoclist.map((station) => (
-                    <AssocRow
-                        key={station.mac}
-                        station={station}
-                        iface={iface}
-                    />
-                ))}
+                {Array.isArray(assoclist) &&
+                    assoclist.map((station) => (
+                        <AssocRow
+                            key={station.mac}
+                            station={station}
+                            iface={iface}
+                        />
+                    ))}
                 {Array.isArray(assoclist) && assoclist.length === 0 && (
                     <div className="container-center">
                         <Trans>

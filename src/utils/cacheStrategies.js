@@ -9,19 +9,19 @@
 export const CACHE_DURATIONS = {
     // Static data that rarely changes
     STATIC: 30 * 60 * 1000, // 30 minutes
-    
-    // System configuration that changes occasionally  
+
+    // System configuration that changes occasionally
     SYSTEM_CONFIG: 10 * 60 * 1000, // 10 minutes
-    
+
     // Network status that changes moderately
     NETWORK_STATUS: 2 * 60 * 1000, // 2 minutes
-    
+
     // Real-time data that changes frequently
     REALTIME: 30 * 1000, // 30 seconds
-    
+
     // Critical data that must be fresh
     CRITICAL: 0, // Always fresh
-    
+
     // Session data (long-lived but security-sensitive)
     SESSION: 15 * 60 * 1000, // 15 minutes
 };
@@ -38,7 +38,7 @@ export const CACHE_STRATEGIES = {
         refetchOnWindowFocus: false,
         refetchOnReconnect: false,
     },
-    
+
     // System configuration
     systemConfig: {
         staleTime: CACHE_DURATIONS.SYSTEM_CONFIG,
@@ -47,7 +47,7 @@ export const CACHE_STRATEGIES = {
         refetchOnWindowFocus: false,
         refetchOnReconnect: true, // Refresh on network reconnect
     },
-    
+
     // Network and connectivity status
     networkStatus: {
         staleTime: CACHE_DURATIONS.NETWORK_STATUS,
@@ -56,7 +56,7 @@ export const CACHE_STRATEGIES = {
         refetchOnWindowFocus: true,
         refetchOnReconnect: true,
     },
-    
+
     // Real-time monitoring data
     realtime: {
         staleTime: CACHE_DURATIONS.REALTIME,
@@ -66,7 +66,7 @@ export const CACHE_STRATEGIES = {
         refetchOnReconnect: true,
         refetchInterval: CACHE_DURATIONS.REALTIME * 2, // Auto-refresh
     },
-    
+
     // Critical data that must always be fresh
     critical: {
         staleTime: CACHE_DURATIONS.CRITICAL,
@@ -75,7 +75,7 @@ export const CACHE_STRATEGIES = {
         refetchOnWindowFocus: true,
         refetchOnReconnect: true,
     },
-    
+
     // Session and authentication
     session: {
         staleTime: CACHE_DURATIONS.SESSION,
@@ -84,7 +84,7 @@ export const CACHE_STRATEGIES = {
         refetchOnWindowFocus: true, // Check auth on focus
         refetchOnReconnect: true,
     },
-    
+
     // Test environment - disable caching for predictable tests
     test: {
         staleTime: Infinity,
@@ -102,52 +102,52 @@ export const CACHE_STRATEGIES = {
  */
 export const QUERY_CACHE_MAP = {
     // Static system information
-    board: 'static',
-    communitySettings: 'static',
-    
-    // System configuration  
-    upgradeInfo: 'systemConfig',
-    newVersion: 'systemConfig',
-    wifiData: 'systemConfig',
-    adminWifiData: 'systemConfig',
-    
+    board: "static",
+    communitySettings: "static",
+
+    // System configuration
+    upgradeInfo: "systemConfig",
+    newVersion: "systemConfig",
+    wifiData: "systemConfig",
+    adminWifiData: "systemConfig",
+
     // Network status
-    internet: 'networkStatus',
-    meshIfaces: 'networkStatus',
-    batHost: 'networkStatus',
-    
+    internet: "networkStatus",
+    meshIfaces: "networkStatus",
+    batHost: "networkStatus",
+
     // Real-time monitoring
-    assocList: 'realtime',
-    metricsForIp: 'realtime',
-    metricsGateway: 'realtime',
-    metricsPath: 'realtime',
-    metricsLossForIp: 'realtime',
-    
+    assocList: "realtime",
+    metricsForIp: "realtime",
+    metricsGateway: "realtime",
+    metricsPath: "realtime",
+    metricsLossForIp: "realtime",
+
     // Critical operations
-    changes: 'critical',
-    downloadStatus: 'critical',
-    fbwStatus: 'critical',
-    fbwScanStatus: 'critical',
-    
+    changes: "critical",
+    downloadStatus: "critical",
+    fbwStatus: "critical",
+    fbwScanStatus: "critical",
+
     // Session management
-    session: 'session',
-    
+    session: "session",
+
     // Location data (moderate refresh)
-    locateLocation: 'systemConfig',
-    locateNodesAndLinks: 'networkStatus',
-    locateLeaflet: 'static',
-    
+    locateLocation: "systemConfig",
+    locateNodesAndLinks: "networkStatus",
+    locateLeaflet: "static",
+
     // Pirania portal data
-    piraniaPortalConfig: 'systemConfig',
-    piraniaPortalContent: 'systemConfig',
-    piraniaVouchers: 'networkStatus',
-    piraniaLogoCompression: 'static',
-    
+    piraniaPortalConfig: "systemConfig",
+    piraniaPortalContent: "systemConfig",
+    piraniaVouchers: "networkStatus",
+    piraniaLogoCompression: "static",
+
     // Remote support
-    tmateSession: 'networkStatus',
-    
+    tmateSession: "networkStatus",
+
     // Hotspot functionality
-    hotspotStatus: 'networkStatus',
+    hotspotStatus: "networkStatus",
 };
 
 /**
@@ -160,26 +160,29 @@ export const getCacheStrategy = (queryKeyName) => {
     if (process.env.NODE_ENV === "test") {
         return CACHE_STRATEGIES.test;
     }
-    
+
     // Find matching strategy
     const strategyName = QUERY_CACHE_MAP[queryKeyName];
     if (strategyName && CACHE_STRATEGIES[strategyName]) {
         return CACHE_STRATEGIES[strategyName];
     }
-    
+
     // Default to network status for unknown queries
     return CACHE_STRATEGIES.networkStatus;
 };
 
 /**
  * Create optimized query configuration
- * @param {string} queryKeyName - The query key name  
+ * @param {string} queryKeyName - The query key name
  * @param {object} customOptions - Custom options to override defaults
  * @returns {object} Optimized query configuration
  */
-export const createOptimizedQueryConfig = (queryKeyName, customOptions = {}) => {
+export const createOptimizedQueryConfig = (
+    queryKeyName,
+    customOptions = {}
+) => {
     const strategy = getCacheStrategy(queryKeyName);
-    
+
     return {
         ...strategy,
         ...customOptions, // Allow custom overrides
