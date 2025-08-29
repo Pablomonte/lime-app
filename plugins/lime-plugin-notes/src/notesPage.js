@@ -1,38 +1,49 @@
 /* eslint @typescript-eslint/no-empty-function: "off" */
 import { Trans } from "@lingui/macro";
 import { useEffect, useState } from "preact/hooks";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 
+import { useOptimizedMutation, useOptimizedQuery } from "utils/optimizedQuery";
 import { useBoardData } from "utils/queries";
+import { queryKeys } from "utils/queryKeys";
 
-import { getNotes, setNotes } from "./notesActions";
-import { getNotesState } from "./notesSelectors";
 import style from "./style.less";
 
-export const Page = ({ setNotes, getNotes, notes, loading }) => {
+export const Page = () => {
     const { data: boardData } = useBoardData();
-    const [value, setValue] = useState(notes || "");
+
+    // Use TanStack Query for notes data
+    const { data: notesData, isLoading } = useOptimizedQuery(
+        queryKeys.notes,
+        async () => {
+            const { fetchNotes } = await import("./notesApi");
+            return fetchNotes();
+        }
+    );
+
+    // Use TanStack Query for saving notes
+    const { mutate: saveNotesMutation } = useOptimizedMutation(
+        async (notes) => {
+            const { saveNotes } = await import("./notesApi");
+            return saveNotes(notes);
+        }
+    );
+
+    const [value, setValue] = useState(notesData?.notes || "");
 
     function handleChange(event) {
         setValue(event.target.value);
     }
 
     function saveNotes() {
-        setNotes(value);
+        saveNotesMutation(value);
     }
 
-    //Only once
+    // Update local state when notes are loaded
     useEffect(() => {
-        getNotes();
-        return () => {};
-    }, [getNotes]);
-
-    //After notes reload
-    useEffect(() => {
-        setValue(notes);
-        return () => {};
-    }, [notes]);
+        if (notesData?.notes) {
+            setValue(notesData.notes);
+        }
+    }, [notesData?.notes]);
 
     return (
         <div className="container container-padded">
@@ -40,28 +51,19 @@ export const Page = ({ setNotes, getNotes, notes, loading }) => {
                 <span>
                     <Trans>Notes of</Trans>
                 </span>{" "}
-                {boardData.hostname}
+                {boardData?.hostname}
             </h4>
             <textarea
                 onChange={handleChange}
                 className={style.notes}
                 value={value}
             />
-            <button disabled={loading} onClick={saveNotes}>
+            <button disabled={isLoading} onClick={saveNotes}>
                 <Trans>Save notes</Trans>
             </button>
         </div>
     );
 };
 
-const mapStateToProps = (state) => ({
-    notes: getNotesState(state),
-    loading: state.notes.loading,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    getNotes: bindActionCreators(getNotes, dispatch),
-    setNotes: bindActionCreators(setNotes, dispatch),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Page);
+// No more Redux needed!
+export default Page;

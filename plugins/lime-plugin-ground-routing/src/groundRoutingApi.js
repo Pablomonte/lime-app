@@ -1,14 +1,23 @@
-import { map } from "rxjs/operators";
+import api from "../../../src/utils/uhttpd.service";
 
-export const getGroundRouting = (api, sid) =>
-    api.call(sid, "lime-groundrouting", "get", {}).pipe(
-        map((x) => {
-            if (typeof x.config === "undefined") {
-                throw { error: true };
-            }
-            return x;
-        })
-    );
+// Modern API functions for ground routing
+export const fetchGroundRouting = async () => {
+    try {
+        const response = await api.call("lime-groundrouting", "get", {});
+        if (typeof response.config === "undefined") {
+            throw new Error("Ground routing config not found");
+        }
+        return response;
+    } catch (error) {
+        throw new Error(`Failed to fetch ground routing: ${error.message}`);
+    }
+};
 
-export const setGroundRouting = (api, sid, config) =>
-    api.call(sid, "lime-groundrouting", "set", config);
+export const saveGroundRouting = async (config) => {
+    try {
+        const response = await api.call("lime-groundrouting", "set", config);
+        return response;
+    } catch (error) {
+        throw new Error(`Failed to save ground routing: ${error.message}`);
+    }
+};

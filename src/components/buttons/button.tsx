@@ -1,5 +1,6 @@
 import { useState } from "preact/hooks";
-import React, { useCallback } from "react";
+import { useCallback } from "preact/hooks";
+import { route } from "preact-router";
 
 export type ButtonProps = {
     onClick?: ((e) => void) | ((e) => Promise<void>);
@@ -97,7 +98,18 @@ export const Button = ({
     );
 
     if (href) {
-        return <a href={href}>{btn}</a>;
+        // Check if it's an external link or internal route
+        const isExternal = href.startsWith('http') || href.startsWith('//');
+        if (isExternal) {
+            return <a href={href} target="_blank" rel="noopener">{btn}</a>;
+        } else {
+            // Internal route using preact-router
+            const handleRoute = (e) => {
+                e.preventDefault();
+                route(href.startsWith('#/') ? href.substring(2) : href);
+            };
+            return <a href={href} onClick={handleRoute}>{btn}</a>;
+        }
     }
 
     return <>{btn}</>;

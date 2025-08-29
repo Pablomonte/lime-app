@@ -9,20 +9,25 @@ export const SignalSpeech = ({ signal, className, initialMuted = true }) => {
     const [muted, setMuted] = useState(initialMuted);
 
     useInterval(
-        () => {
+        async () => {
             const value = signal * -1;
             const doNotAbbreviate =
                 Math.floor(lastSpeech / 10) !== Math.floor(value / 10) ||
                 Number(value.toString()[value.toString().length - 1]) === 0 ||
                 abbreviatedTimes === 5;
 
-            if (doNotAbbreviate) {
-                speech(value, "es");
-                setAbbreviatedTimes(0);
-            } else {
-                const lastDigit = value.toString()[value.toString().length - 1];
-                speech(lastDigit, "es");
-                setAbbreviatedTimes((times) => times + 1);
+            try {
+                if (doNotAbbreviate) {
+                    await speech(value, "es");
+                    setAbbreviatedTimes(0);
+                } else {
+                    const lastDigit =
+                        value.toString()[value.toString().length - 1];
+                    await speech(lastDigit, "es");
+                    setAbbreviatedTimes((times) => times + 1);
+                }
+            } catch (error) {
+                console.warn("Speech error in interval:", error);
             }
             setLastSpeech(() => value);
         },

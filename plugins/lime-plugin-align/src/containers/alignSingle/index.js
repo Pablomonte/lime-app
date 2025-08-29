@@ -74,8 +74,8 @@ const SignalBox = ({ signal }) => (
 );
 
 const AlignSingle = () => {
-    // Get parameters from URL hash
-    const currentUrl = window.location.hash;
+    // Get parameters from URL pathname (without hash)
+    const currentUrl = window.location.pathname;
     const urlParts = currentUrl.split("/");
     const iface = urlParts[2]; // align-single/IFACE/mac
     const mac = urlParts[3];
