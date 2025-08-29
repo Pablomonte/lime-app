@@ -2,11 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 
 import queryCache from "utils/queryCache";
 import { queryKeys } from "utils/queryKeys";
+import { useRealtimeQuery } from "utils/optimizedQuery";
 
 import { getGateway, getLoss, getMetrics, getPath } from "./metricsApi";
 
-export function useMetrics(ip, params) {
-    return useQuery(queryKeys.metricsForIp(ip), () => getMetrics(ip), {
+export function useMetrics(ip, params = {}) {
+    return useRealtimeQuery(queryKeys.metricsForIp(ip), () => getMetrics(ip), {
         retry: false,
         enabled: !!ip,
         ...params,
@@ -34,16 +35,16 @@ export function useAllMetrics(ips, params) {
     );
 }
 
-export function useGateway(params) {
-    return useQuery(queryKeys.metricsGateway(), getGateway, params);
+export function useGateway(params = {}) {
+    return useRealtimeQuery(queryKeys.metricsGateway(), getGateway, params);
 }
 
-export function usePath(params) {
-    return useQuery(queryKeys.metricsPath(), getPath, params);
+export function usePath(params = {}) {
+    return useRealtimeQuery(queryKeys.metricsPath(), getPath, params);
 }
 
-export function useLoss(ip, params) {
-    return useQuery(queryKeys.metricsLossForIp(ip), () => getLoss(ip), {
+export function useLoss(ip, params = {}) {
+    return useRealtimeQuery(queryKeys.metricsLossForIp(ip), () => getLoss(ip), {
         retry: false,
         enabled: !!ip,
         ...params,

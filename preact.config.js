@@ -16,6 +16,18 @@ export default function (config, env, helpers) {
     // This hack let us use less-modules at plugins/containers directories too
     const { source, isProd } = env;
     config.output.publicPath = isProd ? "/app/" : "";
+    
+    // Reduce noisy warnings in development (compatible with webpack 4)
+    if (!isProd) {
+        config.stats = {
+            warnings: false,
+            warningsFilter: [
+                /Failed to parse source map/,
+                /node_modules\/timeago\.js/,
+                /source-map-loader/,
+            ],
+        };
+    }
 
     const host = process.env.NODE_HOST || "10.13.0.1";
     config.devServer = {

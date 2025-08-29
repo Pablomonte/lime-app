@@ -116,21 +116,21 @@ export const AssocList = ({ iface }) => {
     return (
         <QueryErrorBoundary>
             <List>
-                {assoclist.length > 0 && (
+                {Array.isArray(assoclist) && assoclist.length > 0 && (
                     <div className={style.assoclistHeader}>
                         <Trans>
                             These are the nodes associated on this radio
                         </Trans>
                     </div>
                 )}
-                {assoclist.map((station) => (
+                {Array.isArray(assoclist) && assoclist.map((station) => (
                     <AssocRow
                         key={station.mac}
                         station={station}
                         iface={iface}
                     />
                 ))}
-                {assoclist.length === 0 && (
+                {Array.isArray(assoclist) && assoclist.length === 0 && (
                     <div className="container-center">
                         <Trans>
                             This radio is not associated with other nodes

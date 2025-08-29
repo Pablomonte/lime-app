@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { getQueryErrorHandler } from "utils/queryErrorHandlers";
+import { useRealtimeQuery } from "utils/optimizedQuery";
 import { queryKeys } from "utils/queryKeys";
 
 import { getAssocList, getMeshIfaces } from "./alignApi";
@@ -21,7 +22,8 @@ async function _getAssocList(iface) {
 }
 
 export function useAssocList(iface, queryConfig = {}) {
-    return useQuery(
+    // Association list is realtime signal strength data
+    return useRealtimeQuery(
         queryKeys.assocList(iface),
         async () => await _getAssocList(iface),
         {

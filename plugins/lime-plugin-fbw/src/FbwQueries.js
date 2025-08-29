@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 
 import queryCache from "utils/queryCache";
 import { getQueryErrorHandler } from "utils/queryErrorHandlers";
+import { useCriticalQuery, useOptimizedMutation } from "utils/optimizedQuery";
 import { queryKeys } from "utils/queryKeys";
 
 import {
@@ -15,14 +16,14 @@ import {
 } from "./FbwApi";
 
 export function useDismissFbw() {
-    return useMutation(dismissFbw, {
+    return useOptimizedMutation(dismissFbw, {
         onSuccess: () =>
             queryCache.setQueryData(queryKeys.fbwStatus(), { lock: false }),
     });
 }
 
 export function useCreateNetwork(params) {
-    return useMutation(createNetwork, params);
+    return useOptimizedMutation(createNetwork, params);
 }
 
 const _getApName = ({ ap = "", file = "" }) => {
@@ -52,7 +53,8 @@ async function _scanStatus() {
 }
 
 export function useFbwStatus(params = {}) {
-    return useQuery(queryKeys.fbwScanStatus(), _scanStatus, {
+    // FBW scan status is critical during setup - needs fresh data
+    return useCriticalQuery(queryKeys.fbwScanStatus(), _scanStatus, {
         onError: getQueryErrorHandler("fbwScanStatus"),
         ...params,
     });
@@ -60,7 +62,8 @@ export function useFbwStatus(params = {}) {
 
 // General status for banner - calls lime-fbw status directly
 export function useFbwGeneralStatus(params = {}) {
-    return useQuery(queryKeys.fbwStatus(), getStatus, {
+    // FBW general status is critical for determining if setup is needed
+    return useCriticalQuery(queryKeys.fbwStatus(), getStatus, {
         onError: getQueryErrorHandler("fbwStatus"),
         ...params,
     });
@@ -76,23 +79,23 @@ function _checkBackendResponseStatus(res) {
 }
 
 export function useScanStart(params) {
-    return useMutation(async () => {
+    return useOptimizedMutation(async () => {
         _checkBackendResponseStatus(await scanStart());
     }, params);
 }
 
 export function useScanRestart(params) {
-    return useMutation(async () => {
+    return useOptimizedMutation(async () => {
         _checkBackendResponseStatus(await scanRestart());
     }, params);
 }
 
 export function useScanStop(params) {
-    return useMutation(async () => {
+    return useOptimizedMutation(async () => {
         _checkBackendResponseStatus(await scanStop());
     }, params);
 }
 
 export function useSetNetwork(params) {
-    return useMutation(setNetwork, params);
+    return useOptimizedMutation(setNetwork, params);
 }

@@ -1,20 +1,24 @@
 import { QueryClient } from "@tanstack/react-query";
 
 import { logError, shouldRetryError } from "./errorHandling";
+import { CACHE_STRATEGIES } from "./cacheStrategies";
+import { withPerformanceTracking } from "./performanceMonitor";
+import { createInvalidationHelper } from "./queryInvalidation";
 
 const queryCache = new QueryClient({
     defaultOptions: {
         queries: {
-            staleTime: process.env.NODE_ENV === "test" ? Infinity : Infinity,
-            refetchOnMount: false,
+            // Use intelligent caching strategy based on environment
+            ...(process.env.NODE_ENV === "test" 
+                ? CACHE_STRATEGIES.test 
+                : CACHE_STRATEGIES.networkStatus), // Default fallback
+            
             retry:
                 process.env.NODE_ENV === "test"
                     ? false // Disable retries in tests
                     : (failureCount, error) => {
                           return shouldRetryError(error, failureCount);
                       },
-            refetchOnWindowFocus: false,
-            refetchInterval: false,
             onError:
                 process.env.NODE_ENV === "test"
                     ? () => {} // Silent errors in tests
@@ -44,4 +48,12 @@ const queryCache = new QueryClient({
     },
 });
 
-export default queryCache;
+// Enable performance tracking in development
+const trackedQueryCache = process.env.NODE_ENV === 'development' 
+    ? withPerformanceTracking(queryCache)
+    : queryCache;
+
+// Create smart invalidation helper
+export const smartInvalidator = createInvalidationHelper(trackedQueryCache);
+
+export default trackedQueryCache;
