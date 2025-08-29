@@ -31,12 +31,12 @@ export const InternetPath = () => {
     });
 
     const pathLoss =
-        path
-            ?.map((station) => {
-                return { ip: station.ip };
+        Array.isArray(path)
+            ? path.map((station) => {
+                return { ip: station && typeof station === 'object' && 'ip' in station ? station.ip : '' };
             })
             .slice()
-            .reverse() ?? [];
+            .reverse() : [];
 
     const { refetch: refetchLosses } = usePathLoss(pathLoss, {
         refetchOnWindowFocus: false,
@@ -108,7 +108,7 @@ export const InternetPath = () => {
     } else if (!pathIsLoading && path) {
         pathComponent = (
             <span onClick={checkLosses}>
-                <LineChart nodes={path} internet={workingInternet} />
+                <LineChart nodes={Array.isArray(path) ? path : []} internet={workingInternet} />
             </span>
         );
     }

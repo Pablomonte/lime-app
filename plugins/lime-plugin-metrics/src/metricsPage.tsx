@@ -62,7 +62,7 @@ export const Metrics = () => {
     });
 
     const { refetch: getAllMetrics, isFetching: metricsIsLoading } =
-        useAllMetrics(path?.map((station) => station.ip) ?? [], {
+        useAllMetrics(Array.isArray(path) ? path.map((station) => station.ip) : [], {
             refetchOnWindowFocus: false,
             enabled: false,
             initialData: [],
@@ -131,7 +131,7 @@ export const Metrics = () => {
     async function getGatewayMetrics() {
         getInternetStatus();
         await queryCache.fetchQuery({
-            queryKey: ["lime-metrics", "get_metrics", gateway?.ip],
+            queryKey: ["lime-metrics", "get_metrics", gateway && typeof gateway === 'object' && 'ip' in gateway ? gateway.ip : null],
         });
     }
 
@@ -150,12 +150,15 @@ export const Metrics = () => {
             <div style={style.box}>
                 <Trans>From</Trans> {boardData.hostname}
             </div>
-            {path &&
+            {Array.isArray(path) &&
                 path.map((station, key) => (
                     <MetricsBox
                         key={key}
                         station={station}
-                        gateway={isGateway(station.ip, gateway?.ip ?? "")}
+                        gateway={isGateway(
+                            station && typeof station === 'object' && 'ip' in station ? station.ip : '',
+                            gateway && typeof gateway === 'object' && 'ip' in gateway ? gateway.ip : ""
+                        )}
                         loading={isLoading}
                     />
                 ))}
@@ -165,7 +168,10 @@ export const Metrics = () => {
             <InternetStatus isLoading={isInternetLoading} internet={internet} />
             <ShowPathButton
                 isLoading={isLoading}
-                isGateway={isGateway(boardData?.hostname, gateway?.hostname)}
+                isGateway={isGateway(
+                    boardData && typeof boardData === 'object' && 'hostname' in boardData ? boardData.hostname : '',
+                    gateway && typeof gateway === 'object' && 'hostname' in gateway ? gateway.hostname : ''
+                )}
                 getMetricsAll={refetchGetAllMetrics}
                 getGatewayMetrics={getGatewayMetrics}
             />

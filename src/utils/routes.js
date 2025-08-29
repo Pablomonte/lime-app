@@ -19,7 +19,10 @@ export const Route = ({ path, children, ...childrenProps }) => {
 
     // Show initial FBW overlay when setup is needed
     if (
-        fbwStatus?.lock &&
+        fbwStatus &&
+        typeof fbwStatus === "object" &&
+        "lock" in fbwStatus &&
+        fbwStatus.lock &&
         !fbwCanceled &&
         path !== "firmware" &&
         path !== "releaseInfo" &&

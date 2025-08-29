@@ -56,7 +56,12 @@ const Box = ({ station, gateway, loading }) => {
     function barStyle(loss) {
         return Object.assign({}, style.line, {
             width: `${(
-                (metrics.bandwidth * 100) / settings.good_bandwidth || 3
+                (metrics &&
+                typeof metrics === "object" &&
+                "bandwidth" in metrics &&
+                typeof metrics.bandwidth === "number"
+                    ? metrics.bandwidth * 100
+                    : 0) / (settings?.good_bandwidth || 1) || 3
             ).toString()}%`,
             maxWidth: "100%",
             backgroundColor: colorScale.getColor(loss),
@@ -88,7 +93,12 @@ const Box = ({ station, gateway, loading }) => {
                         ? `${stationName} (Gateway)`
                         : stationName}
                     {(metrics !== undefined &&
-                        Number(metrics.bandwidth || "0") === 0 &&
+                        metrics &&
+                        typeof metrics === "object" &&
+                        Number(
+                            ("bandwidth" in metrics && metrics.bandwidth) || "0"
+                        ) === 0 &&
+                        "loss" in metrics &&
                         metrics.loss) ||
                     isError ? (
                         <b>
@@ -103,14 +113,22 @@ const Box = ({ station, gateway, loading }) => {
             </span>
             {loadingMetrics ? (
                 <Loading />
-            ) : metrics !== undefined && metrics.bandwidth ? (
+            ) : metrics !== undefined &&
+              metrics &&
+              typeof metrics === "object" &&
+              "bandwidth" in metrics &&
+              metrics.bandwidth ? (
                 <div>
                     {metrics.bandwidth} Mbps /{" "}
                     <span>
                         <Trans>Packet loss</Trans>
                     </span>{" "}
-                    {metrics.loss}%<br />
-                    <div style={barStyle(metrics.loss)} />
+                    {("loss" in metrics && metrics.loss) || 0}%<br />
+                    <div
+                        style={barStyle(
+                            ("loss" in metrics && metrics.loss) || 0
+                        )}
+                    />
                 </div>
             ) : (
                 false

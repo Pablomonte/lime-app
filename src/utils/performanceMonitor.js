@@ -18,25 +18,27 @@ class QueryPerformanceMonitor {
             },
             slowQueries: new Set(),
         };
-        
+
         this.thresholds = {
             slowQueryMs: 2000, // Queries slower than 2s
             cacheHitRatio: 0.8, // Target 80% cache hit ratio
         };
-        
+
         // Start monitoring if in development
-        if (process.env.NODE_ENV === 'development') {
+        if (process.env.NODE_ENV === "development") {
             this.startMonitoring();
         }
     }
-    
+
     /**
      * Track query performance
      */
     trackQuery(queryKey, startTime, endTime, status, fromCache = false) {
         const duration = endTime - startTime;
-        const keyString = Array.isArray(queryKey) ? queryKey.join('.') : String(queryKey);
-        
+        const keyString = Array.isArray(queryKey)
+            ? queryKey.join(".")
+            : String(queryKey);
+
         // Update query metrics
         if (!this.metrics.queries.has(keyString)) {
             this.metrics.queries.set(keyString, {
@@ -51,19 +53,20 @@ class QueryPerformanceMonitor {
                 lastCalled: null,
             });
         }
-        
+
         const queryStats = this.metrics.queries.get(keyString);
         queryStats.totalCalls++;
         queryStats.totalDuration += duration;
-        queryStats.avgDuration = queryStats.totalDuration / queryStats.totalCalls;
+        queryStats.avgDuration =
+            queryStats.totalDuration / queryStats.totalCalls;
         queryStats.maxDuration = Math.max(queryStats.maxDuration, duration);
         queryStats.minDuration = Math.min(queryStats.minDuration, duration);
         queryStats.lastCalled = Date.now();
-        
-        if (status === 'error') {
+
+        if (status === "error") {
             queryStats.errors++;
         }
-        
+
         // Track cache performance
         if (fromCache) {
             queryStats.cacheHits++;
@@ -72,20 +75,22 @@ class QueryPerformanceMonitor {
             queryStats.cacheMisses++;
             this.metrics.cacheStats.misses++;
         }
-        
+
         // Flag slow queries
         if (duration > this.thresholds.slowQueryMs) {
             this.metrics.slowQueries.add(keyString);
-            console.warn(`🐌 Slow query detected: ${keyString} (${duration}ms)`);
+            console.warn(
+                `🐌 Slow query detected: ${keyString} (${duration}ms)`
+            );
         }
     }
-    
+
     /**
      * Track mutation performance
      */
     trackMutation(mutationKey, duration, status) {
         const keyString = String(mutationKey);
-        
+
         if (!this.metrics.mutations.has(keyString)) {
             this.metrics.mutations.set(keyString, {
                 totalCalls: 0,
@@ -95,19 +100,20 @@ class QueryPerformanceMonitor {
                 successes: 0,
             });
         }
-        
+
         const mutationStats = this.metrics.mutations.get(keyString);
         mutationStats.totalCalls++;
         mutationStats.totalDuration += duration;
-        mutationStats.avgDuration = mutationStats.totalDuration / mutationStats.totalCalls;
-        
-        if (status === 'error') {
+        mutationStats.avgDuration =
+            mutationStats.totalDuration / mutationStats.totalCalls;
+
+        if (status === "error") {
             mutationStats.errors++;
-        } else if (status === 'success') {
+        } else if (status === "success") {
             mutationStats.successes++;
         }
     }
-    
+
     /**
      * Track cache invalidations
      */
@@ -115,33 +121,36 @@ class QueryPerformanceMonitor {
         this.metrics.cacheStats.invalidations++;
         console.log(`♻️ Cache invalidated: ${pattern}`);
     }
-    
+
     /**
      * Get performance report
      */
     getReport() {
-        const totalQueries = this.metrics.cacheStats.hits + this.metrics.cacheStats.misses;
-        const cacheHitRatio = totalQueries > 0 
-            ? this.metrics.cacheStats.hits / totalQueries 
-            : 0;
-        
+        const totalQueries =
+            this.metrics.cacheStats.hits + this.metrics.cacheStats.misses;
+        const cacheHitRatio =
+            totalQueries > 0 ? this.metrics.cacheStats.hits / totalQueries : 0;
+
         // Top slow queries
         const slowQueries = Array.from(this.metrics.queries.entries())
             .filter(([key]) => this.metrics.slowQueries.has(key))
-            .sort(([,a], [,b]) => b.avgDuration - a.avgDuration)
+            .sort(([, a], [, b]) => b.avgDuration - a.avgDuration)
             .slice(0, 10);
-        
+
         // Most called queries
         const popularQueries = Array.from(this.metrics.queries.entries())
-            .sort(([,a], [,b]) => b.totalCalls - a.totalCalls)
+            .sort(([, a], [, b]) => b.totalCalls - a.totalCalls)
             .slice(0, 10);
-        
+
         // Queries with high error rates
         const errorProneQueries = Array.from(this.metrics.queries.entries())
-            .filter(([,stats]) => stats.errors > 0)
-            .sort(([,a], [,b]) => (b.errors / b.totalCalls) - (a.errors / a.totalCalls))
+            .filter(([, stats]) => stats.errors > 0)
+            .sort(
+                ([, a], [, b]) =>
+                    b.errors / b.totalCalls - a.errors / a.totalCalls
+            )
             .slice(0, 10);
-        
+
         return {
             summary: {
                 totalQueries: this.metrics.queries.size,
@@ -160,7 +169,12 @@ class QueryPerformanceMonitor {
                 query: key,
                 totalCalls: stats.totalCalls,
                 avgDuration: Math.round(stats.avgDuration),
-                cacheHitRatio: Math.round((stats.cacheHits / (stats.cacheHits + stats.cacheMisses)) * 100) || 0,
+                cacheHitRatio:
+                    Math.round(
+                        (stats.cacheHits /
+                            (stats.cacheHits + stats.cacheMisses)) *
+                            100
+                    ) || 0,
             })),
             errorProneQueries: errorProneQueries.map(([key, stats]) => ({
                 query: key,
@@ -170,42 +184,50 @@ class QueryPerformanceMonitor {
             })),
         };
     }
-    
+
     /**
      * Print performance report to console
      */
     printReport() {
         const report = this.getReport();
-        
-        console.group('📊 Query Performance Report');
-        
-        console.log('Summary:', report.summary);
-        
+
+        console.group("📊 Query Performance Report");
+
+        console.log("Summary:", report.summary);
+
         if (report.slowQueries.length > 0) {
-            console.group('🐌 Slowest Queries');
-            report.slowQueries.forEach(q => 
-                console.log(`${q.query}: ${q.avgDuration}ms avg (max: ${q.maxDuration}ms, calls: ${q.totalCalls})`)
+            console.group("🐌 Slowest Queries");
+            report.slowQueries.forEach((q) =>
+                console.log(
+                    `${q.query}: ${q.avgDuration}ms avg (max: ${q.maxDuration}ms, calls: ${q.totalCalls})`
+                )
             );
             console.groupEnd();
         }
-        
+
         if (report.errorProneQueries.length > 0) {
-            console.group('❌ Error-Prone Queries');
-            report.errorProneQueries.forEach(q => 
-                console.log(`${q.query}: ${q.errorRate}% error rate (${q.totalErrors}/${q.totalCalls})`)
+            console.group("❌ Error-Prone Queries");
+            report.errorProneQueries.forEach((q) =>
+                console.log(
+                    `${q.query}: ${q.errorRate}% error rate (${q.totalErrors}/${q.totalCalls})`
+                )
             );
             console.groupEnd();
         }
-        
-        console.group('📈 Most Popular Queries');
-        report.popularQueries.slice(0, 5).forEach(q => 
-            console.log(`${q.query}: ${q.totalCalls} calls, ${q.avgDuration}ms avg, ${q.cacheHitRatio}% cache hit`)
-        );
+
+        console.group("📈 Most Popular Queries");
+        report.popularQueries
+            .slice(0, 5)
+            .forEach((q) =>
+                console.log(
+                    `${q.query}: ${q.totalCalls} calls, ${q.avgDuration}ms avg, ${q.cacheHitRatio}% cache hit`
+                )
+            );
         console.groupEnd();
-        
+
         console.groupEnd();
     }
-    
+
     /**
      * Start automatic monitoring
      */
@@ -217,7 +239,7 @@ class QueryPerformanceMonitor {
             }
         }, 60000);
     }
-    
+
     /**
      * Stop monitoring
      */
@@ -226,7 +248,7 @@ class QueryPerformanceMonitor {
             clearInterval(this.reportInterval);
         }
     }
-    
+
     /**
      * Reset all metrics
      */
@@ -249,31 +271,43 @@ export const performanceMonitor = new QueryPerformanceMonitor();
 export const withPerformanceTracking = (queryClient) => {
     const originalQuery = queryClient.fetchQuery.bind(queryClient);
     const originalInvalidate = queryClient.invalidateQueries.bind(queryClient);
-    
+
     // Wrap fetchQuery with performance tracking
     queryClient.fetchQuery = async (...args) => {
         const [queryKey] = args;
         const startTime = performance.now();
-        
+
         try {
             const result = await originalQuery(...args);
             const endTime = performance.now();
-            performanceMonitor.trackQuery(queryKey, startTime, endTime, 'success', false);
+            performanceMonitor.trackQuery(
+                queryKey,
+                startTime,
+                endTime,
+                "success",
+                false
+            );
             return result;
         } catch (error) {
             const endTime = performance.now();
-            performanceMonitor.trackQuery(queryKey, startTime, endTime, 'error', false);
+            performanceMonitor.trackQuery(
+                queryKey,
+                startTime,
+                endTime,
+                "error",
+                false
+            );
             throw error;
         }
     };
-    
+
     // Wrap invalidateQueries with tracking
     queryClient.invalidateQueries = (...args) => {
         const [pattern] = args;
         performanceMonitor.trackInvalidation(String(pattern));
         return originalInvalidate(...args);
     };
-    
+
     return queryClient;
 };
 
@@ -281,18 +315,19 @@ export const withPerformanceTracking = (queryClient) => {
  * React DevTools integration (development only)
  */
 export const QueryPerformanceDevTools = () => {
-    if (process.env.NODE_ENV !== 'development') {
+    if (process.env.NODE_ENV !== "development") {
         return null;
     }
-    
+
     // Add to global scope for easy access in devtools
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
+        // @ts-ignore - Adding custom property to window for development
         window.queryPerformance = {
             getReport: () => performanceMonitor.getReport(),
             printReport: () => performanceMonitor.printReport(),
             reset: () => performanceMonitor.reset(),
         };
     }
-    
+
     return null;
 };

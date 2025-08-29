@@ -60,13 +60,11 @@ export const NetworkForm = ({
     }
 
     function _createNetwork() {
-        if (createNetwork) {
-            createNetwork({
-                network: state.communityName,
-                hostname: state.hostName,
-                adminPassword: state.password,
-            });
-        }
+        createNetwork({
+            network: state.communityName,
+            hostname: state.hostName,
+            adminPassword: state.password,
+        });
     }
 
     function _isValidForm() {

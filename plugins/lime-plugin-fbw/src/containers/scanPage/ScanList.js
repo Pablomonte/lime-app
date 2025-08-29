@@ -50,9 +50,24 @@ export const ScanList = ({
         },
     });
 
-    const status = scanResults?.status || null; // Scan status
-    const networks = scanResults?.networks || []; // Configuration files downloaded
-    const scanned = scanResults?.scanned || []; // Scanned AP's
+    const status =
+        scanResults &&
+        typeof scanResults === "object" &&
+        "status" in scanResults
+            ? scanResults.status
+            : null; // Scan status
+    const networks =
+        scanResults &&
+        typeof scanResults === "object" &&
+        "networks" in scanResults
+            ? scanResults.networks || []
+            : []; // Configuration files downloaded
+    const scanned =
+        scanResults &&
+        typeof scanResults === "object" &&
+        "scanned" in scanResults
+            ? scanResults.scanned || []
+            : []; // Scanned AP's
     const isLoading = isStarting || isRestarting || isLoadingScans;
 
     useEffect(() => {
@@ -81,6 +96,7 @@ export const ScanList = ({
     }
 
     const getNetworkFromBssid = (bssid) => {
+        if (!Array.isArray(networks)) return "";
         for (let i = 0; i < networks.length; i++) {
             if (networks[i].bssid === bssid)
                 return { ...networks[i], index: i };
@@ -91,12 +107,13 @@ export const ScanList = ({
     const NetworksList = () => {
         return (
             <List>
-                {scanned.length > 0 && (
+                {Array.isArray(scanned) && scanned.length > 0 && (
                     <div className={style.assoclistHeader}>
                         <Trans>Choose a mesh node to join it's network:</Trans>
                     </div>
                 )}
-                {scanned.length > 0 &&
+                {Array.isArray(scanned) &&
+                    scanned.length > 0 &&
                     scanned.map((station) => (
                         <NetworkTile
                             key={station.mac}
@@ -126,7 +143,9 @@ export const ScanList = ({
                     ) : (
                         false
                     )}
-                    {scanned.length === 0 && status === "scanned" ? (
+                    {Array.isArray(scanned) &&
+                    scanned.length === 0 &&
+                    status === "scanned" ? (
                         <span>
                             <h3 className="container-center">
                                 <Trans>No scan result</Trans>
