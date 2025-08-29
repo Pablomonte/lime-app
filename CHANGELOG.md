@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.27](https://github.com/Pablomonte/lime-app/compare/v0.2.26...v0.2.27) (2025-08-29)
+
+
+### Features
+
+* add centralized query keys with gradual migration ([f6856a2](https://github.com/Pablomonte/lime-app/commit/f6856a2b9fc933755f9457eb09f8b1fdab479c6d))
+* complete Phase 2A - migrate remaining plugins to centralized queryKeys ([302473b](https://github.com/Pablomonte/lime-app/commit/302473bb17352bd1a4706abddcbc6f8232c6bc32))
+* complete Redux elimination and functionality restoration ([b4c3302](https://github.com/Pablomonte/lime-app/commit/b4c33021fbf86ccbba853fbbdab089a356f25647))
+* complete v4 performance & optimization foundation ([d7e90f3](https://github.com/Pablomonte/lime-app/commit/d7e90f3d9f22b1d500c519acead2aca690aed421))
+* comprehensive error handling system ([c18f8d6](https://github.com/Pablomonte/lime-app/commit/c18f8d6c5c164d1d16b1b3d366fda653ae0cda41))
+* enhance production error handling across core plugins ([4f7553f](https://github.com/Pablomonte/lime-app/commit/4f7553feff844aa1ddedb2a9b303ca82a6ddd857))
+* implement proper FBW initial overlay with centralized query management ([8b7a065](https://github.com/Pablomonte/lime-app/commit/8b7a065758cdf799bd1cba9767d08ffb9d48d6fd))
+* migrate firmware plugin to centralized queryKeys + fix AlignSingle imports ([359d023](https://github.com/Pablomonte/lime-app/commit/359d0234972ed9a1782423f568ee2e32727b6ef4))
+* optimize bundle for LibreMesh deployment ([6c0d30d](https://github.com/Pablomonte/lime-app/commit/6c0d30d5418ec12a18841c0afc36854f450d43c0))
+* optimize bundle size and fix layout issues ([813c3d5](https://github.com/Pablomonte/lime-app/commit/813c3d5daedb0fa0f5ae447d3cb5bc8724cd6bfe))
+
+
+### Bug Fixes
+
+* replace React Fragment with Preact Fragment in alignment component ([7349ac5](https://github.com/Pablomonte/lime-app/commit/7349ac5f8e003e90e380b9314bc2a0fa76461653))
+
 ## [0.2.26](https://github.com/libremesh/lime-app/compare/v0.2.25...v0.3.0) (2024-04-03)
 
 
