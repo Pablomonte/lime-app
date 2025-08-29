@@ -89,4 +89,13 @@ export const queryKeys = {
 
     // Metrics plugin - matches ["lime-metrics", "get_loss", ip]
     metricsLossForIp: (ip) => ["lime-metrics", "get_loss", ip],
+
+    // Notes plugin - matches ["local-service", "get_notes"]
+    notes: () => ["local-service", "get_notes"],
+
+    // Ground routing plugin - matches ["lime-groundrouting", "get"]
+    groundRouting: () => ["lime-groundrouting", "get"],
+
+    // ChangeNode plugin - matches ["lime-utils", "get_cloud_nodes"]
+    cloudNodes: () => ["lime-utils", "get_cloud_nodes"],
 };

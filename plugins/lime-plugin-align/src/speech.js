@@ -1,13 +1,66 @@
 const synth = window.speechSynthesis;
 
-export const speech = (text, lang) => {
-    if (synth !== undefined) {
+// Function to get voices with retry logic
+const getVoices = () => {
+    return new Promise((resolve) => {
         let voices = synth.getVoices();
-        let utterThis = new SpeechSynthesisUtterance(text);
+        if (voices.length > 0) {
+            resolve(voices);
+            return;
+        }
+
+        // If no voices loaded yet, wait for them
+        const handleVoicesChanged = () => {
+            voices = synth.getVoices();
+            if (voices.length > 0) {
+                synth.removeEventListener("voiceschanged", handleVoicesChanged);
+                resolve(voices);
+            }
+        };
+
+        synth.addEventListener("voiceschanged", handleVoicesChanged);
+
+        // Fallback timeout
+        setTimeout(() => {
+            synth.removeEventListener("voiceschanged", handleVoicesChanged);
+            resolve(synth.getVoices()); // Return whatever we have
+        }, 1000);
+    });
+};
+
+export const speech = async (text, lang) => {
+    if (!synth) {
+        console.warn("Speech synthesis not supported");
+        return;
+    }
+
+    try {
+        const voices = await getVoices();
+        const utterThis = new SpeechSynthesisUtterance(text.toString());
+
         utterThis.pitch = 0.9;
         utterThis.rate = 1.2;
-        utterThis.voice = voices.filter((x) => x.lang === lang)[0];
+
+        // Try to find a voice for the specified language
+        let selectedVoice = voices.find(
+            (voice) =>
+                voice.lang.startsWith(lang) ||
+                voice.lang.startsWith(lang.split("-")[0])
+        );
+
+        // Fallback to any available voice if no language match
+        if (!selectedVoice && voices.length > 0) {
+            selectedVoice = voices[0];
+        }
+
+        if (selectedVoice) {
+            utterThis.voice = selectedVoice;
+        }
+
+        // Cancel any ongoing speech and speak new text
         synth.cancel();
         synth.speak(utterThis);
+    } catch (error) {
+        console.warn("Speech synthesis error:", error);
     }
 };

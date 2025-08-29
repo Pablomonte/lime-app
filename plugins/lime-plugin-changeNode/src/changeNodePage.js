@@ -1,15 +1,21 @@
 import { Trans } from "@lingui/macro";
 import { useEffect, useState } from "preact/hooks";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 
+import { useOptimizedQuery } from "utils/optimizedQuery";
 import { useBoardData } from "utils/queries";
+import { queryKeys } from "utils/queryKeys";
 
-import { loadStations } from "./changeNodeActions";
-import { getStations } from "./changeNodeSelectors";
-
-export const ChangeNode = ({ stations, loadStations }) => {
+export const ChangeNode = () => {
     const { data: boardData } = useBoardData();
+
+    // Use TanStack Query for cloud nodes
+    const { data: stations, isLoading } = useOptimizedQuery(
+        queryKeys.cloudNodes,
+        async () => {
+            const { fetchCloudNodes } = await import("./changeNodeApi");
+            return fetchCloudNodes();
+        }
+    );
 
     const [state, setState] = useState({
         station: boardData && boardData.hostname,
@@ -17,14 +23,10 @@ export const ChangeNode = ({ stations, loadStations }) => {
 
     useEffect(() => {
         setState({
-            station: boardData.hostname,
+            station: boardData?.hostname,
         });
         return () => {};
     }, [boardData]);
-
-    useEffect(() => {
-        loadStations();
-    }, [loadStations]);
 
     function handleChange(e) {
         setState({ station: e.target.value });
@@ -39,9 +41,18 @@ export const ChangeNode = ({ stations, loadStations }) => {
     }
 
     function sortStations(stations) {
-        const result = stations.filter((x) => x !== boardData.hostname).sort();
-        result.push(boardData.hostname);
+        if (!stations || !Array.isArray(stations)) return [];
+        const result = stations.filter((x) => x !== boardData?.hostname).sort();
+        if (boardData?.hostname) {
+            result.push(boardData.hostname);
+        }
         return result;
+    }
+
+    if (isLoading) {
+        return (
+            <div className="container container-padded">Loading nodes...</div>
+        );
     }
 
     return (
@@ -79,16 +90,5 @@ export const ChangeNode = ({ stations, loadStations }) => {
     );
 };
 
-const mapStateToProps = (state) => ({
-    stations: getStations(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    loadStations: bindActionCreators(loadStations, dispatch),
-});
-
-const changeNodeConnected = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ChangeNode);
-export default changeNodeConnected;
+// No more Redux needed!
+export default ChangeNode;
