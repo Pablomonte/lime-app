@@ -62,11 +62,14 @@ export const Metrics = () => {
     });
 
     const { refetch: getAllMetrics, isFetching: metricsIsLoading } =
-        useAllMetrics(Array.isArray(path) ? path.map((station) => station.ip) : [], {
-            refetchOnWindowFocus: false,
-            enabled: false,
-            initialData: [],
-        });
+        useAllMetrics(
+            Array.isArray(path) ? path.map((station) => station.ip) : [],
+            {
+                refetchOnWindowFocus: false,
+                enabled: false,
+                initialData: [],
+            }
+        );
 
     const {
         data: gateway,
@@ -131,7 +134,13 @@ export const Metrics = () => {
     async function getGatewayMetrics() {
         getInternetStatus();
         await queryCache.fetchQuery({
-            queryKey: ["lime-metrics", "get_metrics", gateway && typeof gateway === 'object' && 'ip' in gateway ? gateway.ip : null],
+            queryKey: [
+                "lime-metrics",
+                "get_metrics",
+                gateway && typeof gateway === "object" && "ip" in gateway
+                    ? gateway.ip
+                    : null,
+            ],
         });
     }
 
@@ -156,8 +165,16 @@ export const Metrics = () => {
                         key={key}
                         station={station}
                         gateway={isGateway(
-                            station && typeof station === 'object' && 'ip' in station ? station.ip : '',
-                            gateway && typeof gateway === 'object' && 'ip' in gateway ? gateway.ip : ""
+                            station &&
+                                typeof station === "object" &&
+                                "ip" in station
+                                ? station.ip
+                                : "",
+                            gateway &&
+                                typeof gateway === "object" &&
+                                "ip" in gateway
+                                ? gateway.ip
+                                : ""
                         )}
                         loading={isLoading}
                     />
@@ -169,8 +186,16 @@ export const Metrics = () => {
             <ShowPathButton
                 isLoading={isLoading}
                 isGateway={isGateway(
-                    boardData && typeof boardData === 'object' && 'hostname' in boardData ? boardData.hostname : '',
-                    gateway && typeof gateway === 'object' && 'hostname' in gateway ? gateway.hostname : ''
+                    boardData &&
+                        typeof boardData === "object" &&
+                        "hostname" in boardData
+                        ? boardData.hostname
+                        : "",
+                    gateway &&
+                        typeof gateway === "object" &&
+                        "hostname" in gateway
+                        ? gateway.hostname
+                        : ""
                 )}
                 getMetricsAll={refetchGetAllMetrics}
                 getGatewayMetrics={getGatewayMetrics}

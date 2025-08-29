@@ -1,5 +1,5 @@
-import { Fragment } from "preact";
 import { Trans } from "@lingui/macro";
+import { Fragment } from "preact";
 
 import { Button } from "components/buttons/button";
 
@@ -77,7 +77,7 @@ export const AlignmentCard = ({ status }: { status: StatusResponse }) => {
                         </div>
                         <div>
                             <Trans>Traffic: </Trans>
-                            <span className={"font-bold"}> {traffic}MB/s</span>
+                            <span className={"font-bold"}> {traffic}MB</span>
                         </div>
                     </div>
                 </Fragment>

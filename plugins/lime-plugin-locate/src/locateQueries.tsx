@@ -8,8 +8,8 @@ import {
 } from "plugins/lime-plugin-locate/src/locateApi";
 
 import queryCache from "utils/queryCache";
-import { queryKeys } from "utils/queryKeys";
 import { getQueryErrorHandler } from "utils/queryErrorHandlers";
+import { queryKeys } from "utils/queryKeys";
 
 export interface INodeLocation {
     location: {
@@ -28,14 +28,14 @@ export function useLocation(params = {}) {
                 lat: "FIXME",
             },
         },
-        onError: getQueryErrorHandler('locateLocation'),
+        onError: getQueryErrorHandler("locateLocation"),
         ...params,
     });
 }
 
 export function useNodesandlinks(params = {}) {
     return useQuery(queryKeys.locateNodesAndLinks(), getNodesandlinks, {
-        onError: getQueryErrorHandler('locateNodesAndLinks'),
+        onError: getQueryErrorHandler("locateNodesAndLinks"),
         ...params,
     });
 }
@@ -69,7 +69,7 @@ export function useChangeLocation(params) {
 
 export function useLoadLeaflet(params = {}) {
     return useQuery(queryKeys.locateLeaflet(), loadLeafLet, {
-        onError: getQueryErrorHandler('locateLeaflet'),
+        onError: getQueryErrorHandler("locateLeaflet"),
         ...params,
     });
 }
