@@ -4,10 +4,8 @@ import { Trans } from "@lingui/macro";
 const getAssetPath = (assetPath: string) => {
     if (typeof window !== 'undefined') {
         // In production on LibreMesh router, app is served from /app/
-        // Check if we're running under /app/ path
-        const isProduction = window.location.pathname.startsWith('/app/') ||
-                            window.location.hash.startsWith('#/') &&
-                            window.location.pathname === '/app';
+        // Check if we're running under /app path (with or without trailing slash)
+        const isProduction = window.location.pathname.startsWith('/app');
 
         const basePath = isProduction ? '/app' : '';
         return `${basePath}/${assetPath}`;
