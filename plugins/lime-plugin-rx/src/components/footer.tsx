@@ -1,18 +1,5 @@
 import { Trans } from "@lingui/macro";
 
-// Helper to get correct asset path based on environment
-const getAssetPath = (assetPath: string) => {
-    if (typeof window !== 'undefined') {
-        // In production on LibreMesh router, app is served from /app/
-        // Check if we're running under /app path (with or without trailing slash)
-        const isProduction = window.location.pathname.startsWith('/app');
-
-        const basePath = isProduction ? '/app' : '';
-        return `${basePath}/${assetPath}`;
-    }
-    return `/${assetPath}`;
-};
-
 export const Footer = () => {
     const imgClass = "h-16";
     return (
@@ -23,7 +10,7 @@ export const Footer = () => {
         >
             <div>
                 <img
-                    src={getAssetPath("assets/icons/AlterMundiLogo.svg")}
+                    src={"assets/icons/AlterMundiLogo.svg"}
                     className={imgClass}
                 />
             </div>
@@ -56,7 +43,7 @@ export const Footer = () => {
             </div>
             <div>
                 <img
-                    src={getAssetPath("assets/icons/LibreRouterLogo.svg")}
+                    src={"assets/icons/LibreRouterLogo.svg"}
                     className={imgClass}
                 />
             </div>
