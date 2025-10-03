@@ -1,5 +1,23 @@
 import { Trans } from "@lingui/macro";
 
+// Helper to get correct asset path based on environment
+const getAssetPath = (assetPath: string) => {
+    if (typeof window !== 'undefined') {
+        // In production on LibreMesh router, base href is /app/
+        // Check for base tag first (most reliable indicator)
+        const baseTag = document.querySelector('base[href="/app/"]');
+
+        // Consider it production only if:
+        // 1. Base tag points to /app/ OR
+        // 2. URL path starts with /app/ (direct access in production)
+        const isProduction = !!baseTag || window.location.pathname.startsWith('/app/');
+
+        const basePath = isProduction ? '/app' : '';
+        return `${basePath}/${assetPath}`;
+    }
+    return `/${assetPath}`;
+};
+
 export const Footer = () => {
     const imgClass = "h-16";
     return (
@@ -10,7 +28,7 @@ export const Footer = () => {
         >
             <div>
                 <img
-                    src={"assets/icons/AlterMundiLogo.svg"}
+                    src={getAssetPath("assets/icons/AlterMundiLogo.svg")}
                     className={imgClass}
                 />
             </div>
@@ -43,7 +61,7 @@ export const Footer = () => {
             </div>
             <div>
                 <img
-                    src={"assets/icons/LibreRouterLogo.svg"}
+                    src={getAssetPath("assets/icons/LibreRouterLogo.svg")}
                     className={imgClass}
                 />
             </div>
