@@ -3,14 +3,11 @@ import { Trans } from "@lingui/macro";
 // Helper to get correct asset path based on environment
 const getAssetPath = (assetPath: string) => {
     if (typeof window !== 'undefined') {
-        // In production on LibreMesh router, base href is /app/
-        // Check for base tag first (most reliable indicator)
-        const baseTag = document.querySelector('base[href="/app/"]');
-
-        // Consider it production only if:
-        // 1. Base tag points to /app/ OR
-        // 2. URL path starts with /app/ (direct access in production)
-        const isProduction = !!baseTag || window.location.pathname.startsWith('/app/');
+        // In production on LibreMesh router, app is served from /app/
+        // Check if we're running under /app/ path
+        const isProduction = window.location.pathname.startsWith('/app/') ||
+                            window.location.hash.startsWith('#/') &&
+                            window.location.pathname === '/app';
 
         const basePath = isProduction ? '/app' : '';
         return `${basePath}/${assetPath}`;
