@@ -19,6 +19,9 @@ export default function (config, env, helpers) {
 
     // Safe optimizations for LibreMesh deployment
     if (isProd) {
+        // Disable source maps in production to reduce firmware size (saves ~6MB)
+        config.devtool = false;
+
         // Enable basic optimizations without breaking HTML plugin
         if (config.optimization) {
             config.optimization.minimize = true;
@@ -42,6 +45,10 @@ export default function (config, env, helpers) {
     const host = process.env.NODE_HOST || "10.13.0.1";
     config.devServer = {
         ...config.devServer,
+        historyApiFallback: {
+            index: "/index.html",
+            disableDotRule: true,
+        },
         proxy: [
             {
                 path: "/ubus",
