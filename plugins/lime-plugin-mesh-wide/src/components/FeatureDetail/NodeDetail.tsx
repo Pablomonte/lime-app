@@ -28,6 +28,21 @@ import {
 
 import { isEmpty } from "utils/utils";
 
+const formatUptime = (seconds: number): string => {
+    const days = Math.floor(seconds / 86400);
+    const hours = Math.floor((seconds % 86400) / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = Math.floor(seconds % 60);
+
+    const parts = [];
+    if (days > 0) parts.push(`${days}d`);
+    if (hours > 0) parts.push(`${hours}h`);
+    if (minutes > 0) parts.push(`${minutes}m`);
+    if (secs > 0 || parts.length === 0) parts.push(`${secs}s`);
+
+    return parts.join(' ');
+};
+
 const NodeDetails = ({ actual, reference, name }: NodeMapFeature) => {
     const { errors, isDown } = useSingleNodeErrors({
         actual,
@@ -71,16 +86,23 @@ const NodeDetails = ({ actual, reference, name }: NodeMapFeature) => {
             </Row>
             <Row>
                 {!isDown ? (
-                    <TitleAndText title={<Trans>Uptime</Trans>}>
-                        {uptime.toString()}
+                    <TitleAndText title={<Trans>Tiempo en actividad</Trans>}>
+                        {formatUptime(uptime)}
                     </TitleAndText>
                 ) : (
-                    <TitleAndText title={<Trans>Uptime</Trans>}>
+                    <TitleAndText title={<Trans>Tiempo en actividad</Trans>}>
                         <Trans>The node is down</Trans>
                     </TitleAndText>
                 )}
-                <TitleAndText title={<Trans>Firmware version</Trans>}>
-                    {firmware}
+                <TitleAndText title={<Trans>Versión de sistema</Trans>}>
+                    <div className="flex flex-col">
+                        <span className="text-sm font-semibold">{firmware}</span>
+                        {actual.lime_app_version && (
+                            <span className="text-xs text-gray-600">
+                                lime-app: {actual.lime_app_version}
+                            </span>
+                        )}
+                    </div>
                 </TitleAndText>
             </Row>
             <Row>

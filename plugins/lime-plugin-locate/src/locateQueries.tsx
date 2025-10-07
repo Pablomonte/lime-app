@@ -7,8 +7,8 @@ import {
     getNodesandlinks,
 } from "plugins/lime-plugin-locate/src/locateApi";
 
+import { useOptimizedQuery } from "utils/optimizedQuery";
 import queryCache from "utils/queryCache";
-import { getQueryErrorHandler } from "utils/queryErrorHandlers";
 import { queryKeys } from "utils/queryKeys";
 
 export interface INodeLocation {
@@ -20,7 +20,8 @@ export interface INodeLocation {
 }
 
 export function useLocation(params = {}) {
-    return useQuery<INodeLocation>(queryKeys.locateLocation(), getLocation, {
+    return useOptimizedQuery(queryKeys.locateLocation(), getLocation, {
+        retry: false,
         placeholderData: {
             default: false,
             location: {
@@ -28,16 +29,19 @@ export function useLocation(params = {}) {
                 lat: "FIXME",
             },
         },
-        onError: getQueryErrorHandler("locateLocation"),
         ...params,
     });
 }
 
 export function useNodesandlinks(params = {}) {
-    return useQuery(queryKeys.locateNodesAndLinks(), getNodesandlinks, {
-        onError: getQueryErrorHandler("locateNodesAndLinks"),
-        ...params,
-    });
+    return useOptimizedQuery(
+        queryKeys.locateNodesAndLinks(),
+        getNodesandlinks,
+        {
+            retry: false,
+            ...params,
+        }
+    );
 }
 
 interface IChangeUserParams {
@@ -68,8 +72,8 @@ export function useChangeLocation(params) {
 }
 
 export function useLoadLeaflet(params = {}) {
-    return useQuery(queryKeys.locateLeaflet(), loadLeafLet, {
-        onError: getQueryErrorHandler("locateLeaflet"),
+    return useOptimizedQuery(queryKeys.locateLeaflet(), loadLeafLet, {
+        retry: false,
         ...params,
     });
 }

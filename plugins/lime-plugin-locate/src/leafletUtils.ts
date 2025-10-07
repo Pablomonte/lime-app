@@ -10,7 +10,9 @@ function loadLeafletScript() {
         } else {
             const script = document.createElement("script");
             script.onload = res;
-            script.onerror = rej;
+            script.onerror = (error) => {
+                rej(new Error(`Failed to load Leaflet script: ${error}`));
+            };
             script.src = `https://unpkg.com/leaflet@${leafletVersion}/dist/leaflet.js`;
             script.id = "leaflet-script";
             document.body.appendChild(script);
@@ -26,7 +28,9 @@ function loadLeafletStylesheet() {
         } else {
             const style = document.createElement("link");
             style.onload = res;
-            style.onerror = rej;
+            style.onerror = (error) => {
+                rej(new Error(`Failed to load Leaflet stylesheet: ${error}`));
+            };
             style.rel = "stylesheet";
             style.href = `https://unpkg.com/leaflet@${leafletVersion}/dist/leaflet.css`;
             style.id = "leaflet-style";

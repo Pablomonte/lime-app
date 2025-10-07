@@ -8,7 +8,7 @@ import { getQueryErrorHandler } from "./queryErrorHandlers";
 
 /**
  * Enhanced useQuery with automatic cache optimization
- * @param {string|function} queryKeyOrFn - Query key string or function that returns key
+ * @param {string|function|Array} queryKeyOrFn - Query key string, array, or function that returns key
  * @param {function} queryFn - Query function
  * @param {object} options - Additional query options
  * @returns {object} Query result
@@ -68,15 +68,18 @@ export const useRealtimeQuery = (queryKey, queryFn, options = {}) => {
 };
 
 export const useCriticalQuery = (queryKey, queryFn, options = {}) => {
+    // Extract query key name for cache strategy
+    const queryKeyName = Array.isArray(queryKey) ? queryKey[0] : queryKey;
+
+    // Use the critical cache strategy from cacheStrategies.js
+    const cacheConfig = createOptimizedQueryConfig(queryKeyName, options);
+
     return useQuery({
         queryKey,
         queryFn,
-        staleTime: 0, // Always fresh
-        cacheTime: 0,
-        refetchOnMount: true,
-        refetchOnWindowFocus: true,
-        onError: options.onError || getQueryErrorHandler("critical"),
-        ...options,
+        ...cacheConfig,
+        onError: options.onError || getQueryErrorHandler(queryKeyName),
+        ...options, // Allow final overrides
     });
 };
 

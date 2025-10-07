@@ -535,7 +535,7 @@ msgstr "Eliminar"
 msgid "Delete property"
 msgstr "Eliminar propiedad"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:201
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:223
 msgid "Delete this this node from reference state"
 msgstr "Eliminar este nodo del estado de referencia"
 
@@ -560,7 +560,7 @@ msgstr "Descripción"
 msgid "Description: {name}"
 msgstr "Descripción: {name}"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:91
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:113
 #: plugins/lime-plugin-rx/src/sections/system.tsx:48
 msgid "Device"
 msgstr "Equipo"
@@ -667,6 +667,10 @@ msgstr "Cifrado: {encryptionMethod}"
 msgid "Error"
 msgstr "Error"
 
+#: plugins/lime-plugin-firmware/src/confirmPage/confirmPage.js:24
+msgid "Error confirming upgrade: {0}"
+msgstr ""
+
 #: src/components/toast/toasts.tsx:13
 msgid "Error connecting with {nodeInfo}, is node up?"
 msgstr "Error al conectar con {nodeInfo}, ¿el nodo está activo?"
@@ -730,7 +734,7 @@ msgid "Error setting network"
 msgstr "Error configurando red."
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:355
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:190
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:212
 msgid "Error setting new reference state!"
 msgstr "¡Error al establecer un nuevo estado de referencia!"
 
@@ -808,7 +812,6 @@ msgstr "Archivo de sistema (firmware) descargado y verificado."
 msgid "Firmware downloaded"
 msgstr "Archivo de sistema (firmware) descargado."
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:82
 #: plugins/lime-plugin-mesh-wide-upgrade/src/components/nodeUpgradeInfo.tsx:47
 msgid "Firmware version"
 msgstr "Versión de sistema (firmware)."
@@ -824,14 +827,6 @@ msgstr "Medir todo el recorrido"
 #: plugins/lime-plugin-node-admin/src/screens/hotspot/src/hotspotPage.js:67
 msgid "Get an additional cell phone to the one you are currently using that has a mobile data connection"
 msgstr "Consiga otro teléfono que tenga conexión a internet por datos móviles."
-
-#: src/containers/Menu/menu.js:48
-#~ msgid "Go to Community View"
-#~ msgstr "Ir a la página de la comunidad"
-
-#: src/containers/Menu/menu.js:51
-#~ msgid "Go to Node View"
-#~ msgstr "Ir a la página del nodo"
 
 #: plugins/lime-plugin-firmware/src/upgradeCountdown.js:27
 msgid "Go!"
@@ -857,15 +852,11 @@ msgstr "Nombre del nodo"
 msgid "I don't know the shared password"
 msgstr "No sé la contraseña compartida."
 
-#: plugins/lime-plugin-rx/src/rxPage.js:181
-#~ msgid "IP Addresses"
-#~ msgstr "Direcciones IP"
-
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:87
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:109
 msgid "IPv4"
 msgstr "IPv4"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:88
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:110
 msgid "IPv6"
 msgstr "IPv6"
 
@@ -890,13 +881,9 @@ msgstr "Si tu red comunitaria tiene servicios locales, puedes indicar un enlace 
 msgid "Iface"
 msgstr "Interface"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:217
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:239
 msgid "In the reference state this node is on"
 msgstr "En el estado de referencia este nodo está encendido."
-
-#: plugins/lime-plugin-rx/src/rxPage.js:98
-#~ msgid "Interface"
-#~ msgstr "Interfaz"
 
 #: plugins/lime-plugin-rx/src/sections/alignment.tsx:73
 msgid "Interface:"
@@ -995,10 +982,6 @@ msgstr "Cargando la última ruta a Internet conocida..."
 msgid "Loading <0/>last internet path..."
 msgstr "Cargando <0/> la última ruta a internet conocida..."
 
-#: plugins/lime-plugin-rx/src/rxPage.js:128
-#~ msgid "Loading node status..."
-#~ msgstr "Cargando el estado del nodo..."
-
 #: plugins/lime-plugin-pirania/src/screens/wellcomeScreenEditor.js:111
 msgid "Local services link"
 msgstr "Enlace a servicios locales"
@@ -1015,11 +998,11 @@ msgstr "Iniciando sesión"
 msgid "Login"
 msgstr "Ingresar"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:96
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:118
 msgid "Macs ({0})"
 msgstr "MACs ({0})"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:108
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:130
 msgid "Macs not found ({0})"
 msgstr "Macs no encontradas ({0})"
 
@@ -1097,10 +1080,6 @@ msgstr "Más info en:"
 msgid "More than 10 characters"
 msgstr "Más de 10 caracteres"
 
-#: plugins/lime-plugin-rx/src/rxPage.js:80
-#~ msgid "Most Active"
-#~ msgstr "Enlace más activo"
-
 #: plugins/lime-plugin-rx/src/sections/alignment.tsx:61
 msgid "Most active link"
 msgstr "Link más activo"
@@ -1117,7 +1096,7 @@ msgstr "Necesita soporte?"
 msgid "Network Name: {ssid}"
 msgstr "Nombre de Red: {ssid}"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:128
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:150
 msgid "New Macs ({0})"
 msgstr "Nuevas MACs({0})"
 
@@ -1142,7 +1121,7 @@ msgid "New link"
 msgstr "Nuevo enlace"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:351
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:185
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:207
 msgid "New reference state set!"
 msgstr "¡Nuevo estado de referencia establecido!"
 
@@ -1318,7 +1297,7 @@ msgstr "Por favor, verifique su conexión a internet."
 msgid "Please wait patiently for {remainingTime} seconds and do not disconnect the device."
 msgstr "Por favor, espere {remainingTime} segundos pacientemente y no desconecte el equipo."
 
-#: plugins/lime-plugin-firmware/src/confirmPage/confirmPage.js:36
+#: plugins/lime-plugin-firmware/src/confirmPage/confirmPage.js:41
 #: src/containers/RebootPage/RebootPage.js:28
 msgid "Please wait while the device reboots, and reload the app"
 msgstr "Por favor, espere hasta que el dispositivo se reinicie y recargue la app."
@@ -1376,7 +1355,7 @@ msgid "Reference State is not set"
 msgstr "Estado de referencia no establecido."
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:387
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:215
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:237
 msgid "Reference is not set or has errors"
 msgstr "El estado de referencia no ha sido establecido o contiene errores."
 
@@ -1429,7 +1408,7 @@ msgstr "Reintenar"
 msgid "Revert"
 msgstr "Revertir"
 
-#: plugins/lime-plugin-firmware/src/confirmPage/confirmPage.js:33
+#: plugins/lime-plugin-firmware/src/confirmPage/confirmPage.js:38
 msgid "Reverting to previous version"
 msgstr "Volviendo a la versión anterior"
 
@@ -1438,7 +1417,7 @@ msgid "RxRate"
 msgstr "RxRate"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:380
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:213
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:235
 msgid "Same status as in the reference state"
 msgstr "Tiene el mismo estado que el estado de referencia."
 
@@ -1561,7 +1540,7 @@ msgstr ""
 msgid "Set network"
 msgstr "Sumarse a la red"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:199
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:221
 msgid "Set reference state for this node"
 msgstr "Establecer el estado de referencia para este nodo."
 
@@ -1799,7 +1778,7 @@ msgstr "El punto de acceso no se encuentra disponible. Por favor, revisa las ins
 msgid "The name should have at least 3 characters"
 msgstr "El nombre tiene que tener al menos 3 caracteres."
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:79
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:94
 msgid "The node is down"
 msgstr "El nodo no está activo."
 
@@ -1919,11 +1898,11 @@ msgstr "Este enlace parece estar caído."
 msgid "This link seems down, remove them from the reference state?"
 msgstr "Este enlace parece caído, ¿desea eliminarlo del estado de referencia?"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:113
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:135
 msgid "This macs are not on the actual state"
 msgstr "Estos macs no están en el estado actual."
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:131
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:153
 msgid "This macs are not on the reference state"
 msgstr "Estas MACs no están en el estado de referencia"
 
@@ -1960,7 +1939,7 @@ msgstr "Este nodo esta esperando para aplicar la configuración"
 msgid "This node is downloading a new firmware"
 msgstr "Este nodo está descargando un nuevo archivo de sistema (firmware)."
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:220
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:242
 msgid "This node is not registered on the reference state"
 msgstr "Este nodo no está registrado en el estado de referencia."
 
@@ -1972,7 +1951,7 @@ msgstr ""
 msgid "This node is the gateway"
 msgstr "Este nodo es el gateway."
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:38
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:53
 msgid "This node seems down"
 msgstr "Este nodo parece inactivo."
 
@@ -2004,6 +1983,11 @@ msgstr "Esto cancelará el proceso de actualización actual en todos los nodos. 
 msgid "This your last working path to the Internet"
 msgstr "Este es el último recorrido hasta Internet que funcionó."
 
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:89
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:93
+msgid "Tiempo en actividad"
+msgstr ""
+
 #: plugins/lime-plugin-pirania/src/screens/wellcomeScreenEditor.js:41
 msgid "Title"
 msgstr "Título"
@@ -2015,10 +1999,6 @@ msgstr "Hasta Internet"
 #: plugins/lime-plugin-remotesupport/src/remoteSupportPage.js:78
 msgid "To enable remote access an internet connection is needed"
 msgstr "Para posibilitar el acceso remoto es necesaria una conexión a internet."
-
-#: plugins/lime-plugin-rx/src/rxPage.js:103
-#~ msgid "Traffic"
-#~ msgstr "Tráfico"
 
 #: plugins/lime-plugin-rx/src/sections/alignment.tsx:79
 msgid "Traffic:"
@@ -2091,8 +2071,6 @@ msgstr "Actualizado!<0/>Esperando confirmación"
 msgid "Upload firmware image from your device"
 msgstr "Suba un archivo de sistema (imagen del firmware) desde tu dispositivo"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:74
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:78
 #: plugins/lime-plugin-rx/src/sections/system.tsx:45
 msgid "Uptime"
 msgstr "Tiempo en actividad"
@@ -2104,6 +2082,10 @@ msgstr "Usar cupones de acceso"
 #: plugins/lime-plugin-mesh-wide-config/src/components/FormEdit.tsx:120
 msgid "Value"
 msgstr "Valor"
+
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:97
+msgid "Versión de sistema"
+msgstr ""
 
 #: plugins/lime-plugin-changeNode/src/changeNodePage.js:86
 msgid "Visit"

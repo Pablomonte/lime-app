@@ -45,7 +45,17 @@ export function upgradeFirmware(filepath) {
 }
 
 export function upgradeConfirm() {
-    return api.call("lime-utils-admin", "firmware_confirm", {});
+    console.log("Attempting firmware confirmation...");
+    return api
+        .call("lime-utils-admin", "firmware_confirm", {})
+        .then((response) => {
+            console.log("Firmware confirmation response:", response);
+            return response;
+        })
+        .catch((error) => {
+            console.error("Firmware confirmation API error:", error);
+            throw error;
+        });
 }
 
 export function upgradeRevert() {

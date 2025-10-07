@@ -14,6 +14,7 @@ import { RebootPage } from "containers/RebootPage";
 import SubHeader from "containers/SubHeader";
 
 import { AppContextProvider } from "utils/app.context";
+import { history } from "utils/history";
 import { useBoardData, useLogin, useSession } from "utils/queries";
 import queryCache from "utils/queryCache";
 import { CommunityProtectedRoute, Redirect, Route } from "utils/routes";
@@ -24,7 +25,7 @@ import { Header } from "./header";
 
 const Routes = () => (
     // @ts-ignore
-    <Router>
+    <Router history={history}>
         {/* Public pages, don't need to be authenticated */}
         {plugins
             .filter((plugin) => !plugin.isCommunityProtected)
@@ -72,7 +73,7 @@ const Routes = () => (
                     </QueryErrorBoundary>
                 </CommunityProtectedRoute>
             ))}
-        <CommunityProtectedRoute path={"/reboot"}>
+        <CommunityProtectedRoute path={"reboot"}>
             <QueryErrorBoundary>
                 <RebootPage />
             </QueryErrorBoundary>

@@ -75,11 +75,11 @@ export const ChangeNode = () => {
                         onChange={handleChange}
                         value={state.station}
                     >
-                        {sortStations(stations).map((x, y) => (
+                        {sortStations(stations)?.map((x, y) => (
                             <option value={x} key={y}>
                                 {x}
                             </option>
-                        ))}
+                        )) || []}
                     </select>
                 </p>
                 <button className="button block" type="submit">

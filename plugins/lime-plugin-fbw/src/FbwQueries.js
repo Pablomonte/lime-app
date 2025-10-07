@@ -1,8 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 
-import { useCriticalQuery, useOptimizedMutation } from "utils/optimizedQuery";
+import { useOptimizedMutation, useOptimizedQuery } from "utils/optimizedQuery";
 import queryCache from "utils/queryCache";
-import { getQueryErrorHandler } from "utils/queryErrorHandlers";
 import { queryKeys } from "utils/queryKeys";
 
 import {
@@ -54,8 +53,8 @@ async function _scanStatus() {
 
 export function useFbwStatus(params = {}) {
     // FBW scan status is critical during setup - needs fresh data
-    return useCriticalQuery(queryKeys.fbwScanStatus(), _scanStatus, {
-        onError: getQueryErrorHandler("fbwScanStatus"),
+    return useOptimizedQuery(queryKeys.fbwScanStatus(), _scanStatus, {
+        retry: false,
         ...params,
     });
 }
@@ -63,8 +62,8 @@ export function useFbwStatus(params = {}) {
 // General status for banner - calls lime-fbw status directly
 export function useFbwGeneralStatus(params = {}) {
     // FBW general status is critical for determining if setup is needed
-    return useCriticalQuery(queryKeys.fbwStatus(), getStatus, {
-        onError: getQueryErrorHandler("fbwStatus"),
+    return useOptimizedQuery(queryKeys.fbwStatus(), getStatus, {
+        retry: false,
         ...params,
     });
 }

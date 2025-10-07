@@ -5,7 +5,7 @@ import Loading from "components/loading";
 
 import { useUpgradeConfirm, useUpgradeRevert } from "../firmwareQueries";
 
-export const ConfirmChoices = ({ onConfirm, onRevert, submitting }) => (
+export const ConfirmChoices = ({ onConfirm, onRevert, submitting, error }) => (
     <div className={`container container-padded container-center`}>
         <button onClick={onConfirm}>
             <Trans>Confirm</Trans>
@@ -19,6 +19,11 @@ export const ConfirmChoices = ({ onConfirm, onRevert, submitting }) => (
         <p>
             <Trans>to the previous configuration</Trans>
         </p>
+        {error && (
+            <div style={{ color: "red", marginTop: "1rem" }}>
+                <Trans>Error confirming upgrade: {error.message}</Trans>
+            </div>
+        )}
         {submitting && (
             <div>
                 <Loading />
@@ -41,14 +46,22 @@ export const Reverted = () => (
 );
 
 export const ConfirmPage = ({ hasReverted, onReverted }) => {
-    const { mutateAsync: upgradeConfirm, isLoading: isConfirming } =
-        useUpgradeConfirm();
+    const {
+        mutateAsync: upgradeConfirm,
+        isLoading: isConfirming,
+        error: confirmError,
+    } = useUpgradeConfirm();
     const { mutate: upgradeRevert, isLoading: isReverting } =
         useUpgradeRevert();
 
     async function onConfirm() {
-        await upgradeConfirm();
-        route("/");
+        try {
+            await upgradeConfirm();
+            route("/");
+        } catch (error) {
+            console.error("Confirmation failed:", error);
+            // The error handler in the mutation will handle UI updates
+        }
     }
 
     async function onRevert() {
@@ -65,6 +78,7 @@ export const ConfirmPage = ({ hasReverted, onReverted }) => {
             onConfirm={onConfirm}
             onRevert={onRevert}
             submitting={isConfirming || isReverting}
+            error={confirmError}
         />
     );
 };

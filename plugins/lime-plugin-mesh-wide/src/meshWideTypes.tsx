@@ -96,6 +96,7 @@ export interface INodeInfo {
     ipv4: string;
     ipv6: string;
     firmware_version: string;
+    lime_app_version?: string; // Optional: version of lime-app package
     uptime: number;
 }
 

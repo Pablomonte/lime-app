@@ -10,9 +10,11 @@ import { useSession } from "./queries";
 
 export const Route = ({ path, children, ...childrenProps }) => {
     const { data: fbwStatus } = useFbwGeneralStatus({
-        initialStale: true,
-        staleTime: 0, // Force fresh data
-        cacheTime: 0, // Don't cache
+        // Only check FBW status on relevant routes
+        enabled:
+            path !== "firmware" &&
+            path !== "releaseInfo" &&
+            !path.startsWith("firstbootwizard"),
     });
     const { fbwCanceled, cancelFbw } = useAppContext();
     const childrenWithProps = cloneElement(children, { ...childrenProps });
@@ -39,9 +41,16 @@ export const CommunityProtectedRoute = ({
     children,
     ...childrenProps
 }) => {
-    const { data: session } = useSession();
+    const { data: session, isLoading } = useSession();
     const childrenWithProps = cloneElement(children, { ...childrenProps });
-    if (session.username !== "root") {
+
+    // Show loading state while session is being fetched
+    if (isLoading) {
+        return null; // or a loading spinner
+    }
+
+    // Safe check: session should now have placeholderData, but be defensive
+    if (session?.username !== "root") {
         return (
             <Route path={path}>
                 <SharedPasswordLogin />

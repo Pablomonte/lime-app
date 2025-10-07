@@ -5,10 +5,46 @@
 # Get the requested path
 REQUEST_URI="${REQUEST_URI:-$PATH_INFO}"
 
-# Known lime-app routes (redirect to /app/ prefix)
-# This handles direct navigation to plugin routes
+# ============================================================================
+# SECTION 1: Main plugin routes (exact match)
+# ============================================================================
+# Public routes
 case "$REQUEST_URI" in
-    /rx|/notes|/align|/metrics|/reboot|/access|/changenode|/firmware|/firstbootwizard|/firstbootwizard/*|/locate|/meshwide|/meshwide/*|/netadmin|/nodeadmin|/remotesupport)
+    /rx|/metrics|/notes|/changenode|/locate|/meshwide)
+        echo "Status: 301 Moved Permanently"
+        echo "Location: /app${REQUEST_URI}"
+        echo ""
+        exit 0
+        ;;
+esac
+
+# Protected routes (require authentication)
+case "$REQUEST_URI" in
+    /firstbootwizard|/netadmin|/nodeadmin|/firmware|/align|/remotesupport|/access)
+        echo "Status: 301 Moved Permanently"
+        echo "Location: /app${REQUEST_URI}"
+        echo ""
+        exit 0
+        ;;
+esac
+
+# ============================================================================
+# SECTION 2: Routes with dynamic sub-paths
+# ============================================================================
+case "$REQUEST_URI" in
+    /firstbootwizard/*|/nodeadmin/*|/access/*|/align-single/*|/meshwide/*)
+        echo "Status: 301 Moved Permanently"
+        echo "Location: /app${REQUEST_URI}"
+        echo ""
+        exit 0
+        ;;
+esac
+
+# ============================================================================
+# SECTION 3: Additional specific routes
+# ============================================================================
+case "$REQUEST_URI" in
+    /releaseinfo|/console)
         echo "Status: 301 Moved Permanently"
         echo "Location: /app${REQUEST_URI}"
         echo ""
@@ -24,7 +60,7 @@ case "$REQUEST_URI" in
         
         # If it's a file with extension (like .js, .css, .svg), return 404
         case "$ROUTE" in
-            *.js|*.css|*.svg|*.png|*.jpg|*.gif|*.json|*.html|*.map)
+            *.js|*.css|*.svg|*.png|*.jpg|*.jpeg|*.gif|*.ico|*.webp|*.json|*.html|*.map|*.woff|*.woff2|*.ttf|*.eot)
                 echo "Status: 404 Not Found"
                 echo "Content-Type: text/plain"
                 echo ""

@@ -22,17 +22,31 @@ function resetSuCounter() {
         ...oldInfo,
         suCounter: -1,
     }));
+    // Also invalidate to ensure server state is fresh
+    setTimeout(() => {
+        queryCache.invalidateQueries(queryKeys.upgradeInfo());
+    }, 2000);
 }
 
 export function useUpgradeConfirm() {
     return useMutation(upgradeConfirm, {
         onSuccess: resetSuCounter,
+        onError: (error) => {
+            console.error("Failed to confirm firmware upgrade:", error);
+            // Force refresh of upgrade info to check actual server state
+            queryCache.invalidateQueries(queryKeys.upgradeInfo());
+        },
     });
 }
 
 export function useUpgradeRevert() {
     return useMutation(upgradeRevert, {
         onSuccess: resetSuCounter,
+        onError: (error) => {
+            console.error("Failed to revert firmware upgrade:", error);
+            // Force refresh of upgrade info to check actual server state
+            queryCache.invalidateQueries(queryKeys.upgradeInfo());
+        },
     });
 }
 

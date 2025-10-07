@@ -5,12 +5,8 @@ export const fetchCloudNodes = async () => {
         const response = await api.call("lime-utils", "get_cloud_nodes", {});
         const nodes = response.nodes;
 
-        // Transform nodes data
-        const nodeList = Object.keys(nodes)
-            .map((key) => nodes[key])
-            .reduce((x, y) => x.concat(y), []);
-
-        return nodeList;
+        // Return the nodes array directly
+        return nodes;
     } catch (error) {
         throw new Error(`Failed to fetch cloud nodes: ${error.message}`);
     }

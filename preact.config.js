@@ -27,6 +27,34 @@ export default function (config, env, helpers) {
             config.optimization.minimize = true;
             config.optimization.usedExports = true;
             config.optimization.sideEffects = false;
+
+            // Advanced code splitting for bundle size optimization
+            config.optimization.splitChunks = {
+                chunks: "all",
+                cacheGroups: {
+                    // Separate Leaflet into its own chunk (saves ~80kB from main bundle)
+                    leaflet: {
+                        test: /[\\/]node_modules[\\/](leaflet|react-leaflet)/,
+                        name: "leaflet-vendor",
+                        priority: 30,
+                        reuseExistingChunk: true,
+                    },
+                    // Separate React Query into its own chunk
+                    reactQuery: {
+                        test: /[\\/]node_modules[\\/]@tanstack[\\/]react-query/,
+                        name: "react-query-vendor",
+                        priority: 25,
+                        reuseExistingChunk: true,
+                    },
+                    // Group other large vendors
+                    vendors: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: "vendors",
+                        priority: 10,
+                        reuseExistingChunk: true,
+                    },
+                },
+            };
         }
     }
 

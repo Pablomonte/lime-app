@@ -16,7 +16,10 @@ import { queryKeys } from "./queryKeys";
 import api from "./uhttpd.service";
 
 export function useSession() {
-    return useQuery(queryKeys.session(), getSession, { staleTime: Infinity });
+    return useQuery(queryKeys.session(), getSession, {
+        staleTime: Infinity,
+        placeholderData: { username: null }, // Prevent undefined during initial load
+    });
 }
 
 /**

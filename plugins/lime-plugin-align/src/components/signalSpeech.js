@@ -1,5 +1,6 @@
 import { useState } from "preact/hooks";
-import { useInterval } from "react-use";
+
+import { useInterval } from "utils/customHooks";
 
 import { speech } from "../speech";
 

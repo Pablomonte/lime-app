@@ -36,9 +36,43 @@ export const isNetworkError = (error: unknown): error is NetworkError => {
     );
 };
 
-export const getErrorType = (error: unknown): string => {
+/**
+ * Extract UBUS error from various wrapped formats
+ */
+const extractUbusError = (error: unknown): UbusError | null => {
+    // Case 1: Direct UBUS error with numeric code
     if (isUbusError(error)) {
-        switch (error.code) {
+        return error as UbusError;
+    }
+
+    // Case 2: Error wrapped in object with error property
+    if (typeof error === "object" && error !== null) {
+        if ("error" in error && isUbusError((error as any).error)) {
+            return (error as any).error;
+        }
+        // Case 3: Code as string "-32000"
+        if ("code" in error) {
+            const code =
+                typeof (error as any).code === "string"
+                    ? parseInt((error as any).code, 10)
+                    : (error as any).code;
+            if (typeof code === "number" && !isNaN(code)) {
+                return {
+                    code,
+                    message: (error as any).message || "UBUS Error",
+                    data: (error as any).data,
+                };
+            }
+        }
+    }
+
+    return null;
+};
+
+export const getErrorType = (error: unknown): string => {
+    const ubusError = extractUbusError(error);
+    if (ubusError) {
+        switch (ubusError.code) {
             case UBUS_ERROR_CODES.OBJECT_NOT_FOUND:
                 return "service_unavailable";
             case UBUS_ERROR_CODES.ACCESS_DENIED:

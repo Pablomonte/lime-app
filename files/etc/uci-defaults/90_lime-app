@@ -1,4 +1,5 @@
 #!/bin/sh
+# RPCD Configuration - lime-app user authentication
 uci add rpcd login
 uci set rpcd.@login[1].username='lime-app'
 uci set rpcd.@login[1].password='$1$$ta3C2yX4TvVObdaJyQ9Md1'
@@ -7,6 +8,11 @@ uci add_list rpcd.@login[1].write='lime-app'
 uci add_list rpcd.@login[1].read='unauthenticated'
 uci add_list rpcd.@login[1].write='unauthenticated'
 uci commit rpcd
+
+# UHTTPD Configuration - Consolidated from 90, 96, 97
 uci set uhttpd.main.ubus_cors='1'
+uci set uhttpd.main.index_page='lime_app_index.html'
+uci set uhttpd.main.error_page='/cgi-bin/lime-app-spa'
 uci commit uhttpd
+
 exit 0

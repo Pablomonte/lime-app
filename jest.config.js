@@ -12,6 +12,10 @@ module.exports = {
     ],
     setupFilesAfterEnv: ["jest-extended/all"],
     setupFiles: ["core-js", "jest-localstorage-mock"],
+    testEnvironment: "jsdom",
+    globals: {
+        "process.env.TEST_ROUTER_URL": "minodo.info",
+    },
     moduleNameMapper: {
         ...preactPreset.moduleNameMapper,
         "^components/(.*)$": "<rootDir>/src/components/$1",
