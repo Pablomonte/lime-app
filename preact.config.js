@@ -17,6 +17,12 @@ export default function (config, env, helpers) {
     const { source, isProd } = env;
     config.output.publicPath = isProd ? "/app/" : "";
 
+    // Pass isProd to HTML template
+    const htmlPlugin = helpers.getPluginsByName(config, "HtmlWebpackPlugin");
+    if (htmlPlugin.length > 0) {
+        htmlPlugin[0].plugin.options.isProd = isProd;
+    }
+
     // Safe optimizations for LibreMesh deployment
     if (isProd) {
         // Disable source maps in production to reduce firmware size (saves ~6MB)
