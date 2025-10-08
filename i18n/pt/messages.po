@@ -289,7 +289,7 @@ msgstr "O Radio 0 não pode ser utilizado, eles está em uso para os links mesh.
 msgid "Cellphone Instructions"
 msgstr "Instruções para celular"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:133
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:134
 msgid "Chains"
 msgstr ""
 
@@ -310,7 +310,7 @@ msgid "Changes made"
 msgstr ""
 
 #: plugins/lime-plugin-fbw/src/containers/scanPage/components/networkTile.js:123
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:144
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:145
 msgid "Channel"
 msgstr ""
 
@@ -347,6 +347,28 @@ msgstr "Escolha um nome para a sua rede"
 #: plugins/lime-plugin-network-admin/src/netAdminPage.js:43
 msgid "Choose a shared password for network administration"
 msgstr "Escolha uma senha compartilhada para administração da rede"
+
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearLinkReferenceBtn.tsx:104
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:113
+msgid "Clear"
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearLinkReferenceBtn.tsx:82
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:91
+msgid "Clear reference state"
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearLinkReferenceBtn.tsx:103
+msgid "Clear reference state for this link?"
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:112
+msgid "Clear reference state for {hostname}?"
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:45
+msgid "Cleared but sync failed. Refresh the page."
+msgstr ""
 
 #: plugins/lime-plugin-remotesupport/src/remoteSupportPage.js:173
 msgid "Click at Close Session to end the remote support session. No one will be able to access your node with this token again"
@@ -539,11 +561,11 @@ msgstr ""
 msgid "Delete property"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:223
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:228
 msgid "Delete this this node from reference state"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:372
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:404
 msgid "Delete this {0}<0/>from reference state"
 msgstr ""
 
@@ -564,7 +586,7 @@ msgstr "Descrição"
 msgid "Description: {name}"
 msgstr "Descrição: {name}"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:113
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:118
 #: plugins/lime-plugin-rx/src/sections/system.tsx:48
 msgid "Device"
 msgstr "Dispositivo"
@@ -671,6 +693,11 @@ msgstr "Encriptação: {encryptionMethod}"
 msgid "Error"
 msgstr "Erro"
 
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearLinkReferenceBtn.tsx:41
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:52
+msgid "Error clearing reference state!"
+msgstr ""
+
 #: plugins/lime-plugin-firmware/src/confirmPage/confirmPage.js:24
 msgid "Error confirming upgrade: {0}"
 msgstr ""
@@ -704,6 +731,10 @@ msgstr ""
 msgid "Error loading leaflet"
 msgstr ""
 
+#: plugins/lime-plugin-align/src/alignPage.js:177
+msgid "Error loading mesh interfaces"
+msgstr ""
+
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/RebootNodeBtn.tsx:89
 msgid "Error performing reboot: {error}"
 msgstr ""
@@ -713,7 +744,7 @@ msgid "Error reaching hostname!"
 msgstr ""
 
 #: plugins/lime-plugin-align/src/alignPage.js:111
-#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:104
+#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:98
 msgid "Error retrieving associated list"
 msgstr ""
 
@@ -737,8 +768,8 @@ msgstr ""
 msgid "Error setting network"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:355
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:212
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:387
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:217
 msgid "Error setting new reference state!"
 msgstr ""
 
@@ -856,11 +887,11 @@ msgstr "Nome do nó"
 msgid "I don't know the shared password"
 msgstr "Não sei a senha compartilhada"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:109
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:114
 msgid "IPv4"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:110
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:115
 msgid "IPv6"
 msgstr ""
 
@@ -880,12 +911,12 @@ msgstr "Se você invalidar este voucher, ninguém mais poderá utilizá-lo. E is
 msgid "If your community network has local services, you can point a link to them."
 msgstr "Se a sua rede comunitária tem serviços locais, você pode colocar o link para eles."
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:58
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:87
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:59
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:88
 msgid "Iface"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:239
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:244
 msgid "In the reference state this node is on"
 msgstr ""
 
@@ -954,11 +985,11 @@ msgid "Join the mesh"
 msgstr "Se junte à rede"
 
 #: plugins/lime-plugin-align/src/alignPage.js:59
-#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:141
+#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:135
 msgid "Last packet"
 msgstr "Último pacote"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:61
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:62
 msgid "Last seen"
 msgstr ""
 
@@ -970,11 +1001,11 @@ msgstr "Titulo do link"
 msgid "Link URL"
 msgstr "Link URL"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:182
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:183
 msgid "Link from <0>{0}</0> to <1>{1}</1>"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:249
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:269
 msgid "Link {0} {1}"
 msgstr ""
 
@@ -1002,11 +1033,11 @@ msgstr "Entrando"
 msgid "Login"
 msgstr "Entrar"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:118
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:123
 msgid "Macs ({0})"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:130
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:135
 msgid "Macs not found ({0})"
 msgstr ""
 
@@ -1100,7 +1131,7 @@ msgstr ""
 msgid "Network Name: {ssid}"
 msgstr "Nome da Rede: {ssid}"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:150
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:155
 msgid "New Macs ({0})"
 msgstr ""
 
@@ -1124,8 +1155,8 @@ msgstr ""
 msgid "New link"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:351
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:207
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:383
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:212
 msgid "New reference state set!"
 msgstr ""
 
@@ -1223,7 +1254,7 @@ msgstr "Ok"
 msgid "On its radio {radioNumber}"
 msgstr "Em seu rádio {radioNumber}"
 
-#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:133
+#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:127
 msgid "On its radio {toRadio}"
 msgstr "Em seu rádio {radioNumber}"
 
@@ -1310,6 +1341,10 @@ msgstr "Por favor aguarde para que o dispositivo se reinicie e recarregue o apli
 msgid "Please wait {time} seconds"
 msgstr "Por favor aguarde {time} segundos"
 
+#: src/components/shared-state/UpdateSharedStateBtn.tsx:69
+msgid "Publish local state to this node and sync its state back"
+msgstr ""
+
 #: plugins/lime-plugin-align/src/alignPage.js:157
 msgid "Radio {radioNumber}"
 msgstr "Rádio {radioNumber}"
@@ -1346,6 +1381,10 @@ msgstr ""
 msgid "Reboot"
 msgstr "Reiniciar"
 
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/RebootNodeBtn.tsx:138
+msgid "Reboot node"
+msgstr ""
+
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/RebootNodeBtn.tsx:67
 msgid "Reboot node {0}"
 msgstr ""
@@ -1362,9 +1401,17 @@ msgstr ""
 msgid "Reference State is not set"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:387
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:237
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:419
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:242
 msgid "Reference is not set or has errors"
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearLinkReferenceBtn.tsx:32
+msgid "Reference state cleared for this link!"
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:37
+msgid "Reference state cleared for this node!"
 msgstr ""
 
 #: plugins/lime-plugin-ground-routing/src/groundRoutingPage.js:36
@@ -1420,12 +1467,12 @@ msgstr "Reverter"
 msgid "Reverting to previous version"
 msgstr "Revertendo para versão prévia"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:152
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:153
 msgid "RxRate"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:380
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:235
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:412
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:240
 msgid "Same status as in the reference state"
 msgstr ""
 
@@ -1548,7 +1595,7 @@ msgstr ""
 msgid "Set network"
 msgstr "Juntar-se à rede"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:221
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:226
 msgid "Set reference state for this node"
 msgstr ""
 
@@ -1556,7 +1603,7 @@ msgstr ""
 msgid "Set reference state for this {0}?"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:363
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:395
 msgid "Set reference state for this<0/> {0}"
 msgstr ""
 
@@ -1622,7 +1669,7 @@ msgstr ""
 msgid "Show state"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:119
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:120
 msgid "Signal"
 msgstr ""
 
@@ -1674,7 +1721,7 @@ msgstr ""
 msgid "Something went wrong"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:92
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:93
 msgid "Source IP"
 msgstr ""
 
@@ -1738,10 +1785,6 @@ msgstr "O AP comunitário está presente em cada nó para que as pessoas se movi
 msgid "The Community Portal enables a welcome screen to be displayed in the web browser to anyone connecting to the network using the Community AP"
 msgstr "O Portal da Comunidade permite que uma tela de boas-vindas seja exibida no navegador da web para qualquer pessoa conectada à rede usando o AP da Comunidade"
 
-#: plugins/lime-plugin-align/src/alignPage.js:177
-msgid "The are not mesh interfaces available"
-msgstr "Não a interfaces de malha disponíveis"
-
 #: plugins/lime-plugin-mesh-wide-upgrade/src/utils/upgradeStatusMessages.tsx:89
 msgid "The become main node process is starting on this node"
 msgstr ""
@@ -1750,7 +1793,7 @@ msgstr ""
 msgid "The configuration seems to be updated successfully. Confirm that the node is working properly or will be downgraded to the previous version"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:136
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:137
 msgid "The difference between chains is too big"
 msgstr ""
 
@@ -1786,7 +1829,7 @@ msgstr "O ponto de acesso não pode ser encontrado, favor reveja a situação ac
 msgid "The name should have at least 3 characters"
 msgstr "O nome deve ter pelo menos 3 caracteres"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:94
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:99
 msgid "The node is down"
 msgstr ""
 
@@ -1819,7 +1862,7 @@ msgstr ""
 msgid "The shared password has been chosen by the community when the network was created. You can ask other community members for it."
 msgstr "A senha compartilhada foi escolhida pela comunidade ao iniciar a rede. Pergunte sobre ela a outros membros."
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:124
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:125
 msgid "The signal is X below the reference state"
 msgstr ""
 
@@ -1834,6 +1877,10 @@ msgstr ""
 #: plugins/lime-plugin-firmware/src/upgradingPage/upgradingPage.js:9
 msgid "The upgrade should be done"
 msgstr "A atualização deve estar pronta"
+
+#: plugins/lime-plugin-align/src/alignPage.js:190
+msgid "There are no mesh interfaces available"
+msgstr ""
 
 #: plugins/lime-plugin-pirania/src/screens/voucherList.js:110
 msgid "There are no vouchers matching the current criteria"
@@ -1859,7 +1906,7 @@ msgstr "Não a uma sessão de suporte remoto aberta. Clique em Criar Sessão par
 msgid "These are the nodes associated on this radio"
 msgstr "Esses são os nós associados a este rádio"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:384
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:416
 msgid "This Link is not registered on the reference state"
 msgstr ""
 
@@ -1894,11 +1941,11 @@ msgstr "Este campo é necessário"
 msgid "This is a main node"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:389
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:421
 msgid "This link has errors"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:170
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:171
 msgid "This link seems down"
 msgstr ""
 
@@ -1906,11 +1953,11 @@ msgstr ""
 msgid "This link seems down, remove them from the reference state?"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:135
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:140
 msgid "This macs are not on the actual state"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:153
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:158
 msgid "This macs are not on the reference state"
 msgstr ""
 
@@ -1947,7 +1994,7 @@ msgstr ""
 msgid "This node is downloading a new firmware"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:242
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:247
 msgid "This node is not registered on the reference state"
 msgstr ""
 
@@ -1959,7 +2006,7 @@ msgstr ""
 msgid "This node is the gateway"
 msgstr "Esse nó não é o gateway"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:53
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:54
 msgid "This node seems down"
 msgstr ""
 
@@ -1974,6 +2021,14 @@ msgstr ""
 #: plugins/lime-plugin-align/src/alignPage.js:136
 msgid "This radio is not associated with other nodes"
 msgstr "Esse rádio não está conectado a outros nós"
+
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearLinkReferenceBtn.tsx:106
+msgid "This will remove the reference state for the link between {nodeNames}. You can set a new reference state later."
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:115
+msgid "This will remove the reference state for this node. You can set a new reference state later."
+msgstr ""
 
 #: plugins/lime-plugin-mesh-wide/src/components/modals.tsx:53
 msgid "This will set the reference state of this link:"
@@ -1991,8 +2046,8 @@ msgstr ""
 msgid "This your last working path to the Internet"
 msgstr "Esse foi o último caminho para Internet que funcionou"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:89
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:93
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:94
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:98
 msgid "Tiempo en actividad"
 msgstr ""
 
@@ -2026,7 +2081,7 @@ msgstr ""
 msgid "Try reloading the app"
 msgstr "Tente recarregar o aplicativo"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:149
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:150
 msgid "TxRate"
 msgstr ""
 
@@ -2034,7 +2089,7 @@ msgstr ""
 msgid "Unknown error"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:227
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:228
 msgid "Unknown link type"
 msgstr ""
 
@@ -2091,7 +2146,7 @@ msgstr "Use vouchers de acesso"
 msgid "Value"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:97
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:102
 msgid "Versión de sistema"
 msgstr ""
 
@@ -2162,7 +2217,7 @@ msgstr "Senha do WiFi"
 msgid "Wired connections"
 msgstr ""
 
-#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:128
+#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:122
 msgid "With radio {fromRadio} alignin with"
 msgstr "Com rádio %{radio} alinhado com"
 

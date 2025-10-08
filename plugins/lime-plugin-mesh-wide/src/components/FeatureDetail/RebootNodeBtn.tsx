@@ -98,17 +98,60 @@ const RebootNodeModal = ({
 
 const RemoteRebootBtn = ({ node }: { node: INodeInfo }) => {
     const { open, onOpen, onClose } = useDisclosure();
+    const [showTooltip, setShowTooltip] = useState(false);
 
     return (
         <>
-            <Button
-                color={"danger"}
-                outline={true}
-                size={"sm"}
-                onClick={() => onOpen()}
+            <div
+                style={{ position: "relative", display: "inline-block" }}
+                onMouseEnter={() => setShowTooltip(true)}
+                onMouseLeave={() => setShowTooltip(false)}
             >
-                <PowerIcon />
-            </Button>
+                <Button
+                    color={"danger"}
+                    outline={true}
+                    size={"sm"}
+                    onClick={() => onOpen()}
+                >
+                    <PowerIcon />
+                </Button>
+                {showTooltip && (
+                    <div
+                        style={{
+                            position: "absolute",
+                            top: "100%",
+                            left: "50%",
+                            transform: "translateX(-50%)",
+                            marginTop: "8px",
+                            padding: "8px 12px",
+                            backgroundColor: "#333",
+                            color: "white",
+                            fontSize: "12px",
+                            borderRadius: "6px",
+                            maxWidth: "120px",
+                            whiteSpace: "normal",
+                            textAlign: "center",
+                            zIndex: 1000,
+                            pointerEvents: "none",
+                        }}
+                    >
+                        <Trans>Reboot node</Trans>
+                        <div
+                            style={{
+                                position: "absolute",
+                                bottom: "100%",
+                                left: "50%",
+                                transform: "translateX(-50%)",
+                                width: 0,
+                                height: 0,
+                                borderLeft: "6px solid transparent",
+                                borderRight: "6px solid transparent",
+                                borderBottom: "6px solid #333",
+                            }}
+                        />
+                    </div>
+                )}
+            </div>
             <RebootNodeModal node={node} isOpen={open} onClose={onClose} />
         </>
     );
