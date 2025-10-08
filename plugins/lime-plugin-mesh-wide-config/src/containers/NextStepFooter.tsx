@@ -68,6 +68,20 @@ const NextStepFooter = () => {
                     ),
                 };
                 break;
+            case "CONFIRMED":
+                step = {
+                    status: "success",
+                    onClick: () => {
+                        setShowEditConfig(true);
+                    },
+                    btn: <Trans>Reconfigure mesh</Trans>,
+                    children: (
+                        <Trans>
+                            Configuration applied successfully. You can reconfigure the mesh again.
+                        </Trans>
+                    ),
+                };
+                break;
             case "READY_FOR_APPLY": {
                 let status: StatusIcons = "success";
                 let text = (

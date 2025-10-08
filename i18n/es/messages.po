@@ -35,7 +35,7 @@ msgid "A reboot is needed to apply changes"
 msgstr "Reinicie el nodo para aplicar cambios."
 
 #: plugins/lime-plugin-mesh-wide-config/src/components/modals.tsx:160
-#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:127
+#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:141
 #: plugins/lime-plugin-mesh-wide-upgrade/src/components/modals.tsx:122
 #: plugins/lime-plugin-mesh-wide-upgrade/src/components/nextStepFooter.tsx:163
 msgid "Abort"
@@ -131,11 +131,11 @@ msgstr "Todos los nodos están listos."
 msgid "All nodes are upgraded successfully"
 msgstr "Todos los nodos fueron actualizados con éxito!"
 
-#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:74
+#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:88
 msgid "All nodes have the configuration ready to apply"
 msgstr "Todos los nodos tienen la configuración y estan listos para aplicar"
 
-#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:109
+#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:123
 #: plugins/lime-plugin-mesh-wide-upgrade/src/components/nextStepFooter.tsx:139
 msgid "All nodes scheduled successful"
 msgstr "Todos los nodos fueron programados con éxito."
@@ -156,7 +156,7 @@ msgstr "¿Desea aplicar la configuracion en todos los nodos de manera segura?"
 msgid "Apply mesh wide new configuration!"
 msgstr "Aplicar una configuración a toda la red"
 
-#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:89
+#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:103
 msgid "Apply new configuration"
 msgstr "Aplicar la nueva configuración "
 
@@ -326,7 +326,7 @@ msgstr "Verifique si la red funciona correctamente y confirme la actualización.
 msgid "Check<0/>Alignment"
 msgstr "Chequear<0/>Alineación"
 
-#: plugins/lime-plugin-fbw/src/containers/Setting.js:100
+#: plugins/lime-plugin-fbw/src/containers/Setting.js:101
 msgid "Checking connection"
 msgstr "Comprobando conexión"
 
@@ -391,6 +391,10 @@ msgstr "Nombre de la comunidad"
 msgid "Configuration applied"
 msgstr "La configuración fue aplicada"
 
+#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:79
+msgid "Configuration applied successfully. You can reconfigure the mesh again."
+msgstr "Configuración aplicada exitosamente. Podés reconfigurar la mesh nuevamente."
+
 #: plugins/lime-plugin-mesh-wide-config/src/components/StepStates.tsx:78
 msgid "Configuration applied!<0/>Awaiting confirmation"
 msgstr "La configuración fue aplicada!<0/> Esperando confirmación"
@@ -400,12 +404,12 @@ msgid "Configure your new community network"
 msgstr "Configure su nueva red mesh"
 
 #: plugins/lime-plugin-firmware/src/confirmPage/confirmPage.js:11
-#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:118
+#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:132
 #: plugins/lime-plugin-mesh-wide-upgrade/src/components/nextStepFooter.tsx:148
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:117
+#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:131
 msgid "Confirm configuration on all nodes"
 msgstr "Confirmar la configuración en todos los nodos"
 
@@ -449,7 +453,7 @@ msgstr "Confirmando todos los nodos actualizados."
 msgid "Confirming new configuration to available nodes"
 msgstr "Confirmando la configuración a todos los nodos."
 
-#: plugins/lime-plugin-fbw/src/containers/Setting.js:127
+#: plugins/lime-plugin-fbw/src/containers/Setting.js:128
 msgid "Congratulations"
 msgstr "Felicitaciones!"
 
@@ -1302,7 +1306,7 @@ msgstr "Por favor, espere {remainingTime} segundos pacientemente y no desconecte
 msgid "Please wait while the device reboots, and reload the app"
 msgstr "Por favor, espere hasta que el dispositivo se reinicie y recargue la app."
 
-#: plugins/lime-plugin-fbw/src/containers/Setting.js:90
+#: plugins/lime-plugin-fbw/src/containers/Setting.js:91
 msgid "Please wait {time} seconds"
 msgstr "Por favor, espere {time} segundos..."
 
@@ -1350,6 +1354,10 @@ msgstr "Reiniciar nodo {0}"
 msgid "Rebooting"
 msgstr "Reiniciando"
 
+#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:77
+msgid "Reconfigure mesh"
+msgstr "Reconfigurar mesh"
+
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ShowErrorsDetail.tsx:35
 msgid "Reference State is not set"
 msgstr "Estado de referencia no establecido."
@@ -1363,7 +1371,7 @@ msgstr "El estado de referencia no ha sido establecido o contiene errores."
 msgid "Reload"
 msgstr "Recargar"
 
-#: plugins/lime-plugin-fbw/src/containers/Setting.js:139
+#: plugins/lime-plugin-fbw/src/containers/Setting.js:140
 msgid "Reload page"
 msgstr "Recargar página"
 
@@ -1452,7 +1460,7 @@ msgstr "Confirmar"
 msgid "Schedule a firmware upgrade for all nodes on the network"
 msgstr "Actualizar una actualización de sistema (firmware) para todos los nodos de la red"
 
-#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:97
+#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:111
 #: plugins/lime-plugin-mesh-wide-upgrade/src/components/nextStepFooter.tsx:127
 msgid "Schedule again"
 msgstr "Actualizar nuevamente"
@@ -1560,7 +1568,7 @@ msgstr "Establecer el estado de referencia para el nodo {nodeName}"
 msgid "Set the reference state for this node."
 msgstr "Establecer el estado de referencia para este nodo."
 
-#: plugins/lime-plugin-fbw/src/containers/Setting.js:80
+#: plugins/lime-plugin-fbw/src/containers/Setting.js:81
 msgid "Setting network"
 msgstr "Configurando red"
 
@@ -1627,7 +1635,7 @@ msgstr "Sin señal"
 msgid "Size"
 msgstr "Tamaño"
 
-#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:81
+#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:95
 msgid "Some nodes are not marked as ready to apply"
 msgstr "Algunos nodos fueron marcados como listos para aplicar"
 
@@ -1649,7 +1657,7 @@ msgstr "Algunos nodos todavía están descargando el firmware<0/>consulte la pá
 msgid "Some nodes don't upgraded properly"
 msgstr "Algunos nodos no se actualizan correctamente."
 
-#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:103
+#: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:117
 #: plugins/lime-plugin-mesh-wide-upgrade/src/components/nextStepFooter.tsx:133
 msgid "Some nodes have errors"
 msgstr "Algunos nodos tienen errores."
@@ -2171,11 +2179,11 @@ msgstr "Contraseña incorrecta, intente nuevamente"
 msgid "Yes"
 msgstr "Si"
 
-#: plugins/lime-plugin-fbw/src/containers/Setting.js:105
+#: plugins/lime-plugin-fbw/src/containers/Setting.js:106
 msgid "You are connected to another node in the network, try connecting to"
 msgstr "Está conectado a otro nodo de la red, intente conectarse a"
 
-#: plugins/lime-plugin-fbw/src/containers/Setting.js:135
+#: plugins/lime-plugin-fbw/src/containers/Setting.js:136
 msgid "You are now part of"
 msgstr "Usted es ahora parte de"
 
@@ -2199,7 +2207,7 @@ msgstr "No necesita pasar por ningún nodo para llega hasta aquí."
 msgid "You don't have permission to access this feature."
 msgstr ""
 
-#: plugins/lime-plugin-fbw/src/containers/Setting.js:131
+#: plugins/lime-plugin-fbw/src/containers/Setting.js:132
 msgid "You have successfuly connected to"
 msgstr "La conexión fué exitosa, está conectado a"
 
@@ -2207,7 +2215,7 @@ msgstr "La conexión fué exitosa, está conectado a"
 msgid "You need to know the shared password to enter this page"
 msgstr "Debe ingresar la contraseña compartida para seguir"
 
-#: plugins/lime-plugin-fbw/src/containers/Setting.js:113
+#: plugins/lime-plugin-fbw/src/containers/Setting.js:114
 msgid "You should try to connect to the network {wifiSsid}."
 msgstr "Intente conectarse a la red wifi {wifiSsid} para completar la instalación."
 
@@ -2255,7 +2263,7 @@ msgstr "Clave"
 msgid "locate my node"
 msgstr "Ubicar mi nodo"
 
-#: plugins/lime-plugin-align/src/components/secondsAgo.js:21
+#: plugins/lime-plugin-align/src/components/secondsAgo.js:22
 msgid "more than a minute ago"
 msgstr "hace más de un minuto."
 
@@ -2302,7 +2310,7 @@ msgstr "{mins, plural, one {# minuto} other {# minutos}}"
 msgid "{nodesToBeUpgraded} of {totalNodes} will be upgraded"
 msgstr "{nodesToBeUpgraded} de {totalNodes} serán actualizados, espere."
 
-#: plugins/lime-plugin-align/src/components/secondsAgo.js:23
+#: plugins/lime-plugin-align/src/components/secondsAgo.js:24
 msgid "{secondsAmount} seconds ago"
 msgstr "hace {secondsAmount} segundos"
 
