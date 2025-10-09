@@ -1,3 +1,4 @@
+import { cloneElement } from "preact";
 import { Trans } from "@lingui/macro";
 import { QueryErrorResetBoundary } from "@tanstack/react-query";
 
@@ -64,9 +65,16 @@ const QueryErrorFallback = ({ error, reset }: QueryErrorFallbackProps) => {
 
 interface QueryErrorBoundaryProps {
     children: preact.ComponentChildren;
+    [key: string]: any;
 }
 
-export const QueryErrorBoundary = ({ children }: QueryErrorBoundaryProps) => {
+export const QueryErrorBoundary = ({ children, ...otherProps }: QueryErrorBoundaryProps) => {
+    // Pass any additional props (like route params) to children
+    const childrenWithProps =
+        otherProps && Object.keys(otherProps).length > 0 && children
+            ? cloneElement(children as any, otherProps)
+            : children;
+
     return (
         <QueryErrorResetBoundary>
             {({ reset }) => (
@@ -79,7 +87,7 @@ export const QueryErrorBoundary = ({ children }: QueryErrorBoundaryProps) => {
                         console.warn("Query error caught by boundary:", error);
                     }}
                 >
-                    {children}
+                    {childrenWithProps}
                 </ErrorBoundary>
             )}
         </QueryErrorResetBoundary>

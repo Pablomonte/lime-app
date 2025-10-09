@@ -73,13 +73,7 @@ const SignalBox = ({ signal }) => (
     </div>
 );
 
-const AlignSingle = () => {
-    // Get parameters from URL pathname (without hash)
-    const currentUrl = window.location.pathname;
-    const urlParts = currentUrl.split("/");
-    const iface = urlParts[2]; // align-single/IFACE/mac
-    const mac = urlParts[3];
-
+const AlignSingle = ({ iface, mac }) => {
     // All hooks must be called before any early returns
     const { data: bathost } = useBatHost(mac, iface);
     const {
@@ -108,7 +102,8 @@ const AlignSingle = () => {
 
     const station = assocList && getStation(assocList, mac);
     const fromRadio = ifaceToRadioNumber(iface);
-    const toRadio = bathost.iface && ifaceToRadioNumber(bathost.iface);
+    const toRadio =
+        bathost && bathost.iface && ifaceToRadioNumber(bathost.iface);
 
     return (
         <div className="d-flex flex-grow-1 flex-column container-padded">
@@ -127,7 +122,9 @@ const AlignSingle = () => {
                 <div>
                     <Trans>With radio {fromRadio} alignin with</Trans>
                 </div>
-                <div className={style.hostname}>{bathost.hostname}</div>
+                <div className={style.hostname}>
+                    {bathost && bathost.hostname}
+                </div>
                 {toRadio && (
                     <div>
                         <Trans>On its radio {toRadio}</Trans>

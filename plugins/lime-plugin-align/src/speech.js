@@ -3,6 +3,11 @@ const synth = window.speechSynthesis;
 // Function to get voices with retry logic
 const getVoices = () => {
     return new Promise((resolve) => {
+        if (!synth) {
+            resolve([]);
+            return;
+        }
+
         let voices = synth.getVoices();
         if (voices.length > 0) {
             resolve(voices);
@@ -59,7 +64,16 @@ export const speech = async (text, lang) => {
 
         // Cancel any ongoing speech and speak new text
         synth.cancel();
-        synth.speak(utterThis);
+
+        // Return a Promise that resolves when speech finishes
+        return new Promise((resolve) => {
+            utterThis.onend = () => resolve();
+            utterThis.onerror = (error) => {
+                console.warn("Speech utterance error:", error);
+                resolve(); // Resolve anyway to not break the interval
+            };
+            synth.speak(utterThis);
+        });
     } catch (error) {
         console.warn("Speech synthesis error:", error);
     }

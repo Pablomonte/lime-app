@@ -1,4 +1,4 @@
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 
 /**
  * Custom hook to toggle a boolean state
@@ -18,16 +18,28 @@ export const useToggle = (initialValue = false) => {
  * Custom hook for intervals
  * Replaces react-use's useInterval to reduce bundle size
  *
+ * Uses useRef to persist callback reference, preventing interval
+ * from being recreated on every render.
+ *
  * @param {function} callback - Function to call on interval
  * @param {number|null} delay - Delay in milliseconds (null to pause)
  */
 export const useInterval = (callback, delay) => {
+    /** @type {{ current: Function }} */
+    const savedCallback = useRef(callback);
+
+    // Remember the latest callback
+    useEffect(() => {
+        savedCallback.current = callback;
+    }, [callback]);
+
+    // Set up the interval
     useEffect(() => {
         if (delay === null || delay === undefined) {
             return;
         }
 
-        const id = setInterval(callback, delay);
+        const id = setInterval(() => savedCallback.current(), delay);
         return () => clearInterval(id);
-    }, [callback, delay]);
+    }, [delay]);
 };
