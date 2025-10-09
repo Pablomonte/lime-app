@@ -148,6 +148,10 @@ msgstr "An unexpected error occurred."
 msgid "An unexpected error occurred. Please try refreshing the page."
 msgstr "An unexpected error occurred. Please try refreshing the page."
 
+#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:75
+msgid "Apply"
+msgstr "Apply"
+
 #: plugins/lime-plugin-mesh-wide-config/src/components/modals.tsx:184
 msgid "Apply configuration on all of them with a scheduled safe reboot?"
 msgstr "Apply configuration on all of them with a scheduled safe reboot?"
@@ -421,6 +425,14 @@ msgstr "Configuration applied successfully. You can reconfigure the mesh again."
 msgid "Configuration applied!<0/>Awaiting confirmation"
 msgstr "Configuration applied!<0/>Awaiting confirmation"
 
+#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:191
+msgid "Configure port"
+msgstr "Configure port"
+
+#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:74
+msgid "Configure port {device}"
+msgstr "Configure port {device}"
+
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:83
 msgid "Configure your new community network"
 msgstr ""
@@ -561,7 +573,7 @@ msgstr "Delete"
 msgid "Delete property"
 msgstr "Delete property"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:228
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:239
 msgid "Delete this this node from reference state"
 msgstr "Delete this this node from reference state"
 
@@ -586,7 +598,7 @@ msgstr "Description"
 msgid "Description: {name}"
 msgstr "Description: {name}"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:118
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:129
 #: plugins/lime-plugin-rx/src/sections/system.tsx:48
 msgid "Device"
 msgstr ""
@@ -698,6 +710,10 @@ msgstr ""
 msgid "Error clearing reference state!"
 msgstr "Error clearing reference state!"
 
+#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:134
+msgid "Error configuring port: {0}"
+msgstr "Error configuring port: {0}"
+
 #: plugins/lime-plugin-firmware/src/confirmPage/confirmPage.js:24
 msgid "Error confirming upgrade: {0}"
 msgstr "Error confirming upgrade: {0}"
@@ -769,7 +785,7 @@ msgid "Error setting network"
 msgstr "Error setting network"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:387
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:217
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:228
 msgid "Error setting new reference state!"
 msgstr "Error setting new reference state!"
 
@@ -887,11 +903,11 @@ msgstr ""
 msgid "I don't know the shared password"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:114
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:125
 msgid "IPv4"
 msgstr "IPv4"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:115
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:126
 msgid "IPv6"
 msgstr "IPv6"
 
@@ -916,7 +932,7 @@ msgstr "If your community network has local services, you can point a link to th
 msgid "Iface"
 msgstr "Iface"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:244
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:255
 msgid "In the reference state this node is on"
 msgstr "In the reference state this node is on"
 
@@ -1033,11 +1049,11 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:123
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:134
 msgid "Macs ({0})"
 msgstr "Macs ({0})"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:135
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:146
 msgid "Macs not found ({0})"
 msgstr "Macs not found ({0})"
 
@@ -1131,7 +1147,7 @@ msgstr "Need support?"
 msgid "Network Name: {ssid}"
 msgstr "Network Name: {ssid}"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:155
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:166
 msgid "New Macs ({0})"
 msgstr "New Macs ({0})"
 
@@ -1156,7 +1172,7 @@ msgid "New link"
 msgstr "New link"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:383
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:212
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:223
 msgid "New reference state set!"
 msgstr "New reference state set!"
 
@@ -1227,6 +1243,10 @@ msgstr ""
 #: plugins/lime-plugin-mesh-wide-upgrade/src/containers/meshWideUpgradeStatus.tsx:53
 msgid "Node is upgrading"
 msgstr "Node is upgrading"
+
+#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:122
+msgid "Node password"
+msgstr "Node password"
 
 #: plugins/lime-plugin-node-admin/src/screens/hotspot/src/components/testBoxes.js:71
 #: plugins/lime-plugin-node-admin/src/screens/hotspot/src/components/testBoxes.js:99
@@ -1402,7 +1422,7 @@ msgid "Reference State is not set"
 msgstr "Reference State is not set"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:419
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:242
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:253
 msgid "Reference is not set or has errors"
 msgstr "Reference is not set or has errors"
 
@@ -1472,7 +1492,7 @@ msgid "RxRate"
 msgstr "RxRate"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:412
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:240
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:251
 msgid "Same status as in the reference state"
 msgstr "Same status as in the reference state"
 
@@ -1565,6 +1585,14 @@ msgstr ""
 msgid "Select new node"
 msgstr ""
 
+#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:81
+msgid "Select the role for this ethernet port. Network will restart after applying changes."
+msgstr "Select the role for this ethernet port. Network will restart after applying changes."
+
+#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:73
+#~ msgid "Select the role for this ethernet port:"
+#~ msgstr "Select the role for this ethernet port:"
+
 #: plugins/lime-plugin-fbw/src/containers/scanPage/SelectForm.js:75
 msgid "Selected network to join"
 msgstr "Selected network to join"
@@ -1595,7 +1623,7 @@ msgstr "Service unavailable"
 msgid "Set network"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:226
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:237
 msgid "Set reference state for this node"
 msgstr "Set reference state for this node"
 
@@ -1829,7 +1857,7 @@ msgstr "The hotspot couldn’t be found, please review the instructions above."
 msgid "The name should have at least 3 characters"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:99
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:105
 msgid "The node is down"
 msgstr "The node is down"
 
@@ -1953,11 +1981,11 @@ msgstr "This link seems down"
 msgid "This link seems down, remove them from the reference state?"
 msgstr "This link seems down, remove them from the reference state?"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:140
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:151
 msgid "This macs are not on the actual state"
 msgstr "This macs are not on the actual state"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:158
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:169
 msgid "This macs are not on the reference state"
 msgstr "This macs are not on the reference state"
 
@@ -1994,7 +2022,7 @@ msgstr "This node is awaiting to apply the configuration"
 msgid "This node is downloading a new firmware"
 msgstr "This node is downloading a new firmware"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:247
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:258
 msgid "This node is not registered on the reference state"
 msgstr "This node is not registered on the reference state"
 
@@ -2006,7 +2034,7 @@ msgstr "This node is sending new configuration to others"
 msgid "This node is the gateway"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:54
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:60
 msgid "This node seems down"
 msgstr "This node seems down"
 
@@ -2046,8 +2074,8 @@ msgstr "This will the abort current upgrade process on all nodes. Are you sure y
 msgid "This your last working path to the Internet"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:94
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:98
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:100
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:104
 msgid "Tiempo en actividad"
 msgstr "Tiempo en actividad"
 
@@ -2146,7 +2174,7 @@ msgstr "Use vouchers for access"
 msgid "Value"
 msgstr "Value"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:102
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:108
 msgid "Versión de sistema"
 msgstr "Versión de sistema"
 
@@ -2213,7 +2241,7 @@ msgstr "Wifi Links Reference"
 msgid "Wifi Password"
 msgstr ""
 
-#: plugins/lime-plugin-rx/src/sections/wired.tsx:62
+#: plugins/lime-plugin-rx/src/sections/wired.tsx:70
 msgid "Wired connections"
 msgstr "Wired connections"
 
