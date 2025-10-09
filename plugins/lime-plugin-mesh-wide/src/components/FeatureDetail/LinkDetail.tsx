@@ -232,7 +232,7 @@ const SelectedLink = ({
     );
 };
 
-const LinkFeatureDetail = ({ linkToShow, actual }: LinkMapFeature) => {
+const LinkFeatureDetail = ({ linkToShow, actual, reference }: LinkMapFeature) => {
     // const linkToShow = reference ?? actual;
     const [selectedLink, setSelectedLink] = useState(0);
     const { errors } = usePointToPointErrors({
@@ -260,7 +260,27 @@ const LinkFeatureDetail = ({ linkToShow, actual }: LinkMapFeature) => {
         }, {});
     }, [meshWideNodesReference, meshWideNodesActual, linkToShow.nodes]);
 
-    const tabs = linkToShow.links.map(
+    // Merge links from both actual and reference states to show all unique links
+    // This ensures we display new links not in reference, and old links not in actual
+    const allLinks = useMemo(() => {
+        const linkMap = new Map<string, MacToMacLink<typeof linkType>>();
+
+        // Add all actual links
+        actual?.links?.forEach((link) => {
+            linkMap.set(link.id, link);
+        });
+
+        // Add all reference links (won't override actual if same ID)
+        reference?.links?.forEach((link) => {
+            if (!linkMap.has(link.id)) {
+                linkMap.set(link.id, link);
+            }
+        });
+
+        return Array.from(linkMap.values());
+    }, [actual?.links, reference?.links]);
+
+    const tabs = allLinks.map(
         (link: MacToMacLink<typeof linkType>, i) => {
             return {
                 key: i,
@@ -302,9 +322,9 @@ const LinkFeatureDetail = ({ linkToShow, actual }: LinkMapFeature) => {
             )}
             {selectedLink !== null && (
                 <SelectedLink
-                    linkDetail={actual?.links[selectedLink]}
+                    linkDetail={allLinks[selectedLink]}
                     errors={
-                        errors?.macToMacErrors[actual?.links[selectedLink]?.id]
+                        errors?.macToMacErrors[allLinks[selectedLink]?.id]
                     }
                 />
             )}

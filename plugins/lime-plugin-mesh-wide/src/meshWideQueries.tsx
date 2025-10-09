@@ -152,11 +152,21 @@ export const useSetNodeInfoReferenceState = ({
     const { data } = useMeshWideNodes({});
     const { show } = useErrrorConnectionToast();
 
-    // Ignore the types here because it to delete a node you have to pass an empty object
+    // Following the same pattern as link deletion in useSetLinkReferenceState:
+    // - When isDown is true: send { [hostname]: {} } to clear the reference state for this node
+    // - When isDown is false: send { [hostname]: data[hostname] } to set/update the reference
+    // We must always include the hostname key in the object, otherwise backend ignores it
+    let nodeData = {};
+    if (isDown) {
+        // Send empty object for this node to clear its reference state
+        nodeData = { [hostname]: {} };
+    } else if (data && data[hostname]) {
+        // Send current node data to set/update reference state
+        nodeData = { [hostname]: data[hostname] };
+    }
+
     // @ts-ignore
-    const queryKey = sharedStateQueries.insertIntoReferenceState(type, {
-        [hostname]: isDown ? null : data[hostname],
-    });
+    const queryKey = sharedStateQueries.insertIntoReferenceState(type, nodeData);
     return useMutation(
         queryKey,
         () => doSharedStateApiCall<typeof type>(queryKey, ip),
