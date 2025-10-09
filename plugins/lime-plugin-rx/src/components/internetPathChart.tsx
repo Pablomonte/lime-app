@@ -200,11 +200,13 @@ function LineChart({ nodes, internet }: Props) {
                     text={node.hostname || node.ip}
                 />
             ))}
-            <InternetLastHop
-                index={nodes.length}
-                ip={nodes[nodes.length - 1].ip}
-                internet={internet}
-            />
+            {nodes.length > 0 && (
+                <InternetLastHop
+                    index={nodes.length}
+                    ip={nodes[nodes.length - 1].ip}
+                    internet={internet}
+                />
+            )}
         </svg>
     );
 }

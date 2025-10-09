@@ -53,3 +53,12 @@ export interface IGetInternetStatus {
     IPv4: { working: boolean };
     status: string;
 }
+
+export type EthRole = "wan" | "lan" | "mesh" | "default";
+
+export interface ISetEthConfigParams {
+    device: string;
+    role: EthRole;
+    password: string;
+    ip?: string;
+}

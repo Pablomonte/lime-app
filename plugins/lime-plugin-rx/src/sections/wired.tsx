@@ -1,5 +1,6 @@
 import { Trans } from "@lingui/macro";
 
+import { EthConfigButton } from "plugins/lime-plugin-rx/src/components/EthConfigButton";
 import {
     IconsClassName,
     Section,
@@ -25,9 +26,16 @@ const Ports = ({ switches }: { switches: SwitchStatus[] }) => {
         >
             {Object.keys(ports).map((role) => {
                 if (role.toLowerCase() === "cpu") return null;
+                if (!ports[role] || !ports[role][0]) return null;
                 return (
                     <div key={role} className={"flex flex-col h-fit"}>
-                        <h2 className={"font-bold"}>{role.toUpperCase()}</h2>
+                        <div className={"flex items-center gap-2 mb-1"}>
+                            <h2 className={"font-bold"}>{role.toUpperCase()}</h2>
+                            <EthConfigButton
+                                device={ports[role][0].device}
+                                currentRole={role}
+                            />
+                        </div>
                         <h2>{ports[role][0].device.toLowerCase()}</h2>
                         <div className={"flex flex-row gap-5 "}>
                             {ports[role].map((port) => {
