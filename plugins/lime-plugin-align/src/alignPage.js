@@ -146,7 +146,7 @@ export const AssocList = ({ iface }) => {
 export const Align = ({}) => {
     const [tabs, setTabs] = useState([]);
     const [selectedIface, setSelectedIface] = useState(null);
-    const { data: ifaces, isLoading } = useMeshIfaces();
+    const { data: ifaces, isLoading, isError, error } = useMeshIfaces();
 
     useEffect(() => {
         if (!ifaces) return;
@@ -171,10 +171,23 @@ export const Align = ({}) => {
         );
     }
 
+    if (isError) {
+        return (
+            <div className="container container-center">
+                <Trans>Error loading mesh interfaces</Trans>
+                {process.env.NODE_ENV === "development" && error && (
+                    <div className="text-sm text-danger mt-2">
+                        {error?.toString()}
+                    </div>
+                )}
+            </div>
+        );
+    }
+
     if (!ifaces || ifaces.length === 0) {
         return (
             <div className="container container-center">
-                <Trans>The are not mesh interfaces available</Trans>
+                <Trans>There are no mesh interfaces available</Trans>
             </div>
         );
     }
