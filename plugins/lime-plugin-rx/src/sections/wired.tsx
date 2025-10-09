@@ -1,13 +1,11 @@
 import { Trans } from "@lingui/macro";
 
+import { GlobeIcon } from "components/icons/globeIcon";
+
 import { EthConfigButton } from "plugins/lime-plugin-rx/src/components/EthConfigButton";
-import {
-    IconsClassName,
-    Section,
-    SectionTitle,
-} from "plugins/lime-plugin-rx/src/components/components";
+import { IconsClassName } from "plugins/lime-plugin-rx/src/components/components";
 import { PortsIcon } from "plugins/lime-plugin-rx/src/icons/portsIcon";
-import { useEthConfig } from "plugins/lime-plugin-rx/src/rxQueries";
+import { useEthConfig, useNodeStatus } from "plugins/lime-plugin-rx/src/rxQueries";
 import { SwitchStatus } from "plugins/lime-plugin-rx/src/rxTypes";
 
 const Ports = ({ switches }: { switches: SwitchStatus[] }) => {
@@ -28,7 +26,7 @@ const Ports = ({ switches }: { switches: SwitchStatus[] }) => {
 
     return (
         <div
-            className={"flex flex-wrap px-10 gap-4 justify-between"}
+            className={"flex flex-wrap gap-8 justify-around px-4"}
             data-testid="ports-container"
         >
             {Object.keys(portsByDevice).map((device) => {
@@ -44,9 +42,9 @@ const Ports = ({ switches }: { switches: SwitchStatus[] }) => {
                         : firstPort.role;
 
                 return (
-                    <div key={device} className={"flex flex-col h-fit"}>
+                    <div key={device} className={"flex flex-col items-center"}>
                         <div className={"flex items-center gap-2 mb-1"}>
-                            <h2 className={"font-bold"}>
+                            <h2 className={"font-bold text-2xl"}>
                                 {displayRole.toUpperCase()}
                             </h2>
                             <EthConfigButton
@@ -54,8 +52,10 @@ const Ports = ({ switches }: { switches: SwitchStatus[] }) => {
                                 currentRole={displayRole}
                             />
                         </div>
-                        <h2>{device.toLowerCase()}</h2>
-                        <div className={"flex flex-row gap-5 "}>
+                        <h2 className={"text-lg mb-2"}>
+                            {device.toLowerCase()}
+                        </h2>
+                        <div className={"flex flex-row gap-3"}>
                             {portsForDevice.map((p: SwitchStatus) => {
                                 const link =
                                     p.link?.toLowerCase() === "up"
@@ -64,7 +64,7 @@ const Ports = ({ switches }: { switches: SwitchStatus[] }) => {
                                 return (
                                     <div key={`${device}-${p.num}`}>
                                         <PortsIcon
-                                            className={`h-7 w-7 ${link}`}
+                                            className={`h-8 w-8 ${link}`}
                                         />
                                     </div>
                                 );
@@ -77,27 +77,75 @@ const Ports = ({ switches }: { switches: SwitchStatus[] }) => {
     );
 };
 
-export const Wired = () => {
-    const { data: ethConfig, isLoading } = useEthConfig();
-
-    const interfaces = ethConfig?.interfaces;
+const IpAddresses = () => {
+    const { data: status } = useNodeStatus();
+    const ips = status?.ips || [];
 
     return (
-        <Section>
-            <SectionTitle icon={<PortsIcon className={IconsClassName} />}>
-                <Trans>Wired connections</Trans>
-            </SectionTitle>
-            <div className={"mt-4"}>
-                {isLoading ? (
-                    <span>Loading...</span>
-                ) : interfaces?.length ? (
-                    <Ports switches={interfaces} />
-                ) : (
-                    <div className={"flex-1 flex justify-center"}>
-                        No wired connections found
-                    </div>
-                )}
+        <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-x-4 mb-2">
+                <span className={"text-primary-dark stroke-current"}>
+                    <GlobeIcon className={IconsClassName} />
+                </span>
+                <h1 className="text-4xl font-bold">
+                    <Trans>IP Addresses</Trans>
+                </h1>
             </div>
-        </Section>
+            {ips.length > 0 ? (
+                ips.map((ip, index) => (
+                    <div key={index} className="flex flex-row gap-2 items-baseline">
+                        <div className="font-bold text-2xl whitespace-nowrap">
+                            IPv{ip.version}:
+                        </div>
+                        <div className="text-xl text-gray-700 break-all">
+                            {ip.address}
+                        </div>
+                    </div>
+                ))
+            ) : (
+                <div className="text-gray-500 text-xl">No IP addresses</div>
+            )}
+        </div>
+    );
+};
+
+export const Wired = () => {
+    const { data: ethConfig, isLoading: ethLoading } = useEthConfig();
+    const { isLoading: statusLoading } = useNodeStatus();
+
+    const interfaces = ethConfig?.interfaces;
+    const isLoading = ethLoading || statusLoading;
+
+    return (
+        <div className={"w-full border border-primary-dark rounded-md mx-4 mb-6"}>
+            {isLoading ? (
+                <div className="flex justify-center text-gray-500 py-8">
+                    Loading...
+                </div>
+            ) : (
+                <div className="flex flex-row items-start gap-3 pt-6 pb-4 px-6">
+                    <div className="flex-1 flex flex-col">
+                        <div className="flex items-center gap-x-4 mb-4">
+                            <span className={"text-primary-dark fill-current"}>
+                                <PortsIcon className={IconsClassName} />
+                            </span>
+                            <h1 className="text-4xl font-bold">
+                                <Trans>Wired connections</Trans>
+                            </h1>
+                        </div>
+                        {interfaces?.length ? (
+                            <Ports switches={interfaces} />
+                        ) : (
+                            <div className={"flex justify-center text-gray-500 text-xl"}>
+                                No wired connections
+                            </div>
+                        )}
+                    </div>
+                    <div className="flex-1 flex flex-col">
+                        <IpAddresses />
+                    </div>
+                </div>
+            )}
+        </div>
     );
 };

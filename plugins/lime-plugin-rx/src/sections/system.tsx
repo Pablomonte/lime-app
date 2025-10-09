@@ -49,19 +49,17 @@ const SystemInfo = () => {
         { label: t`Firmware`, value: boardData.release.description },
     ];
     return (
-        <div className="flex justify-start px-10">
-            <div className="grid grid-cols-4 gap-4">
-                {attributes.map((attribute, i) => (
-                    <Fragment key={i}>
-                        <div className="col-span-1 text-left pr-4 font-bold">
-                            {attribute.label}:
-                        </div>
-                        <div className="col-span-3 text-left">
-                            {attribute.value}
-                        </div>
-                    </Fragment>
-                ))}
-            </div>
+        <div className="flex flex-wrap gap-6 justify-around px-6">
+            {attributes.map((attribute, i) => (
+                <div key={i} className="flex flex-col items-center text-center min-w-[150px]">
+                    <div className="font-bold text-2xl mb-2">
+                        {attribute.label}
+                    </div>
+                    <div className="text-xl text-gray-700">
+                        {attribute.value}
+                    </div>
+                </div>
+            ))}
         </div>
     );
 };
@@ -73,12 +71,18 @@ export const System = () => {
     const isLoading = isLoadingBoardData || isLoadingNodeStatus;
 
     return (
-        <Section>
+        <Section className={"border border-primary-dark rounded-md mx-4 mb-6"}>
             <SectionTitle icon={<GearIcon className={IconsClassName} />}>
                 <Trans>System</Trans>
             </SectionTitle>
-            <div className={"mt-4"}>
-                {isLoading ? <span>Loading...</span> : <SystemInfo />}
+            <div className={"mt-4 pb-4"}>
+                {isLoading ? (
+                    <div className="flex justify-center text-gray-500">
+                        Loading...
+                    </div>
+                ) : (
+                    <SystemInfo />
+                )}
             </div>
         </Section>
     );

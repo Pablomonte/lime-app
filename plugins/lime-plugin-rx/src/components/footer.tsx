@@ -5,16 +5,16 @@ export const Footer = () => {
     return (
         <div
             className={
-                "w-full flex justify-around content-center items-center mt-8 py-4 bg-white"
+                "w-full flex content-center items-center mt-8 py-4 bg-white gap-3"
             }
         >
-            <div>
+            <div className="flex-1 flex justify-center">
                 <img
                     src={"assets/icons/AlterMundiLogo.svg"}
                     className={imgClass}
                 />
             </div>
-            <div className={"flex flex-col text-center text-xl"}>
+            <div className={"flex-1 flex flex-col text-center text-xl"}>
                 <div className={"italic font-normal text-2xl"}>
                     <Trans>Need support?</Trans>
                 </div>
@@ -41,7 +41,7 @@ export const Footer = () => {
                     </Trans>
                 </div>
             </div>
-            <div>
+            <div className="flex-1 flex justify-center">
                 <img
                     src={"assets/icons/LibreRouterLogo.svg"}
                     className={imgClass}
