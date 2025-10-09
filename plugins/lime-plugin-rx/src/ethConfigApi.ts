@@ -31,36 +31,24 @@ export const setEthConfig = async ({
             hostname === "";
 
         if (isLocalDev) {
-            // Development: use the IP configured in .env (NODE_HOST)
-            // Update this to match your router's IP
-            targetIp = "10.214.39.194";
+            // Development: use the host configured in .env (NODE_HOST)
+            // Injected via webpack.DefinePlugin in preact.config.js
+            targetIp = process.env.NODE_HOST || "cambia7c2";
         } else {
             // Production: use the actual hostname we're accessing
             targetIp = hostname;
         }
     }
 
-    console.log("setEthConfig - Target IP:", targetIp);
-    console.log(
-        "setEthConfig - Username: root, Password:",
-        password ? "***" : "empty"
-    );
-
-    try {
-        const result = await callToRemoteNode({
-            ip: targetIp,
-            apiCall: (customApi) =>
-                customApi.call("lime-eth-config", "set_eth_config", {
-                    device,
-                    role,
-                }),
-            username: "root",
-            password,
-        });
-        console.log("setEthConfig - Success:", result);
-        return result;
-    } catch (error) {
-        console.error("setEthConfig - Error:", error);
-        throw error;
-    }
+    const result = await callToRemoteNode({
+        ip: targetIp,
+        apiCall: (customApi) =>
+            customApi.call("lime-eth-config", "set_eth_config", {
+                device,
+                role,
+            }),
+        username: "root",
+        password,
+    });
+    return result;
 };

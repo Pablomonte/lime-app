@@ -8,6 +8,7 @@ export interface SwitchStatus {
     num: number;
     role: string;
     link: string;
+    eth_role?: string;
 }
 
 interface MostActive {
@@ -61,4 +62,9 @@ export interface ISetEthConfigParams {
     role: EthRole;
     password: string;
     ip?: string;
+}
+
+export interface IGetEthConfigResponse {
+    status: string;
+    interfaces: SwitchStatus[];
 }

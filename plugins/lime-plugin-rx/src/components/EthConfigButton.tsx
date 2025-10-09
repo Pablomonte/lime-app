@@ -1,14 +1,12 @@
 import { Trans } from "@lingui/macro";
 import { useState } from "preact/hooks";
+import { route } from "preact-router";
 
 import { Modal, ModalProps } from "components/Modal/Modal";
 import { useDisclosure } from "components/Modal/useDisclosure";
 import { Button } from "components/buttons/button";
-import { ErrorMsg } from "components/form";
-import Loading from "components/loading";
 
 import { GearIcon } from "plugins/lime-plugin-rx/src/icons/gearIcon";
-import { useSetEthConfig } from "plugins/lime-plugin-rx/src/rxQueries";
 import { EthRole } from "plugins/lime-plugin-rx/src/rxTypes";
 
 interface EthConfigModalProps extends Pick<ModalProps, "isOpen" | "onClose"> {
@@ -25,8 +23,6 @@ const EthConfigModal = ({
     const [selectedRole, setSelectedRole] = useState<EthRole>(
         currentRole.toLowerCase() as EthRole
     );
-    const [password, setPassword] = useState("");
-    const { mutateAsync, isLoading, error } = useSetEthConfig();
 
     const roles: { value: EthRole; label: string; description: string }[] = [
         {
@@ -51,20 +47,14 @@ const EthConfigModal = ({
         },
     ];
 
-    const handleSubmit = async () => {
-        try {
-            await mutateAsync({ device, role: selectedRole, password });
-            // Close modal only after successful mutation and refetch
-            onClose();
-        } catch (err) {
-            // Error is already captured by React Query and shown in UI
-            console.error("Failed to set ethernet config:", err);
-        }
+    const handleSubmit = () => {
+        // Close modal and redirect to progress page
+        // Password will be requested in the progress page
+        onClose();
+        route(
+            `/rx/configuring?device=${encodeURIComponent(device)}&role=${encodeURIComponent(selectedRole)}`
+        );
     };
-
-    function changePassword(e) {
-        setPassword(e.target.value || "");
-    }
 
     return (
         <Modal
@@ -76,68 +66,43 @@ const EthConfigModal = ({
             cancelBtn={true}
         >
             <div>
-                {!isLoading && (
-                    <div className={"mb-4"}>
-                        <Trans>
-                            Select the role for this ethernet port. Network will
-                            restart after applying changes.
-                        </Trans>
-                    </div>
-                )}
-                {isLoading && <Loading />}
-                {!isLoading && (
-                    <div className={"mt-4"}>
-                        {roles.map((role) => (
-                            <label
-                                key={role.value}
-                                className={
-                                    "flex items-center gap-3 p-3 mb-2 border rounded cursor-pointer hover:bg-gray-100"
-                                }
-                            >
-                                <input
-                                    type="radio"
-                                    name="role"
-                                    value={role.value}
-                                    checked={selectedRole === role.value}
-                                    onChange={(e) =>
-                                        setSelectedRole(
-                                            (e.target as HTMLInputElement)
-                                                .value as EthRole
-                                        )
-                                    }
-                                    className={"w-4 h-4"}
-                                />
-                                <div>
-                                    <div className={"font-bold"}>
-                                        {role.label}
-                                    </div>
-                                    <div className={"text-sm text-gray-600"}>
-                                        {role.description}
-                                    </div>
-                                </div>
-                            </label>
-                        ))}
-                        <div className={"mt-4"}>
-                            <label htmlFor={"password"}>
-                                <Trans>Node password</Trans>
-                            </label>
+                <div className={"mb-4"}>
+                    <Trans>
+                        Select the role for this ethernet port.
+                    </Trans>
+                </div>
+                <div className={"mt-4"}>
+                    {roles.map((role) => (
+                        <label
+                            key={role.value}
+                            className={
+                                "flex items-center gap-3 p-3 mb-2 border rounded cursor-pointer hover:bg-gray-100"
+                            }
+                        >
                             <input
-                                type="password"
-                                id={"password"}
-                                value={password}
-                                onInput={changePassword}
-                                placeholder="10caracteres"
+                                type="radio"
+                                name="role"
+                                value={role.value}
+                                checked={selectedRole === role.value}
+                                onChange={(e) =>
+                                    setSelectedRole(
+                                        (e.target as HTMLInputElement)
+                                            .value as EthRole
+                                    )
+                                }
+                                className={"w-4 h-4"}
                             />
-                        </div>
-                        {error && (
-                            <ErrorMsg>
-                                <Trans>
-                                    Error configuring port: {String(error)}
-                                </Trans>
-                            </ErrorMsg>
-                        )}
-                    </div>
-                )}
+                            <div>
+                                <div className={"font-bold"}>
+                                    {role.label}
+                                </div>
+                                <div className={"text-sm text-gray-600"}>
+                                    {role.description}
+                                </div>
+                            </div>
+                        </label>
+                    ))}
+                </div>
             </div>
         </Modal>
     );

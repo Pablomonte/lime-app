@@ -1,4 +1,5 @@
 import {
+    IGetEthConfigResponse,
     IGetInternetStatus,
     StatusResponse,
 } from "plugins/lime-plugin-rx/src/rxTypes";
@@ -10,3 +11,6 @@ export const getNodeStatus = (): Promise<StatusResponse> =>
 
 export const getInternetStatus = (): Promise<IGetInternetStatus> =>
     api.call("lime-metrics", "get_internet_status", {});
+
+export const getEthConfig = (): Promise<IGetEthConfigResponse> =>
+    api.call("lime-eth-config", "get_eth_config", {});

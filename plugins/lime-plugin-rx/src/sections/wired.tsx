@@ -7,44 +7,62 @@ import {
     SectionTitle,
 } from "plugins/lime-plugin-rx/src/components/components";
 import { PortsIcon } from "plugins/lime-plugin-rx/src/icons/portsIcon";
-import { useNodeStatus } from "plugins/lime-plugin-rx/src/rxQueries";
+import { useEthConfig } from "plugins/lime-plugin-rx/src/rxQueries";
 import { SwitchStatus } from "plugins/lime-plugin-rx/src/rxTypes";
 
 const Ports = ({ switches }: { switches: SwitchStatus[] }) => {
-    const ports = switches.reduce((acc, obj) => {
-        const { role } = obj;
-        if (!acc[role]) {
-            acc[role] = [];
+    // Filter out CPU entries first
+    const nonCpuSwitches = switches.filter(
+        (sw) => sw.role.toLowerCase() !== "cpu"
+    );
+
+    // Group by device
+    const portsByDevice = nonCpuSwitches.reduce((acc, obj) => {
+        const { device } = obj;
+        if (!acc[device]) {
+            acc[device] = [];
         }
-        acc[role].push(obj);
+        acc[device].push(obj);
         return acc;
-    }, {});
+    }, {} as Record<string, SwitchStatus[]>);
+
     return (
         <div
             className={"flex flex-wrap px-10 gap-4 justify-between"}
             data-testid="ports-container"
         >
-            {Object.keys(ports).map((role) => {
-                if (role.toLowerCase() === "cpu") return null;
-                if (!ports[role] || !ports[role][0]) return null;
+            {Object.keys(portsByDevice).map((device) => {
+                const portsForDevice = portsByDevice[device];
+                if (!portsForDevice || !portsForDevice[0]) return null;
+
+                const firstPort = portsForDevice[0];
+
+                // Show eth_role if it's customized (not "default"), otherwise show current role
+                const displayRole =
+                    firstPort.eth_role && firstPort.eth_role !== "default"
+                        ? firstPort.eth_role
+                        : firstPort.role;
+
                 return (
-                    <div key={role} className={"flex flex-col h-fit"}>
+                    <div key={device} className={"flex flex-col h-fit"}>
                         <div className={"flex items-center gap-2 mb-1"}>
-                            <h2 className={"font-bold"}>{role.toUpperCase()}</h2>
+                            <h2 className={"font-bold"}>
+                                {displayRole.toUpperCase()}
+                            </h2>
                             <EthConfigButton
-                                device={ports[role][0].device}
-                                currentRole={role}
+                                device={device}
+                                currentRole={displayRole}
                             />
                         </div>
-                        <h2>{ports[role][0].device.toLowerCase()}</h2>
+                        <h2>{device.toLowerCase()}</h2>
                         <div className={"flex flex-row gap-5 "}>
-                            {ports[role].map((port) => {
+                            {portsForDevice.map((p: SwitchStatus) => {
                                 const link =
-                                    port.link?.toLowerCase() === "up"
+                                    p.link?.toLowerCase() === "up"
                                         ? "fill-primary-dark"
                                         : "fill-disabled";
                                 return (
-                                    <div key={`${role}-${port.num}`}>
+                                    <div key={`${device}-${p.num}`}>
                                         <PortsIcon
                                             className={`h-7 w-7 ${link}`}
                                         />
@@ -60,9 +78,9 @@ const Ports = ({ switches }: { switches: SwitchStatus[] }) => {
 };
 
 export const Wired = () => {
-    const { data: status, isLoading } = useNodeStatus();
+    const { data: ethConfig, isLoading } = useEthConfig();
 
-    const switches = status?.switch_status;
+    const interfaces = ethConfig?.interfaces;
 
     return (
         <Section>
@@ -72,8 +90,8 @@ export const Wired = () => {
             <div className={"mt-4"}>
                 {isLoading ? (
                     <span>Loading...</span>
-                ) : switches?.length ? (
-                    <Ports switches={status?.switch_status || []} />
+                ) : interfaces?.length ? (
+                    <Ports switches={interfaces} />
                 ) : (
                     <div className={"flex-1 flex justify-center"}>
                         No wired connections found

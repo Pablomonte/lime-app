@@ -1,5 +1,6 @@
 import * as dotenv from "dotenv";
 import * as path from "path";
+import webpack from "webpack";
 
 dotenv.config();
 
@@ -77,6 +78,14 @@ export default function (config, env, helpers) {
     }
 
     const host = process.env.NODE_HOST || "10.13.0.1";
+
+    // Inject NODE_HOST as environment variable available in runtime code
+    config.plugins.push(
+        new webpack.DefinePlugin({
+            "process.env.NODE_HOST": JSON.stringify(host),
+        })
+    );
+
     config.devServer = {
         ...config.devServer,
         historyApiFallback: {
