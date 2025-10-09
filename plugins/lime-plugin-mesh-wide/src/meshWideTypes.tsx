@@ -63,6 +63,7 @@ export type IBatManLinkData = {
 
 export type IBabelLinkData = {
     src_ip: string;
+    dst_ip: string;
     iface: string;
 };
 
@@ -78,7 +79,7 @@ export interface ILinks<T extends LinkType> {
 
 export type IWifiLinks = ILinks<"wifi_links_info">;
 export type IBatmanLinks = ILinks<"bat_links_info">;
-export type IBabelLinks = ILinks<"bat_links_info">;
+export type IBabelLinks = ILinks<"babel_links_info">;
 
 export type Coordinates = {
     lat: string;

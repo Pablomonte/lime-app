@@ -61,6 +61,7 @@ export const mergeLinksAndCoordinates = <T extends LinkType>(
                 }
 
                 let destLoc = linkData?.dst_loc;
+
                 // If destination coords are undefined, try to find it on other ways.
                 if (!destLoc) {
                     if (
@@ -70,18 +71,59 @@ export const mergeLinksAndCoordinates = <T extends LinkType>(
                     ) {
                         // If we have destination link info, try to find the src_loc
                         destLoc = links[Object.keys(dest)[0]].src_loc;
-                    } else {
-                        // Find the destination MAC between existing located nodes to get the position
-                        const dstNode = Object.values(nodes).find((node) => {
-                            return node.macs.find((mac) => {
-                                return (
-                                    mac.toLowerCase() ===
-                                    linkData?.dst_mac?.toLowerCase()
+                    }
+
+                    // If destLoc still not found, try to find by MAC or IP
+                    if (!destLoc && nodes) {
+                        if (linkData?.dst_mac) {
+                            // Find the destination MAC between existing located nodes to get the position
+                            // For WiFi/Batman links
+                            const dstNode = Object.values(nodes).find(
+                                (node) => {
+                                    return node.macs.find((mac) => {
+                                        return (
+                                            mac.toLowerCase() ===
+                                            linkData.dst_mac.toLowerCase()
+                                        );
+                                    });
+                                }
+                            );
+                            if (dstNode) {
+                                destLoc = dstNode.coordinates;
+                            }
+                        } else if (type === "babel_links_info") {
+                            // For Babel links: dst_ip may be corrupted (numeric index instead of IP)
+                            // due to backend bug. Try to find dest by checking all other nodes.
+                            // Since Babel linkKeys don't match bidirectionally, we look for any
+                            // other node that has src_loc
+                            const otherNodes = Object.keys(links).filter(
+                                (nodeName) => nodeName !== actualNodeName
+                            );
+
+                            // If there's only one other node, use it as destination
+                            if (
+                                otherNodes.length === 1 &&
+                                links[otherNodes[0]]?.src_loc
+                            ) {
+                                destLoc = links[otherNodes[0]].src_loc;
+                            } else if (
+                                "dst_ip" in linkData &&
+                                typeof linkData.dst_ip === "string" &&
+                                linkData.dst_ip.includes(":")
+                            ) {
+                                // Multiple nodes: try to find by IP if dst_ip is valid
+                                const dstNode = Object.values(nodes).find(
+                                    (node) => {
+                                        return (
+                                            node.ipv6 === linkData.dst_ip ||
+                                            node.ipv4 === linkData.dst_ip
+                                        );
+                                    }
                                 );
-                            });
-                        });
-                        if (dstNode) {
-                            destLoc = dstNode.coordinates;
+                                if (dstNode) {
+                                    destLoc = dstNode.coordinates;
+                                }
+                            }
                         }
                     }
                 }
