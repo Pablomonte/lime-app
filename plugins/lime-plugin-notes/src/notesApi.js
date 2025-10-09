@@ -15,9 +15,15 @@ export const fetchNotes = async () => {
 
 export const saveNotes = async (notes) => {
     try {
-        const response = await api.call("lime-utils", "set_notes", { notes });
+        // Backend expects { text: "..." } not { notes: "..." }
+        const response = await api.call("lime-utils", "set_notes", {
+            text: notes,
+        });
         return response;
     } catch (error) {
-        throw new Error(`Failed to save notes: ${error.message}`);
+        const errorMsg =
+            error?.message || error?.toString() || JSON.stringify(error);
+        console.error("Error saving notes:", error);
+        throw new Error(`Failed to save notes: ${errorMsg}`);
     }
 };

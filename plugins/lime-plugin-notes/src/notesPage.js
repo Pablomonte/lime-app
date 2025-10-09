@@ -1,5 +1,6 @@
 /* eslint @typescript-eslint/no-empty-function: "off" */
 import { Trans } from "@lingui/macro";
+import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "preact/hooks";
 
 import { useOptimizedMutation, useOptimizedQuery } from "utils/optimizedQuery";
@@ -10,6 +11,7 @@ import style from "./style.less";
 
 export const Page = () => {
     const { data: boardData } = useBoardData();
+    const queryClient = useQueryClient();
 
     // Use TanStack Query for notes data
     const { data: notesData, isLoading } = useOptimizedQuery(
@@ -21,12 +23,19 @@ export const Page = () => {
     );
 
     // Use TanStack Query for saving notes
-    const { mutate: saveNotesMutation } = useOptimizedMutation(
-        async (notes) => {
-            const { saveNotes } = await import("./notesApi");
-            return saveNotes(notes);
-        }
-    );
+    const { mutate: saveNotesMutation, isLoading: isSaving } =
+        useOptimizedMutation(
+            async (notes) => {
+                const { saveNotes } = await import("./notesApi");
+                return saveNotes(notes);
+            },
+            {
+                onSuccess: () => {
+                    // Invalidate notes cache to refetch updated data
+                    queryClient.invalidateQueries(queryKeys.notes());
+                },
+            }
+        );
 
     const [value, setValue] = useState(notesData?.notes || "");
 
@@ -34,7 +43,7 @@ export const Page = () => {
         setValue(event.target.value);
     }
 
-    function saveNotes() {
+    function saveNotesHandler() {
         saveNotesMutation(value);
     }
 
@@ -58,7 +67,7 @@ export const Page = () => {
                 className={style.notes}
                 value={value}
             />
-            <button disabled={isLoading} onClick={saveNotes}>
+            <button disabled={isLoading || isSaving} onClick={saveNotesHandler}>
                 <Trans>Save notes</Trans>
             </button>
         </div>
