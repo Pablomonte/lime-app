@@ -231,6 +231,87 @@ export const useSetLinkReferenceState = ({
 };
 
 /**
+ * Clear all reference states (nodes and links)
+ * This will reset the mesh-wide map reference state
+ */
+export const useClearAllReferenceStates = () => {
+    const { show } = useErrrorConnectionToast();
+
+    const clearNodeReference = useMutation(
+        ["clear-node-reference"],
+        () => {
+            const dataType = "node_info";
+            const queryKey = sharedStateQueries.insertIntoReferenceState(dataType, {} as INodes);
+            return doSharedStateApiCall<typeof dataType>(queryKey);
+        },
+        {
+            onError: () => {
+                show("nodes");
+            },
+        }
+    );
+
+    const clearWifiLinksReference = useMutation(
+        ["clear-wifi-links-reference"],
+        () => {
+            const dataType = "wifi_links_info";
+            const queryKey = sharedStateQueries.insertIntoReferenceState(dataType, {} as IWifiLinks);
+            return doSharedStateApiCall<typeof dataType>(queryKey);
+        },
+        {
+            onError: () => {
+                show("wifi links");
+            },
+        }
+    );
+
+    const clearBatmanLinksReference = useMutation(
+        ["clear-batman-links-reference"],
+        () => {
+            const dataType = "bat_links_info";
+            const queryKey = sharedStateQueries.insertIntoReferenceState(dataType, {} as IBatmanLinks);
+            return doSharedStateApiCall<typeof dataType>(queryKey);
+        },
+        {
+            onError: () => {
+                show("batman links");
+            },
+        }
+    );
+
+    const clearBabelLinksReference = useMutation(
+        ["clear-babel-links-reference"],
+        () => {
+            const dataType = "babel_links_info";
+            const queryKey = sharedStateQueries.insertIntoReferenceState(dataType, {} as IBabelLinks);
+            return doSharedStateApiCall<typeof dataType>(queryKey);
+        },
+        {
+            onError: () => {
+                show("babel links");
+            },
+        }
+    );
+
+    const clearAll = async () => {
+        await Promise.all([
+            clearNodeReference.mutateAsync(),
+            clearWifiLinksReference.mutateAsync(),
+            clearBatmanLinksReference.mutateAsync(),
+            clearBabelLinksReference.mutateAsync(),
+        ]);
+    };
+
+    return {
+        clearAll,
+        isLoading: clearNodeReference.isLoading ||
+                   clearWifiLinksReference.isLoading ||
+                   clearBatmanLinksReference.isLoading ||
+                   clearBabelLinksReference.isLoading,
+    };
+};
+
+/**
  * This query is used to store the selected feature on the map.
  *
  * Used to store the state between components.

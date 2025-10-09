@@ -9,6 +9,7 @@ import Tabs from "components/tabs";
 import { useToast } from "components/toast/toastProvider";
 
 import { StatusAndButton } from "plugins/lime-plugin-mesh-wide/src/components/Components";
+import ClearLinkReferenceBtn from "plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearLinkReferenceBtn";
 import { SetLinkReferenceStateModal } from "plugins/lime-plugin-mesh-wide/src/components/modals";
 import {
     getQueryByLinkType,
@@ -240,6 +241,25 @@ const LinkFeatureDetail = ({ linkToShow, actual }: LinkMapFeature) => {
     });
     const linkType = linkToShow.type;
 
+    const {
+        allNodes: { meshWideNodesReference, meshWideNodesActual },
+    } = useNodes();
+
+    // Get nodes to update
+    const nodesToUpdate = useMemo(() => {
+        const allNodes = {
+            ...(meshWideNodesReference || {}),
+            ...(meshWideNodesActual || {}),
+        };
+        if (!allNodes) return {};
+        return linkToShow.nodes.reduce((acc, node) => {
+            if (allNodes[node]) {
+                acc[allNodes[node].ipv4] = allNodes[node].hostname;
+            }
+            return acc;
+        }, {});
+    }, [meshWideNodesReference, meshWideNodesActual, linkToShow.nodes]);
+
     const tabs = linkToShow.links.map(
         (link: MacToMacLink<typeof linkType>, i) => {
             return {
@@ -259,8 +279,20 @@ const LinkFeatureDetail = ({ linkToShow, actual }: LinkMapFeature) => {
         }
     );
 
+    const linkName = linkToShow.nodes.join(" - ");
+
     return (
         <div className="d-flex flex-column flex-grow-1 overflow-auto gap-6">
+            <Row>
+                <div className={"text-3xl"}>{linkName}</div>
+                <div className={"flex flex-row gap-4"}>
+                    <ClearLinkReferenceBtn
+                        linkType={linkType}
+                        link={linkToShow}
+                        nodesToUpdate={nodesToUpdate}
+                    />
+                </div>
+            </Row>
             {tabs?.length > 1 && (
                 <Tabs
                     tabs={tabs}
@@ -390,8 +422,8 @@ export const LinkReferenceStatus = ({
     }
 
     const hasError = errors?.hasErrors || referenceError;
-    const showSetReferenceButton =
-        errors?.hasErrors || isDown || isNewLink || referenceError;
+    // Always show the button to allow setting reference state even without errors
+    const showSetReferenceButton = true;
 
     return (
         <>

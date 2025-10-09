@@ -7,7 +7,10 @@ import UpdateSharedStateBtn from "components/shared-state/UpdateSharedStateBtn";
 import useSharedStateSync from "components/shared-state/useSharedStateSync";
 import { useToast } from "components/toast/toastProvider";
 
+import { useBoardData } from "utils/queries";
+
 import { StatusAndButton } from "plugins/lime-plugin-mesh-wide/src/components/Components";
+import ClearNodeReferenceBtn from "plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn";
 import RemoteRebootBtn from "plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/RebootNodeBtn";
 import {
     Row,
@@ -49,6 +52,10 @@ const NodeDetails = ({ actual, reference, name }: NodeMapFeature) => {
         reference,
     });
 
+    // Get local board data to show detailed firmware info for local node
+    const { data: boardData } = useBoardData();
+    const isLocalNode = boardData?.hostname === actual.hostname;
+
     if (isDown) {
         return <Trans>This node seems down</Trans>;
     }
@@ -81,6 +88,10 @@ const NodeDetails = ({ actual, reference, name }: NodeMapFeature) => {
                             getMeshWideMapTypes()
                         }
                     />
+                    <ClearNodeReferenceBtn
+                        hostname={actual.hostname}
+                        ip={actual.ipv4}
+                    />
                     <RemoteRebootBtn node={actual} />
                 </div>
             </Row>
@@ -96,7 +107,12 @@ const NodeDetails = ({ actual, reference, name }: NodeMapFeature) => {
                 )}
                 <TitleAndText title={<Trans>Versión de sistema</Trans>}>
                     <div className="flex flex-col">
-                        <span className="text-sm font-semibold">{firmware}</span>
+                        <span className="text-sm font-semibold">
+                            {isLocalNode && boardData?.release?.description ?
+                                boardData.release.description :
+                                firmware
+                            }
+                        </span>
                         {actual.lime_app_version && (
                             <span className="text-xs text-gray-600">
                                 lime-app: {actual.lime_app_version}
