@@ -1,26 +1,41 @@
 import "@testing-library/jest-dom/extend-expect";
 import { screen } from "@testing-library/preact";
 
-import { getNodeStatus } from "plugins/lime-plugin-rx/src/rxApi";
-import { StatusResponse } from "plugins/lime-plugin-rx/src/rxTypes";
+import { getNodeStatus, getEthConfig } from "plugins/lime-plugin-rx/src/rxApi";
+import { StatusResponse, IGetEthConfigResponse } from "plugins/lime-plugin-rx/src/rxTypes";
 import { Wired } from "plugins/lime-plugin-rx/src/sections/wired";
 
 import { render } from "utils/test_utils";
 
-jest.mock("plugins/lime-plugin-rx/src/rxApi");
-const mockedFoo = jest.mocked(getNodeStatus);
+jest.mock("plugins/lime-plugin-rx/src/rxApi", () => ({
+    getNodeStatus: jest.fn(),
+    getEthConfig: jest.fn(),
+    getInternetStatus: jest.fn(),
+}));
+
+jest.mock("plugins/lime-plugin-rx/src/components/EthConfigButton", () => ({
+    EthConfigButton: () => null,
+}));
+
+const mockedGetNodeStatus = jest.mocked(getNodeStatus);
+const mockedGetEthConfig = jest.mocked(getEthConfig);
 
 describe("align page", () => {
     beforeEach(() => {
-        mockedFoo.mockImplementation(async () => mock_node_status);
+        mockedGetNodeStatus.mockResolvedValue(mock_node_status);
+        mockedGetEthConfig.mockResolvedValue(mock_eth_config);
     });
 
     it("Shows a wan and a lan interface with the interface name", async () => {
         render(<Wired />);
         expect(await screen.findByText("LAN")).toBeInTheDocument();
         expect(await screen.findByText("WAN")).toBeInTheDocument();
-        expect(await screen.findByText("eth0.1")).toBeInTheDocument();
-        expect(await screen.findByText("eth0.2")).toBeInTheDocument();
+        // Check for individual port labels (eth + port num)
+        expect(await screen.findByText("eth2")).toBeInTheDocument();
+        expect(await screen.findByText("eth3")).toBeInTheDocument();
+        expect(await screen.findByText("eth4")).toBeInTheDocument();
+        expect(await screen.findByText("eth5")).toBeInTheDocument();
+        expect(await screen.findByText("eth1")).toBeInTheDocument();
     });
 
     it("Shows the correct number of disabled and enabled icons", async () => {
@@ -44,6 +59,55 @@ describe("align page", () => {
         expect(disabledIcons.length).toBe(disabledPorts.length);
     });
 });
+
+// Mock data for eth config
+const mock_eth_config: IGetEthConfigResponse = {
+    status: "ok",
+    interfaces: [
+        {
+            device: "eth0.1",
+            num: 2,
+            role: "lan",
+            link: "up",
+        },
+        {
+            device: "eth0.1",
+            num: 3,
+            role: "lan",
+            link: "down",
+        },
+        {
+            device: "eth0.1",
+            num: 4,
+            role: "lan",
+            link: "down",
+        },
+        {
+            device: "eth0.1",
+            num: 5,
+            role: "lan",
+            link: "down",
+        },
+        {
+            device: "eth0.1",
+            num: 0,
+            role: "cpu",
+            link: "up",
+        },
+        {
+            device: "eth0.2",
+            num: 1,
+            role: "wan",
+            link: "down",
+        },
+        {
+            device: "eth0.2",
+            num: 0,
+            role: "cpu",
+            link: "up",
+        },
+    ],
+};
 
 // Used on other tests
 // eslint-disable-next-line jest/no-export

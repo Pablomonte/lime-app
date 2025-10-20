@@ -52,20 +52,26 @@ const Ports = ({ switches }: { switches: SwitchStatus[] }) => {
                                 currentRole={displayRole}
                             />
                         </div>
-                        <h2 className={"text-lg mb-2"}>
-                            {device.toLowerCase()}
-                        </h2>
                         <div className={"flex flex-row gap-3"}>
                             {portsForDevice.map((p: SwitchStatus) => {
                                 const link =
                                     p.link?.toLowerCase() === "up"
                                         ? "fill-primary-dark"
                                         : "fill-disabled";
+                                // Extract base name and construct port label
+                                // e.g., "eth0.1" + num=2 -> "eth2"
+                                const deviceLower = p.device.toLowerCase();
+                                // Remove all digits and dots from device name to get base (eth0.1 -> eth)
+                                const deviceBase = deviceLower.replace(/[\d.]+$/, '');
+                                const portLabel = `${deviceBase}${p.num}`;
                                 return (
-                                    <div key={`${device}-${p.num}`}>
+                                    <div key={`${device}-${p.num}`} className={"flex flex-col items-center"}>
                                         <PortsIcon
                                             className={`h-8 w-8 ${link}`}
                                         />
+                                        <span className={"text-sm mt-1"}>
+                                            {portLabel}
+                                        </span>
                                     </div>
                                 );
                             })}

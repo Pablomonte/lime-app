@@ -114,6 +114,10 @@ msgstr "La actualización iniciará en unos instantes. Este proceso demorará al
 msgid "Align"
 msgstr "Alineación"
 
+#: plugins/lime-plugin-rx/src/sections/internetPath.tsx:174
+msgid "Alignment"
+msgstr "Alineación"
+
 #: plugins/lime-plugin-pirania/src/screens/voucherList.js:85
 msgid "All Vouchers"
 msgstr "Todos los cupones"
@@ -142,15 +146,16 @@ msgstr "Todos los nodos fueron programados con éxito."
 
 #: src/components/ErrorMessage.tsx:66
 msgid "An unexpected error occurred."
-msgstr ""
+msgstr "Ocurrió un error inesperado."
 
 #: src/components/ErrorBoundary.tsx:68
 msgid "An unexpected error occurred. Please try refreshing the page."
-msgstr ""
+msgstr "Ocurrió un error inesperado. Por favor intente recargar la página."
 
-#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:75
+#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:65
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:210
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: plugins/lime-plugin-mesh-wide-config/src/components/modals.tsx:184
 msgid "Apply configuration on all of them with a scheduled safe reboot?"
@@ -269,6 +274,8 @@ msgstr "Cargando el recorrido en la red"
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:150
 #: plugins/lime-plugin-fbw/src/containers/scanPage/components/buttons.js:14
 #: plugins/lime-plugin-mesh-wide-config/src/components/FormOption.tsx:105
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:121
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:213
 #: src/components/banner/index.js:20
 msgid "Cancel"
 msgstr "Cancelar"
@@ -425,17 +432,27 @@ msgstr "Configuración aplicada exitosamente. Podés reconfigurar la mesh nuevam
 msgid "Configuration applied!<0/>Awaiting confirmation"
 msgstr "La configuración fue aplicada!<0/> Esperando confirmación"
 
-#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:191
-msgid "Configure port"
-msgstr ""
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:99
+msgid "Configuration failed"
+msgstr "Falló la configuración"
 
-#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:74
+#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:156
+msgid "Configure port"
+msgstr "Configurar puerto"
+
+#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:64
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:171
 msgid "Configure port {device}"
-msgstr ""
+msgstr "Configurar puerto {device}"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:83
 msgid "Configure your new community network"
 msgstr "Configure su nueva red mesh"
+
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:68
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:134
+msgid "Configuring port {device} as {0}"
+msgstr "Configurando puerto {device} como {0}"
 
 #: plugins/lime-plugin-firmware/src/confirmPage/confirmPage.js:11
 #: plugins/lime-plugin-mesh-wide-config/src/containers/NextStepFooter.tsx:132
@@ -577,7 +594,7 @@ msgstr "Eliminar propiedad"
 msgid "Delete this this node from reference state"
 msgstr "Eliminar este nodo del estado de referencia"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:404
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:424
 msgid "Delete this {0}<0/>from reference state"
 msgstr "Eliminar este {0}<0/> del estado de referencia"
 
@@ -604,8 +621,8 @@ msgid "Device"
 msgstr "Equipo"
 
 #: plugins/lime-plugin-rx/src/sections/internetPath.tsx:136
-msgid "Diagnose"
-msgstr "Diagnóstico"
+#~ msgid "Diagnose"
+#~ msgstr "Diagnóstico"
 
 #: plugins/lime-plugin-node-admin/src/nodeAdminPage.js:54
 #: plugins/lime-plugin-node-admin/src/nodeAdminPage.js:72
@@ -711,8 +728,8 @@ msgid "Error clearing reference state!"
 msgstr ""
 
 #: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:134
-msgid "Error configuring port: {0}"
-msgstr ""
+#~ msgid "Error configuring port: {0}"
+#~ msgstr ""
 
 #: plugins/lime-plugin-firmware/src/confirmPage/confirmPage.js:24
 msgid "Error confirming upgrade: {0}"
@@ -727,7 +744,7 @@ msgid "Error destination network is not configured yet"
 msgstr "Error, la red de destino no está configurada aún."
 
 #: src/components/ErrorBoundary.tsx:80
-#: src/components/QueryErrorBoundary.tsx:55
+#: src/components/QueryErrorBoundary.tsx:56
 msgid "Error details"
 msgstr ""
 
@@ -772,7 +789,7 @@ msgstr "Error al obtener informacion del nodo"
 msgid "Error retrieving the status, is this node outdated?"
 msgstr "Error al recuperar el estado. ¿Este nodo está desactualizado?"
 
-#: plugins/lime-plugin-rx/src/sections/internetPath.tsx:109
+#: plugins/lime-plugin-rx/src/sections/internetPath.tsx:133
 msgid "Error retrieving<0/>last internet path"
 msgstr "Error al recuperar<0/>última ruta de Internet."
 
@@ -784,7 +801,7 @@ msgstr "Error buscando redes."
 msgid "Error setting network"
 msgstr "Error configurando red."
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:387
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:407
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:228
 msgid "Error setting new reference state!"
 msgstr "¡Error al establecer un nuevo estado de referencia!"
@@ -832,13 +849,17 @@ msgstr "Expirado {0}"
 msgid "Expires {0}"
 msgstr "Expira en {0}"
 
-#: src/components/QueryErrorBoundary.tsx:44
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:102
+msgid "Failed to configure port {device} as {0}"
+msgstr "Falló la configuración del puerto {device} como {0}"
+
+#: src/components/QueryErrorBoundary.tsx:45
 msgid "Failed to load data"
-msgstr ""
+msgstr "Error al cargar los datos"
 
 #: plugins/lime-plugin-align/src/alignPage.js:41
 #: plugins/lime-plugin-fbw/src/containers/scanPage/components/networkTile.js:80
-#: plugins/lime-plugin-rx/src/sections/alignment.tsx:68
+#: plugins/lime-plugin-rx/src/sections/internetPath.tsx:212
 msgid "Fetching name"
 msgstr "Consiguiendo nombre"
 
@@ -903,6 +924,10 @@ msgstr "Nombre del nodo"
 msgid "I don't know the shared password"
 msgstr "No sé la contraseña compartida."
 
+#: plugins/lime-plugin-rx/src/sections/wired.tsx:97
+msgid "IP Addresses"
+msgstr "Direcciones IP"
+
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:125
 msgid "IPv4"
 msgstr "IPv4"
@@ -937,6 +962,7 @@ msgid "In the reference state this node is on"
 msgstr "En el estado de referencia este nodo está encendido."
 
 #: plugins/lime-plugin-rx/src/sections/alignment.tsx:73
+#: plugins/lime-plugin-rx/src/sections/internetPath.tsx:217
 msgid "Interface:"
 msgstr "Interface:"
 
@@ -1001,7 +1027,7 @@ msgid "Join the mesh"
 msgstr "Unirse a la red"
 
 #: plugins/lime-plugin-align/src/alignPage.js:59
-#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:135
+#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:138
 msgid "Last packet"
 msgstr "Último paquete"
 
@@ -1021,7 +1047,7 @@ msgstr "URL del enlace"
 msgid "Link from <0>{0}</0> to <1>{1}</1>"
 msgstr "Enlace desde <0>{0}</0> hasta <1>{1}</1>"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:269
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:289
 msgid "Link {0} {1}"
 msgstr "Enlace {0} {1}"
 
@@ -1029,7 +1055,7 @@ msgstr "Enlace {0} {1}"
 msgid "Load last known Internet path"
 msgstr "Cargando la última ruta a Internet conocida..."
 
-#: plugins/lime-plugin-rx/src/sections/internetPath.tsx:92
+#: plugins/lime-plugin-rx/src/sections/internetPath.tsx:116
 msgid "Loading <0/>last internet path..."
 msgstr "Cargando <0/> la última ruta a internet conocida..."
 
@@ -1066,8 +1092,8 @@ msgid "Manage Vouchers"
 msgstr "Administrar cupones"
 
 #: plugins/lime-plugin-rx/src/sections/internetPath.tsx:139
-msgid "Map"
-msgstr "Mapa"
+#~ msgid "Map"
+#~ msgstr "Mapa"
 
 #: src/components/form/index.js:8
 msgid "Max. {length} characters"
@@ -1131,7 +1157,8 @@ msgstr "Más info en:"
 msgid "More than 10 characters"
 msgstr "Más de 10 caracteres"
 
-#: plugins/lime-plugin-rx/src/sections/alignment.tsx:61
+#: plugins/lime-plugin-rx/src/sections/alignment.tsx:63
+#: plugins/lime-plugin-rx/src/sections/internetPath.tsx:205
 msgid "Most active link"
 msgstr "Link más activo"
 
@@ -1146,6 +1173,10 @@ msgstr "Necesita soporte?"
 #: plugins/lime-plugin-node-admin/src/screens/hotspot/src/hotspotPage.js:82
 msgid "Network Name: {ssid}"
 msgstr "Nombre de Red: {ssid}"
+
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:25
+msgid "Network reconfiguration completed"
+msgstr "Reconfiguración de red completada"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:166
 msgid "New Macs ({0})"
@@ -1171,7 +1202,7 @@ msgstr "La nueva configuración fue confirmada con errores"
 msgid "New link"
 msgstr "Nuevo enlace"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:383
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:403
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:223
 msgid "New reference state set!"
 msgstr "¡Nuevo estado de referencia establecido!"
@@ -1244,7 +1275,7 @@ msgstr "Nombre del nodo"
 msgid "Node is upgrading"
 msgstr "El nodo se está actualizando"
 
-#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:122
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:184
 msgid "Node password"
 msgstr ""
 
@@ -1257,7 +1288,7 @@ msgstr "No Conectado"
 msgid "Notes"
 msgstr "Notas"
 
-#: plugins/lime-plugin-notes/src/notesPage.js:52
+#: plugins/lime-plugin-notes/src/notesPage.js:61
 msgid "Notes of"
 msgstr "Notas de"
 
@@ -1274,7 +1305,7 @@ msgstr "Ok"
 msgid "On its radio {radioNumber}"
 msgstr "En su radio {radioNumber}"
 
-#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:127
+#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:130
 msgid "On its radio {toRadio}"
 msgstr "En su radio {toRadio}"
 
@@ -1316,7 +1347,7 @@ msgstr "Contraseña"
 msgid "Password: {password}"
 msgstr "Contraseña: {password}"
 
-#: plugins/lime-plugin-rx/src/sections/internetPath.tsx:130
+#: plugins/lime-plugin-rx/src/sections/internetPath.tsx:160
 msgid "Path to Internet"
 msgstr "Recorrido a internet"
 
@@ -1357,9 +1388,17 @@ msgstr "Por favor, espere {remainingTime} segundos pacientemente y no desconecte
 msgid "Please wait while the device reboots, and reload the app"
 msgstr "Por favor, espere hasta que el dispositivo se reinicie y recargue la app."
 
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:73
+msgid "Please wait {remainingTime} seconds. The network will restart and you will need to reconnect to WiFi."
+msgstr "Por favor espere {remainingTime} segundos. La red se reiniciará y necesitará reconectarse al WiFi."
+
 #: plugins/lime-plugin-fbw/src/containers/Setting.js:91
 msgid "Please wait {time} seconds"
 msgstr "Por favor, espere {time} segundos..."
+
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:28
+msgid "Port {device} has been configured as {0}."
+msgstr "El puerto {device} ha sido configurado como {0}."
 
 #: src/components/shared-state/UpdateSharedStateBtn.tsx:69
 msgid "Publish local state to this node and sync its state back"
@@ -1417,11 +1456,15 @@ msgstr "Reiniciando"
 msgid "Reconfigure mesh"
 msgstr "Reconfigurar mesh"
 
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:64
+msgid "Reconfiguring network..."
+msgstr "Reconfigurando red..."
+
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ShowErrorsDetail.tsx:35
 msgid "Reference State is not set"
 msgstr "Estado de referencia no establecido."
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:419
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:439
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:253
 msgid "Reference is not set or has errors"
 msgstr "El estado de referencia no ha sido establecido o contiene errores."
@@ -1475,7 +1518,8 @@ msgid "Restart scheduled"
 msgstr "Reinicio programado"
 
 #: plugins/lime-plugin-firmware/src/upgradePage/upgradePage.js:116
-#: src/components/QueryErrorBoundary.tsx:33
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:118
+#: src/components/QueryErrorBoundary.tsx:34
 msgid "Retry"
 msgstr "Reintenar"
 
@@ -1491,7 +1535,7 @@ msgstr "Volviendo a la versión anterior"
 msgid "RxRate"
 msgstr "RxRate"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:412
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:432
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:251
 msgid "Same status as in the reference state"
 msgstr "Tiene el mismo estado que el estado de referencia."
@@ -1506,7 +1550,7 @@ msgstr "Tiene el mismo estado que el estado de referencia."
 msgid "Save"
 msgstr "Guardar"
 
-#: plugins/lime-plugin-notes/src/notesPage.js:62
+#: plugins/lime-plugin-notes/src/notesPage.js:71
 msgid "Save notes"
 msgstr "Guardar notas"
 
@@ -1585,9 +1629,13 @@ msgstr "Seleccione el archivo"
 msgid "Select new node"
 msgstr "Seleccione el nodo"
 
+#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:70
+msgid "Select the role for this ethernet port."
+msgstr "Seleccione el rol para este puerto ethernet."
+
 #: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:81
-msgid "Select the role for this ethernet port. Network will restart after applying changes."
-msgstr ""
+#~ msgid "Select the role for this ethernet port. Network will restart after applying changes."
+#~ msgstr ""
 
 #: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:73
 #~ msgid "Select the role for this ethernet port:"
@@ -1602,6 +1650,10 @@ msgstr "Red seleccionada para unirse"
 msgid "Sending abort message to this node. The abort order will be propagated to all nodes."
 msgstr "Enviando mensaje de cancelación a este nodo. La orden de cancelación se propagará a todos los nodos."
 
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:130
+msgid "Sending configuration..."
+msgstr "Enviando configuración..."
+
 #: plugins/lime-plugin-mesh-wide-config/src/containers/StatusPage.tsx:55
 #: plugins/lime-plugin-mesh-wide-upgrade/src/containers/meshWideUpgradeStatus.tsx:62
 msgid "Sending confirmation"
@@ -1615,7 +1667,7 @@ msgstr ""
 msgid "Service not available"
 msgstr ""
 
-#: src/components/QueryErrorBoundary.tsx:21
+#: src/components/QueryErrorBoundary.tsx:22
 msgid "Service unavailable"
 msgstr ""
 
@@ -1631,7 +1683,7 @@ msgstr "Establecer el estado de referencia para este nodo."
 msgid "Set reference state for this {0}?"
 msgstr "¿Desea fijar el estado de referencia para  {0}?"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:395
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:415
 msgid "Set reference state for this<0/> {0}"
 msgstr "Fijar estado de referencia para este<0/> {0}"
 
@@ -1797,7 +1849,7 @@ msgstr "Estado: {0}"
 msgid "Success"
 msgstr "Completado"
 
-#: plugins/lime-plugin-rx/src/sections/system.tsx:78
+#: plugins/lime-plugin-rx/src/sections/system.tsx:76
 msgid "System"
 msgstr "Sistema"
 
@@ -1857,6 +1909,10 @@ msgstr "El punto de acceso no se encuentra disponible. Por favor, revisa las ins
 msgid "The name should have at least 3 characters"
 msgstr "El nombre tiene que tener al menos 3 caracteres."
 
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:180
+msgid "The network will restart after applying changes."
+msgstr "La red se reiniciará después de aplicar los cambios."
+
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:105
 msgid "The node is down"
 msgstr "El nodo no está activo."
@@ -1914,7 +1970,7 @@ msgstr ""
 msgid "There are no vouchers matching the current criteria"
 msgstr "No hay cupones para su búsqueda."
 
-#: src/components/QueryErrorBoundary.tsx:47
+#: src/components/QueryErrorBoundary.tsx:48
 msgid "There was a problem loading this information."
 msgstr ""
 
@@ -1934,7 +1990,7 @@ msgstr "No hay una sesión de soporte remoto abierta. Haz click en Crear Sesión
 msgid "These are the nodes associated on this radio"
 msgstr "Estos son los nodos asociados a esta radio."
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:416
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:436
 msgid "This Link is not registered on the reference state"
 msgstr "Este enlace no está registrado en el estado de referencia."
 
@@ -1950,7 +2006,7 @@ msgstr "En este dispositivo sí se puede revertir la actualización en caso de e
 msgid "This feature is not available on this node or requires authentication."
 msgstr ""
 
-#: src/components/QueryErrorBoundary.tsx:24
+#: src/components/QueryErrorBoundary.tsx:25
 msgid "This feature requires authentication or the service is not available on this node."
 msgstr ""
 
@@ -1969,7 +2025,7 @@ msgstr "Este campo es requerido"
 msgid "This is a main node"
 msgstr "Este es un nodo principal"
 
-#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:421
+#: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:441
 msgid "This link has errors"
 msgstr "Este enlace tiene errores."
 
@@ -2092,18 +2148,23 @@ msgid "To enable remote access an internet connection is needed"
 msgstr "Para posibilitar el acceso remoto es necesaria una conexión a internet."
 
 #: plugins/lime-plugin-rx/src/sections/alignment.tsx:79
+#: plugins/lime-plugin-rx/src/sections/internetPath.tsx:223
 msgid "Traffic:"
 msgstr "Tráfico:"
 
 #: src/components/ErrorBoundary.tsx:74
 #: src/components/ErrorMessage.tsx:85
-#: src/components/QueryErrorBoundary.tsx:50
+#: src/components/QueryErrorBoundary.tsx:51
 msgid "Try again"
 msgstr ""
 
 #: plugins/lime-plugin-mesh-wide-upgrade/src/components/nextStepFooter.tsx:155
 msgid "Try last step again"
 msgstr "Intente el último paso nuevamente"
+
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:41
+msgid "Try reconnecting"
+msgstr "Intente reconectar"
 
 #: plugins/lime-plugin-firmware/src/upgradingPage/upgradingPage.js:12
 msgid "Try reloading the app"
@@ -2241,11 +2302,11 @@ msgstr "Enlaces Wifi de Referencia"
 msgid "Wifi Password"
 msgstr "Contraseña del Wifi"
 
-#: plugins/lime-plugin-rx/src/sections/wired.tsx:70
+#: plugins/lime-plugin-rx/src/sections/wired.tsx:139
 msgid "Wired connections"
 msgstr "Conexiones cableadas"
 
-#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:122
+#: plugins/lime-plugin-align/src/containers/alignSingle/index.js:123
 msgid "With radio {fromRadio} alignin with"
 msgstr "Con radio {fromRadio} alineando con"
 
@@ -2261,6 +2322,10 @@ msgstr "Contraseña incorrecta, intente nuevamente"
 #: src/containers/RebootPage/RebootPage.js:42
 msgid "Yes"
 msgstr "Si"
+
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:174
+msgid "You are about to configure port {device} as {0}."
+msgstr "Está por configurar el puerto {device} como {0}."
 
 #: plugins/lime-plugin-fbw/src/containers/Setting.js:106
 msgid "You are connected to another node in the network, try connecting to"
@@ -2298,11 +2363,15 @@ msgstr "La conexión fué exitosa, está conectado a"
 msgid "You need to know the shared password to enter this page"
 msgstr "Debe ingresar la contraseña compartida para seguir"
 
+#: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:34
+msgid "You need to reconnect to the WiFi network to access the node again."
+msgstr "Necesita reconectarse a la red WiFi para acceder al nodo nuevamente."
+
 #: plugins/lime-plugin-fbw/src/containers/Setting.js:114
 msgid "You should try to connect to the network {wifiSsid}."
 msgstr "Intente conectarse a la red wifi {wifiSsid} para completar la instalación."
 
-#: plugins/lime-plugin-rx/src/sections/alignment.tsx:114
+#: plugins/lime-plugin-rx/src/sections/alignment.tsx:109
 msgid "Your Alignment"
 msgstr "Su alineación"
 
