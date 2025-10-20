@@ -60,7 +60,7 @@ msgstr "Cupones de Acceso"
 
 #: src/components/ErrorMessage.tsx:24
 msgid "Access denied"
-msgstr ""
+msgstr "Acceso denegado"
 
 #: plugins/lime-plugin-pirania/nodeAdmin/PortalConfigPage.js:54
 msgid "Access vouchers"
@@ -362,7 +362,7 @@ msgstr "Elija una contraseña compartida para la administración de la red"
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearLinkReferenceBtn.tsx:104
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:113
 msgid "Clear"
-msgstr ""
+msgstr "Borrar"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearLinkReferenceBtn.tsx:82
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:91
@@ -371,15 +371,15 @@ msgstr "Borrar estado de referencia"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearLinkReferenceBtn.tsx:103
 msgid "Clear reference state for this link?"
-msgstr ""
+msgstr "¿Borrar estado de referencia para este enlace?"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:112
 msgid "Clear reference state for {hostname}?"
-msgstr ""
+msgstr "¿Borrar estado de referencia para {hostname}?"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:45
 msgid "Cleared but sync failed. Refresh the page."
-msgstr ""
+msgstr "Borrado pero la sincronización falló. Actualiza la página."
 
 #: plugins/lime-plugin-remotesupport/src/remoteSupportPage.js:173
 msgid "Click at Close Session to end the remote support session. No one will be able to access your node with this token again"
@@ -721,11 +721,11 @@ msgstr "Error"
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearLinkReferenceBtn.tsx:41
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:52
 msgid "Error clearing reference state!"
-msgstr ""
+msgstr "¡Error al borrar el estado de referencia!"
 
 #: plugins/lime-plugin-firmware/src/confirmPage/confirmPage.js:24
 msgid "Error confirming upgrade: {0}"
-msgstr ""
+msgstr "Error confirmando la actualización: {0}"
 
 #: src/components/toast/toasts.tsx:13
 msgid "Error connecting with {nodeInfo}, is node up?"
@@ -738,7 +738,7 @@ msgstr "Error, la red de destino no está configurada aún."
 #: src/components/ErrorBoundary.tsx:80
 #: src/components/QueryErrorBoundary.tsx:56
 msgid "Error details"
-msgstr ""
+msgstr "Detalles del error"
 
 #: plugins/lime-plugin-fbw/src/containers/scanPage/components/networkTile.js:67
 msgid "Error downloading lime assets"
@@ -758,7 +758,7 @@ msgstr "Error cargando leaflet."
 
 #: plugins/lime-plugin-align/src/alignPage.js:177
 msgid "Error loading mesh interfaces"
-msgstr ""
+msgstr "Error cargando interfaces de malla"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/RebootNodeBtn.tsx:89
 msgid "Error performing reboot: {error}"
@@ -1097,7 +1097,7 @@ msgstr "Mapa de la red mesh"
 
 #: plugins/lime-plugin-mesh-wide-config/src/meshConfigMenu.tsx:10
 msgid "Mesh Wide Config"
-msgstr ""
+msgstr "Configuración de la red"
 
 #: plugins/lime-plugin-mesh-wide-upgrade/src/meshUpgradeMenu.tsx:10
 msgid "Mesh Wide Upgrade"
@@ -1205,7 +1205,7 @@ msgstr "No se realizaron cambios"
 
 #: src/components/ErrorMessage.tsx:26
 msgid "No network connection"
-msgstr ""
+msgstr "Sin conexión de red"
 
 #: plugins/lime-plugin-mesh-wide-upgrade/src/utils/upgradeStatusMessages.tsx:34
 msgid "No new version available is found"
@@ -1265,7 +1265,7 @@ msgstr "El nodo se está actualizando"
 
 #: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:184
 msgid "Node password"
-msgstr ""
+msgstr "Contraseña del nodo"
 
 #: plugins/lime-plugin-node-admin/src/screens/hotspot/src/components/testBoxes.js:71
 #: plugins/lime-plugin-node-admin/src/screens/hotspot/src/components/testBoxes.js:99
@@ -1345,11 +1345,11 @@ msgstr "Permanente"
 
 #: src/components/ErrorMessage.tsx:53
 msgid "Please check your internet connection and try again."
-msgstr ""
+msgstr "Por favor verifica tu conexión a internet e intenta nuevamente."
 
 #: src/components/FbwInitialOverlay.tsx:36
 msgid "Please configure your network connection"
-msgstr ""
+msgstr "Por favor configura tu conexión de red"
 
 #: plugins/lime-plugin-firmware/src/upgradePage/upgradePage.js:224
 msgid "Please select a .sh or .bin file"
@@ -1459,11 +1459,11 @@ msgstr "El estado de referencia no ha sido establecido o contiene errores."
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearLinkReferenceBtn.tsx:32
 msgid "Reference state cleared for this link!"
-msgstr ""
+msgstr "¡Estado de referencia borrado para este enlace!"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:37
 msgid "Reference state cleared for this node!"
-msgstr ""
+msgstr "¡Estado de referencia borrado para este nodo!"
 
 #: plugins/lime-plugin-ground-routing/src/groundRoutingPage.js:36
 msgid "Reload"
@@ -1487,7 +1487,7 @@ msgstr "Eliminar  {nodeName} para el estado de referencia"
 
 #: src/components/ErrorMessage.tsx:30
 msgid "Request error"
-msgstr ""
+msgstr "Error en la solicitud"
 
 #: src/components/form/index.js:17
 msgid "Required"
@@ -1641,15 +1641,15 @@ msgstr "Enviando confirmación"
 
 #: src/components/ErrorMessage.tsx:28
 msgid "Server error"
-msgstr ""
+msgstr "Error del servidor"
 
 #: src/components/ErrorMessage.tsx:22
 msgid "Service not available"
-msgstr ""
+msgstr "Servicio no disponible"
 
 #: src/components/QueryErrorBoundary.tsx:22
 msgid "Service unavailable"
-msgstr ""
+msgstr "Servicio no disponible"
 
 #: plugins/lime-plugin-fbw/src/containers/scanPage/SelectForm.js:106
 msgid "Set network"
@@ -1779,7 +1779,7 @@ msgstr "Algunos nodos no estan listos todavía"
 
 #: src/components/ErrorBoundary.tsx:65
 msgid "Something went wrong"
-msgstr ""
+msgstr "Algo salió mal"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:93
 msgid "Source IP"
@@ -1835,7 +1835,7 @@ msgstr "Sistema"
 
 #: src/components/ErrorMessage.tsx:92
 msgid "Technical details"
-msgstr ""
+msgstr "Detalles técnicos"
 
 #: plugins/lime-plugin-node-admin/src/screens/roamingAP.js:75
 msgid "The Community AP is present in every node allowing people to move around the network territory without losing connection"
@@ -1920,7 +1920,7 @@ msgstr "La imagen seleccionada no es válida para este dispositivo."
 
 #: src/components/ErrorMessage.tsx:59
 msgid "The server encountered an error. Please try again later."
-msgstr ""
+msgstr "El servidor encontró un error. Por favor intenta nuevamente más tarde."
 
 #: src/containers/SharedPasswordLogin/sharedPasswordLogin.tsx:71
 msgid "The shared password has been chosen by the community when the network was created. You can ask other community members for it."
@@ -1944,7 +1944,7 @@ msgstr "La actualización debería estar lista."
 
 #: plugins/lime-plugin-align/src/alignPage.js:190
 msgid "There are no mesh interfaces available"
-msgstr ""
+msgstr "No hay interfaces de malla disponibles"
 
 #: plugins/lime-plugin-pirania/src/screens/voucherList.js:110
 msgid "There are no vouchers matching the current criteria"
@@ -1952,11 +1952,11 @@ msgstr "No hay cupones para su búsqueda."
 
 #: src/components/QueryErrorBoundary.tsx:48
 msgid "There was a problem loading this information."
-msgstr ""
+msgstr "Hubo un problema cargando esta información."
 
 #: src/components/ErrorMessage.tsx:64
 msgid "There was a problem with your request."
-msgstr ""
+msgstr "Hubo un problema con tu solicitud."
 
 #: plugins/lime-plugin-remotesupport/src/remoteSupportPage.js:132
 msgid "There's an active remote support session"
@@ -1984,11 +1984,11 @@ msgstr "En este dispositivo sí se puede revertir la actualización en caso de e
 
 #: src/components/ErrorMessage.tsx:40
 msgid "This feature is not available on this node or requires authentication."
-msgstr ""
+msgstr "Esta funcionalidad no está disponible en este nodo o requiere autenticación."
 
 #: src/components/QueryErrorBoundary.tsx:25
 msgid "This feature requires authentication or the service is not available on this node."
-msgstr ""
+msgstr "Esta funcionalidad requiere autenticación o el servicio no está disponible en este nodo."
 
 #: plugins/lime-plugin-mesh-wide-config/src/components/FormEdit.tsx:78
 #: plugins/lime-plugin-mesh-wide-config/src/components/FormEdit.tsx:115
@@ -2064,7 +2064,7 @@ msgstr "Este nodo no está registrado en el estado de referencia."
 
 #: plugins/lime-plugin-mesh-wide-config/src/containers/NodesListPage.tsx:161
 msgid "This node is sending new configuration to others"
-msgstr ""
+msgstr "Este nodo está enviando nueva configuración a otros"
 
 #: plugins/lime-plugin-metrics/src/components/showPathButton.js:16
 msgid "This node is the gateway"
@@ -2113,7 +2113,7 @@ msgstr "Este es el último recorrido hasta Internet que funcionó."
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:100
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:104
 msgid "Tiempo en actividad"
-msgstr ""
+msgstr "Tiempo en actividad"
 
 #: plugins/lime-plugin-pirania/src/screens/wellcomeScreenEditor.js:41
 msgid "Title"
@@ -2136,7 +2136,7 @@ msgstr "Tráfico:"
 #: src/components/ErrorMessage.tsx:85
 #: src/components/QueryErrorBoundary.tsx:51
 msgid "Try again"
-msgstr ""
+msgstr "Intentar nuevamente"
 
 #: plugins/lime-plugin-mesh-wide-upgrade/src/components/nextStepFooter.tsx:155
 msgid "Try last step again"
@@ -2217,7 +2217,7 @@ msgstr "Valor"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:108
 msgid "Versión de sistema"
-msgstr ""
+msgstr "Versión de sistema"
 
 #: plugins/lime-plugin-changeNode/src/changeNodePage.js:86
 msgid "Visit"
@@ -2333,7 +2333,7 @@ msgstr "No necesita pasar por ningún nodo para llega hasta aquí."
 
 #: src/components/ErrorMessage.tsx:47
 msgid "You don't have permission to access this feature."
-msgstr ""
+msgstr "No tienes permiso para acceder a esta funcionalidad."
 
 #: plugins/lime-plugin-fbw/src/containers/Setting.js:132
 msgid "You have successfuly connected to"
@@ -2365,7 +2365,7 @@ msgstr "Su nodo no tiene conexión a internet"
 
 #: src/components/FbwInitialOverlay.tsx:39
 msgid "Your router has not been configured yet. You can use our assistant to add it to an existing network or create a new one. If you ignore this message, it will continue working with the default configuration."
-msgstr ""
+msgstr "Tu router aún no ha sido configurado. Puedes usar nuestro asistente para agregarlo a una red existente o crear una nueva. Si ignoras este mensaje, continuará funcionando con la configuración predeterminada."
 
 #: plugins/lime-plugin-locate/src/locatePage.tsx:225
 msgid "cancel"
