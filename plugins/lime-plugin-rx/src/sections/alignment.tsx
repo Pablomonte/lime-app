@@ -33,15 +33,17 @@ export const AlignmentCard = ({ status }: { status: StatusResponse }) => {
             1024
     );
     return (
-        <div className={"flex flex-row mt-6 justify-between md:px-8"}>
+        <div className={"flex flex-row mt-6 gap-2 justify-around items-center px-2"}>
             {hasMostActive && (
                 <Fragment>
-                    <div className={"flex-1 text-7xl text-center text-primary"}>
-                        <SignalColor
-                            className={"font-bold"}
-                            signal={+status.most_active.signal}
-                        />
-                        <div className={"text-3xl"}>
+                    <div className={"flex flex-col items-center"}>
+                        <div className={"text-7xl font-bold text-primary"}>
+                            <SignalColor
+                                className={"font-bold"}
+                                signal={+status.most_active.signal}
+                            />
+                        </div>
+                        <div className={"text-2xl mt-2"}>
                             {status.most_active?.chains &&
                                 status.most_active.chains.map((chain, i) => (
                                     <span key={i}>
@@ -56,17 +58,15 @@ export const AlignmentCard = ({ status }: { status: StatusResponse }) => {
                                 ))}
                         </div>
                     </div>
-                    <div className={"flex-1 flex flex-col text-xl "}>
-                        <div className={"font-bold"}>
+                    <div className={"flex flex-col text-xl gap-1 min-w-0 flex-1"}>
+                        <div className={"font-bold text-2xl mb-1"}>
                             <Trans>Most active link</Trans>
                         </div>
-                        <div className={"text-primary font-bold"}>
+                        <div className={"text-primary font-bold min-h-[1.75rem]"}>
                             {bathost && bathost.hostname ? (
                                 <span>{stripIface(bathost.hostname)}</span>
                             ) : (
-                                <span className="withLoadingEllipsis">
-                                    <Trans>Fetching name</Trans>
-                                </span>
+                                <span>...</span>
                             )}
                         </div>
                         <div>
@@ -77,17 +77,17 @@ export const AlignmentCard = ({ status }: { status: StatusResponse }) => {
                         </div>
                         <div>
                             <Trans>Traffic: </Trans>
-                            <span className={"font-bold"}> {traffic}MB</span>
+                            <span className={"font-bold"}>{traffic}MB</span>
                         </div>
                     </div>
                 </Fragment>
             )}
             {!hasMostActive && (
-                <div className={"flex-1 flex justify-center"}>
+                <div className={"flex-1 flex justify-center text-gray-500"}>
                     No most active iface
                 </div>
             )}
-            <div className={"flex justify-center"}>
+            <div className={"flex items-center"}>
                 <Button size={"lg"} color={"secondary"} href={"#/align"}>
                     <Trans>
                         Check
@@ -104,23 +104,19 @@ export const Alignment = () => {
     const { data: status, isLoading } = useNodeStatus();
 
     return (
-        <div
-            className={
-                "w-full min-h-min bg-primary-card border-b-2 border-primary-dark pb-10 pr-2"
-            }
-        >
-            <Section>
-                <SectionTitle icon={<AlignIcon className={IconsClassName} />}>
-                    <Trans>Your Alignment</Trans>
-                </SectionTitle>
+        <Section className={"border border-primary-dark rounded-md mx-4 mb-6 bg-primary-card"}>
+            <SectionTitle icon={<AlignIcon className={IconsClassName} />}>
+                <Trans>Your Alignment</Trans>
+            </SectionTitle>
+            <div className={"pb-4"}>
                 {isLoading ? (
-                    <div className={"flex-1 flex justify-center"}>
+                    <div className={"flex justify-center py-8 text-gray-500"}>
                         Loading...
                     </div>
                 ) : (
                     <AlignmentCard status={status} />
                 )}
-            </Section>
-        </div>
+            </div>
+        </Section>
     );
 };
