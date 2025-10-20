@@ -620,10 +620,6 @@ msgstr ""
 msgid "Device"
 msgstr ""
 
-#: plugins/lime-plugin-rx/src/sections/internetPath.tsx:136
-#~ msgid "Diagnose"
-#~ msgstr ""
-
 #: plugins/lime-plugin-node-admin/src/nodeAdminPage.js:54
 #: plugins/lime-plugin-node-admin/src/nodeAdminPage.js:72
 #: plugins/lime-plugin-pirania/nodeAdmin/PortalConfigItem.tsx:20
@@ -726,10 +722,6 @@ msgstr ""
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearNodeReferenceBtn.tsx:52
 msgid "Error clearing reference state!"
 msgstr ""
-
-#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:134
-#~ msgid "Error configuring port: {0}"
-#~ msgstr ""
 
 #: plugins/lime-plugin-firmware/src/confirmPage/confirmPage.js:24
 msgid "Error confirming upgrade: {0}"
@@ -1090,10 +1082,6 @@ msgstr ""
 #: plugins/lime-plugin-pirania/nodeAdmin/PortalConfigPage.js:75
 msgid "Manage Vouchers"
 msgstr ""
-
-#: plugins/lime-plugin-rx/src/sections/internetPath.tsx:139
-#~ msgid "Map"
-#~ msgstr ""
 
 #: src/components/form/index.js:8
 msgid "Max. {length} characters"
@@ -1632,14 +1620,6 @@ msgstr ""
 #: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:70
 msgid "Select the role for this ethernet port."
 msgstr "Seleziona il ruolo per questa porta ethernet."
-
-#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:81
-#~ msgid "Select the role for this ethernet port. Network will restart after applying changes."
-#~ msgstr ""
-
-#: plugins/lime-plugin-rx/src/components/EthConfigButton.tsx:73
-#~ msgid "Select the role for this ethernet port:"
-#~ msgstr ""
 
 #: plugins/lime-plugin-fbw/src/containers/scanPage/SelectForm.js:75
 msgid "Selected network to join"
