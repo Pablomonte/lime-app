@@ -118,6 +118,14 @@ msgstr "Alineación"
 msgid "Alignment"
 msgstr "Alineación"
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/LinkTopology.tsx:140
+msgid "All ({0})"
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NodesList.tsx:140
+msgid "All Status"
+msgstr ""
+
 #: plugins/lime-plugin-pirania/src/screens/voucherList.js:85
 msgid "All Vouchers"
 msgstr "Todos los cupones"
@@ -125,6 +133,10 @@ msgstr "Todos los cupones"
 #: plugins/lime-plugin-mesh-wide-config/src/components/modals.tsx:217
 msgid "All nodes applied the configuration"
 msgstr "Todos los nodos aplicaron la nueva configuración"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:42
+msgid "All nodes are healthy and all links are functioning correctly."
+msgstr ""
 
 #: plugins/lime-plugin-mesh-wide-config/src/components/modals.tsx:182
 #: plugins/lime-plugin-mesh-wide-upgrade/src/components/modals.tsx:52
@@ -219,6 +231,10 @@ msgstr "Al menos un número."
 msgid "Author node: {author_node}"
 msgstr "Nodo autor: {author_node}"
 
+#: plugins/lime-plugin-mesh-wide/src/views/ViewSelector.tsx:98
+msgid "Auto"
+msgstr ""
+
 #: plugins/lime-plugin-pirania/src/components/voucherListItem.js:23
 #: plugins/lime-plugin-pirania/src/screens/voucher.js:12
 #: plugins/lime-plugin-pirania/src/screens/voucherList.js:88
@@ -233,6 +249,10 @@ msgstr "Espere mientra se reinicia."
 #: plugins/lime-plugin-mesh-wide-upgrade/src/utils/upgradeStatusMessages.tsx:51
 msgid "Awaiting confirmation"
 msgstr "Esperando confirmación."
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/LinkTopology.tsx:172
+msgid "Babel ({0})"
+msgstr ""
 
 #: plugins/lime-plugin-mesh-wide/src/lib/utils.ts:86
 msgid "Babel Links"
@@ -249,6 +269,10 @@ msgstr "Volver"
 #: plugins/lime-plugin-pirania/src/screens/wellcomeScreenEditor.js:100
 msgid "Background Color"
 msgstr "Color de fondo"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/LinkTopology.tsx:162
+msgid "Batman ({0})"
+msgstr ""
 
 #: plugins/lime-plugin-mesh-wide/src/lib/utils.ts:82
 msgid "Batman Links"
@@ -578,9 +602,25 @@ msgstr "Creado {0}"
 msgid "Creation date: {0}"
 msgstr "Fecha de creación: {0}"
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:94
+msgid "Critical"
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/views/ViewSelector.tsx:106
+msgid "Currently showing:"
+msgstr ""
+
 #: plugins/lime-plugin-firmware/src/upgradeAvailable.js:69
 msgid "Currently your node has version:"
 msgstr "Actualmente tu nodo tiene la versión:"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NetworkSummary.tsx:145
+msgid "Degraded Links"
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:142
+msgid "Degraded Links ({0})"
+msgstr ""
 
 #: src/components/Modal/Modal.tsx:107
 msgid "Delete"
@@ -615,10 +655,18 @@ msgstr "Descripción"
 msgid "Description: {name}"
 msgstr "Descripción: {name}"
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/components/NodeCard.tsx:114
+msgid "Details"
+msgstr ""
+
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:129
 #: plugins/lime-plugin-rx/src/sections/system.tsx:48
 msgid "Device"
 msgstr "Equipo"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/components/NodeCard.tsx:71
+msgid "Device:"
+msgstr ""
 
 #: plugins/lime-plugin-node-admin/src/nodeAdminPage.js:54
 #: plugins/lime-plugin-node-admin/src/nodeAdminPage.js:72
@@ -635,6 +683,10 @@ msgstr "No volver a mostrar a este mensaje"
 #: plugins/lime-plugin-mesh-wide-config/src/components/FormOption.tsx:95
 msgid "Done"
 msgstr "Hecho"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NodesList.tsx:149
+msgid "Down"
+msgstr ""
 
 #: plugins/lime-plugin-firmware/src/upgradePage/upgradePage.js:96
 msgid "Download"
@@ -751,10 +803,6 @@ msgstr "Error al descargar lime community."
 #: plugins/lime-plugin-fbw/src/containers/scanPage/ScanList.js:177
 msgid "Error getting scan results"
 msgstr "Error recibiendo los resultados del escaneo."
-
-#: plugins/lime-plugin-mesh-wide/src/meshWidePage.tsx:38
-msgid "Error loading leaflet"
-msgstr "Error cargando leaflet."
 
 #: plugins/lime-plugin-align/src/alignPage.js:177
 msgid "Error loading mesh interfaces"
@@ -880,6 +928,10 @@ msgstr "Archivo de sistema (firmware) descargado."
 msgid "Firmware version"
 msgstr "Versión de sistema (firmware)."
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/components/NodeCard.tsx:77
+msgid "Firmware:"
+msgstr ""
+
 #: plugins/lime-plugin-metrics/src/metricsPage.tsx:160
 msgid "From"
 msgstr "Desde"
@@ -904,6 +956,22 @@ msgstr "Ground Routing"
 msgid "Ground Routing configuration"
 msgstr "Configuración de Ground Routing"
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NetworkSummary.tsx:90
+msgid "Health"
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NodesList.tsx:143
+msgid "Healthy"
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NetworkSummary.tsx:136
+msgid "Healthy Links"
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NetworkSummary.tsx:109
+msgid "Healthy Nodes"
+msgstr ""
+
 #: plugins/lime-plugin-remotesupport/src/consoleView.js:17
 msgid "Hide Console"
 msgstr "Esconder consola"
@@ -923,6 +991,10 @@ msgstr "Direcciones IP"
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:125
 msgid "IPv4"
 msgstr "IPv4"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/components/NodeCard.tsx:63
+msgid "IPv4:"
+msgstr ""
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:126
 msgid "IPv6"
@@ -1031,6 +1103,10 @@ msgstr "Visto por última vez"
 msgid "Link Title"
 msgstr "Título del enlace"
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/LinkTopology.tsx:117
+msgid "Link Topology ({0} links)"
+msgstr ""
+
 #: plugins/lime-plugin-pirania/src/screens/wellcomeScreenEditor.js:135
 msgid "Link URL"
 msgstr "URL del enlace"
@@ -1043,6 +1119,10 @@ msgstr "Enlace desde <0>{0}</0> hasta <1>{1}</1>"
 msgid "Link {0} {1}"
 msgstr "Enlace {0} {1}"
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NetworkSummary.tsx:81
+msgid "Links"
+msgstr ""
+
 #: plugins/lime-plugin-metrics/src/metricsPage.tsx:109
 msgid "Load last known Internet path"
 msgstr "Cargando la última ruta a Internet conocida..."
@@ -1050,6 +1130,10 @@ msgstr "Cargando la última ruta a Internet conocida..."
 #: plugins/lime-plugin-rx/src/sections/internetPath.tsx:116
 msgid "Loading <0/>last internet path..."
 msgstr "Cargando <0/> la última ruta a internet conocida..."
+
+#: plugins/lime-plugin-mesh-wide/src/meshWidePage.tsx:45
+msgid "Loading mesh-wide..."
+msgstr ""
 
 #: plugins/lime-plugin-pirania/src/screens/wellcomeScreenEditor.js:111
 msgid "Local services link"
@@ -1067,6 +1151,10 @@ msgstr "Iniciando sesión"
 msgid "Login"
 msgstr "Ingresar"
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/components/NodeCard.tsx:85
+msgid "MACs:"
+msgstr ""
+
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/NodeDetail.tsx:134
 msgid "Macs ({0})"
 msgstr "MACs ({0})"
@@ -1082,6 +1170,14 @@ msgstr "Texto principal"
 #: plugins/lime-plugin-pirania/nodeAdmin/PortalConfigPage.js:75
 msgid "Manage Vouchers"
 msgstr "Administrar cupones"
+
+#: plugins/lime-plugin-mesh-wide/src/views/ViewSelector.tsx:63
+msgid "Map"
+msgstr ""
+
+#: plugins/lime-plugin-mesh-wide/src/views/ViewSelector.tsx:109
+msgid "Map View"
+msgstr "Vista de Mapa"
 
 #: src/components/form/index.js:8
 msgid "Max. {length} characters"
@@ -1158,9 +1254,21 @@ msgstr "Debes elegir un nombre de host válido."
 msgid "Need support?"
 msgstr "Necesita soporte?"
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:78
+msgid "Network Health Status"
+msgstr "Estado de Salud de la Red"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:39
+msgid "Network Health: All Systems Normal"
+msgstr "Salud de la Red: Todos los Sistemas Normales"
+
 #: plugins/lime-plugin-node-admin/src/screens/hotspot/src/hotspotPage.js:82
 msgid "Network Name: {ssid}"
 msgstr "Nombre de Red: {ssid}"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NetworkSummary.tsx:61
+msgid "Network Overview"
+msgstr "Vista General de la Red"
 
 #: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:25
 msgid "Network reconfiguration completed"
@@ -1203,6 +1311,10 @@ msgstr "Nueva versión disponible!"
 msgid "No changes made"
 msgstr "No se realizaron cambios"
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/LinkTopology.tsx:180
+msgid "No links detected. Links will appear here once nodes establish connections."
+msgstr "No se detectaron enlaces. Los enlaces aparecerán aquí una vez que los nodos establezcan conexiones."
+
 #: src/components/ErrorMessage.tsx:26
 msgid "No network connection"
 msgstr "Sin conexión de red"
@@ -1214,6 +1326,10 @@ msgstr "No se ha encontrado una nueva versión disponible."
 #: plugins/lime-plugin-mesh-wide-upgrade/src/components/upgradeState/NoNewVersion.tsx:11
 msgid "No new version available!"
 msgstr "No hay una nueva versión disponible!"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NodesList.tsx:157
+msgid "No nodes found"
+msgstr "No se encontraron nodos"
 
 #: src/components/mesh-wide-wizard/NodesListWrapper.tsx:29
 msgid "No nodes present on the <0/>mesh wide upgrade state yet!"
@@ -1234,6 +1350,10 @@ msgstr "No hay un cambio de configuración en curso."
 #: plugins/lime-plugin-mesh-wide-upgrade/src/utils/upgradeStatusMessages.tsx:15
 msgid "No upgrade in progres"
 msgstr "No hay una actualización en curso."
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/LinkTopology.tsx:185
+msgid "No {selectedType} links found"
+msgstr "No se encontraron enlaces de tipo {selectedType}"
 
 #: plugins/lime-plugin-pirania/src/screens/invalidateVoucher.js:34
 #: src/containers/RebootPage/RebootPage.js:45
@@ -1259,6 +1379,10 @@ msgstr "Información de referencia sobre el nodo"
 msgid "Node Name"
 msgstr "Nombre del nodo"
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/components/NodeCard.tsx:93
+msgid "Node is down or unreachable"
+msgstr "El nodo está caído o inaccesible"
+
 #: plugins/lime-plugin-mesh-wide-upgrade/src/containers/meshWideUpgradeStatus.tsx:53
 msgid "Node is upgrading"
 msgstr "El nodo se está actualizando"
@@ -1266,6 +1390,34 @@ msgstr "El nodo se está actualizando"
 #: plugins/lime-plugin-rx/src/components/EthConfigProgressPage.tsx:184
 msgid "Node password"
 msgstr "Contraseña del nodo"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NetworkSummary.tsx:68
+msgid "Nodes"
+msgstr "Nodos"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NodesList.tsx:98
+msgid "Nodes ({0}/{1})"
+msgstr "Nodos ({0}/{1})"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NetworkSummary.tsx:127
+msgid "Nodes Down"
+msgstr "Nodos Caídos"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:109
+msgid "Nodes Down ({0})"
+msgstr "Nodos Caídos ({0})"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:159
+msgid "Nodes Without Location ({0})"
+msgstr "Nodos Sin Ubicación ({0})"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NetworkSummary.tsx:118
+msgid "Nodes with Warnings"
+msgstr "Nodos con Advertencias"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:124
+msgid "Nodes with Warnings ({0})"
+msgstr "Nodos con Advertencias ({0})"
 
 #: plugins/lime-plugin-node-admin/src/screens/hotspot/src/components/testBoxes.js:71
 #: plugins/lime-plugin-node-admin/src/screens/hotspot/src/components/testBoxes.js:99
@@ -1283,6 +1435,18 @@ msgstr "Notas de"
 #: plugins/lime-plugin-pirania/src/components/createVoucherForm.tsx:93
 msgid "Number of vouchers"
 msgstr "Número de cupones"
+
+#: plugins/lime-plugin-mesh-wide/src/views/ViewSelector.tsx:82
+msgid "Offline"
+msgstr "Sin Conexión"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/index.tsx:31
+msgid "Offline Mode"
+msgstr "Modo Sin Conexión"
+
+#: plugins/lime-plugin-mesh-wide/src/views/ViewSelector.tsx:111
+msgid "Offline View"
+msgstr "Vista Sin Conexión"
 
 #: plugins/lime-plugin-pirania/src/screens/postCreate.js:62
 #: src/components/banner/index.js:17
@@ -1712,6 +1876,10 @@ msgstr "Contraseña Compartida"
 msgid "Shared Password changed successfully"
 msgstr "La contraseña compartida se cambió correctamente."
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:190
+msgid "Shared State Errors ({0})"
+msgstr "Errores de Estado Compartido ({0})"
+
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ShowErrorsDetail.tsx:68
 msgid "Shared state error"
 msgstr "Error de shared state"
@@ -1776,6 +1944,10 @@ msgstr "Algunos nodos tienen errores:"
 #: plugins/lime-plugin-mesh-wide-config/src/components/StepStates.tsx:44
 msgid "Some nodes have not the new configuration yet or are not ready for apply it.<0/>Check network page for more information"
 msgstr "Algunos nodos no estan listos todavía"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:198
+msgid "Some shared state data could not be loaded or is not set. Check if shared-state packages are properly installed."
+msgstr "Algunos datos de estado compartido no pudieron cargarse o no están configurados. Verifique que los paquetes shared-state estén instalados correctamente."
 
 #: src/components/ErrorBoundary.tsx:65
 msgid "Something went wrong"
@@ -1969,6 +2141,18 @@ msgstr "No hay una sesión de soporte remoto abierta. Haz click en Crear Sesión
 #: plugins/lime-plugin-align/src/alignPage.js:121
 msgid "These are the nodes associated on this radio"
 msgstr "Estos son los nodos asociados a esta radio."
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:112
+msgid "These nodes are not responding or have been removed from the network."
+msgstr "Estos nodos no están respondiendo o fueron removidos de la red."
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:165
+msgid "These nodes don't have GPS coordinates set. They will appear in the list below but not on the map."
+msgstr "Estos nodos no tienen coordenadas GPS configuradas. Aparecerán en la lista a continuación pero no en el mapa."
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:130
+msgid "These nodes have configuration mismatches or other non-critical issues."
+msgstr "Estos nodos tienen discrepancias de configuración u otros problemas no críticos."
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:436
 msgid "This Link is not registered on the reference state"
@@ -2219,6 +2403,10 @@ msgstr "Valor"
 msgid "Versión de sistema"
 msgstr "Versión de sistema"
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/index.tsx:34
+msgid "Viewing network without map. Switch to map view when online."
+msgstr "Visualizando la red sin mapa. Cambie a vista de mapa cuando esté en línea."
+
 #: plugins/lime-plugin-changeNode/src/changeNodePage.js:86
 msgid "Visit"
 msgstr "Visitar"
@@ -2256,6 +2444,14 @@ msgstr "Los cupones sirven para limitar el acceso a través del Portal Comunitar
 msgid "Wait until the download is finished!"
 msgstr "¡Espere hasta que finalice la descarga!"
 
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/NodesList.tsx:146
+msgid "Warning"
+msgstr "Advertencia"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:100
+msgid "Warnings"
+msgstr "Advertencias"
+
 #: plugins/lime-plugin-fbw/src/containers/FbwBanner.tsx:54
 msgid "Welcome to LimeApp"
 msgstr "A disfrutar de LimeApp!"
@@ -2267,6 +2463,14 @@ msgstr "Pantalla de bienvenida"
 #: plugins/lime-plugin-firmware/src/upgradingPage/upgradingPage.js:17
 msgid "When reloading the app you will be asked to confirm the upgrade, otherwise it will be reverted"
 msgstr "Al recargar la aplicación, se te pedirá que confirmes la actualización, si no lo haces se revertirá."
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/LinkTopology.tsx:152
+msgid "WiFi ({0})"
+msgstr "WiFi ({0})"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/HealthStatus.tsx:147
+msgid "WiFi links with weak signal (-60 to -75 dBm). Consider checking alignment."
+msgstr "Enlaces WiFi con señal débil (-60 a -75 dBm). Considere verificar la alineación."
 
 #: plugins/lime-plugin-mesh-wide/src/lib/utils.ts:78
 msgid "Wifi Links"
@@ -2367,6 +2571,10 @@ msgstr "Su nodo no tiene conexión a internet"
 msgid "Your router has not been configured yet. You can use our assistant to add it to an existing network or create a new one. If you ignore this message, it will continue working with the default configuration."
 msgstr "Tu router aún no ha sido configurado. Puedes usar nuestro asistente para agregarlo a una red existente o crear una nueva. Si ignoras este mensaje, continuará funcionando con la configuración predeterminada."
 
+#: plugins/lime-plugin-mesh-wide/src/views/ViewSelector.tsx:116
+msgid "auto-selected"
+msgstr "selección automática"
+
 #: plugins/lime-plugin-locate/src/locatePage.tsx:225
 msgid "cancel"
 msgstr "Cancelar"
@@ -2421,6 +2629,10 @@ msgstr "{0, plural, =0 {Nadie se ha unido aún.} one {Una persona se ha unido.} 
 #: plugins/lime-plugin-mesh-wide-upgrade/src/components/nodeUpgradeInfo.tsx:52
 msgid "{0}"
 msgstr "{0}"
+
+#: plugins/lime-plugin-mesh-wide/src/views/OfflineView/components/NodeCard.tsx:101
+msgid "{0} issue(s) detected"
+msgstr "{0} problema(s) detectado(s)"
 
 #: plugins/lime-plugin-mesh-wide-config/src/components/StepStates.tsx:23
 msgid "{0} of {totalNodes} will be upgraded"
