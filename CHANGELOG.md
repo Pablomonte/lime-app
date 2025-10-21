@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.28](https://github.com/Pablomonte/lime-app/compare/v0.2.26...v0.2.28) (2025-10-21)
+
+
+### Features
+
+* add centralized query keys with gradual migration ([f6856a2](https://github.com/Pablomonte/lime-app/commit/f6856a2b9fc933755f9457eb09f8b1fdab479c6d))
+* add clear reference state buttons for mesh-wide map ([439251c](https://github.com/Pablomonte/lime-app/commit/439251cedaa4fc6f49f6c78b613a08c4243d48c9))
+* add ethernet port role configuration button (WIP) ([4a39a0b](https://github.com/Pablomonte/lime-app/commit/4a39a0b6b3e6cbbb98b18099db36bf72967cfdd2)), closes [#6](https://github.com/Pablomonte/lime-app/issues/6)
+* add ethernet port role configuration buttons ([e43bcd7](https://github.com/Pablomonte/lime-app/commit/e43bcd785ecf027d763c61b8840f21161ae7def1)), closes [#6](https://github.com/Pablomonte/lime-app/issues/6)
+* add reconfigure button for completed mesh-wide config ([3f51dd7](https://github.com/Pablomonte/lime-app/commit/3f51dd7e4e4dc8e97ac771bca74e133012385213)), closes [#5](https://github.com/Pablomonte/lime-app/issues/5)
+* add tooltips to mesh-wide action buttons ([1f6a455](https://github.com/Pablomonte/lime-app/commit/1f6a455355ce4487a53a06b1b41d35e3c18ce929)), closes [#2](https://github.com/Pablomonte/lime-app/issues/2)
+* complete Phase 2A - migrate remaining plugins to centralized queryKeys ([302473b](https://github.com/Pablomonte/lime-app/commit/302473bb17352bd1a4706abddcbc6f8232c6bc32))
+* complete Redux elimination and functionality restoration ([eabc651](https://github.com/Pablomonte/lime-app/commit/eabc651f8dae0fa60ece744a8b5b4c34223ec002))
+* complete v4 performance & optimization foundation ([d7e90f3](https://github.com/Pablomonte/lime-app/commit/d7e90f3d9f22b1d500c519acead2aca690aed421))
+* comprehensive error handling system ([c18f8d6](https://github.com/Pablomonte/lime-app/commit/c18f8d6c5c164d1d16b1b3d366fda653ae0cda41))
+* enhance production error handling across core plugins ([4f7553f](https://github.com/Pablomonte/lime-app/commit/4f7553feff844aa1ddedb2a9b303ca82a6ddd857))
+* **i18n:** complete all missing Spanish translations ([25ba95d](https://github.com/Pablomonte/lime-app/commit/25ba95dac7544a5c105095d97bbaf1b43abbc3e8))
+* implement proper FBW initial overlay with centralized query management ([8b7a065](https://github.com/Pablomonte/lime-app/commit/8b7a065758cdf799bd1cba9767d08ffb9d48d6fd))
+* improve Rx page aesthetics and layout ([7d84885](https://github.com/Pablomonte/lime-app/commit/7d84885a8cfab9be93a44526c68881335a99b5d3))
+* migrate firmware plugin to centralized queryKeys + fix AlignSingle imports ([359d023](https://github.com/Pablomonte/lime-app/commit/359d0234972ed9a1782423f568ee2e32727b6ef4))
+* optimize bundle for LibreMesh deployment ([85350f7](https://github.com/Pablomonte/lime-app/commit/85350f733f3ee52a73fa0f0489ff095b712dd7c2))
+* optimize bundle size and fix layout issues ([ab655f9](https://github.com/Pablomonte/lime-app/commit/ab655f95b4f0ad0e343ece056246f454fd104f05))
+* **rx:** add unique port labels and complete translations ([ebd2b52](https://github.com/Pablomonte/lime-app/commit/ebd2b52b8c1a015a73bf992baa043e7e37f16b9f))
+* **rx:** improve alignment section layout and styling ([b0c880a](https://github.com/Pablomonte/lime-app/commit/b0c880a792c63f831694458e176b35bfa396ebfd))
+
+
+### Bug Fixes
+
+* add index.html to redirect root to lime-app ([9afb5fb](https://github.com/Pablomonte/lime-app/commit/9afb5fba3481cc7fa1a35aa382dbea80b99b3e2c))
+* add missing iwinfo ACL file for align plugin ([933e0db](https://github.com/Pablomonte/lime-app/commit/933e0db16456f3a1de6a9b47864348e2137cfa51))
+* add missing uci-defaults and config files from upstream ([ef856db](https://github.com/Pablomonte/lime-app/commit/ef856db149d697a7b8e4c9c607675ebb4a11a6e9))
+* conditionally apply base href only in production ([cdecac5](https://github.com/Pablomonte/lime-app/commit/cdecac5904c789dd180c477de817ccbf848b5bca))
+* Configure correct base tag for production deployment ([8e55888](https://github.com/Pablomonte/lime-app/commit/8e5588892d4036ae5db03fbb8b7d2ea403806ce0))
+* disable source maps and add SPA route redirects ([c5ac10d](https://github.com/Pablomonte/lime-app/commit/c5ac10d4da307a811c3de014764052c69dfff629))
+* Improve production detection in footer asset paths ([6b53d83](https://github.com/Pablomonte/lime-app/commit/6b53d8353096b66ba1afc0fce7b77cb697becb97))
+* **mesh-wide:** fix node reference deletion and show all unique links ([7e8829d](https://github.com/Pablomonte/lime-app/commit/7e8829d42e1d311b3528d22264c9195ed30c4572))
+* notes not saving - correct API parameter and add cache invalidation ([be4e593](https://github.com/Pablomonte/lime-app/commit/be4e593a96e31245c4808b2dbd64dfd1e0191773)), closes [#10](https://github.com/Pablomonte/lime-app/issues/10)
+* Remove trailing slash requirement from production detection ([8d57eec](https://github.com/Pablomonte/lime-app/commit/8d57eecac8e3d34bd3bcf22a323cd802333ebcd7))
+* replace React Fragment with Preact Fragment in alignment component ([7349ac5](https://github.com/Pablomonte/lime-app/commit/7349ac5f8e003e90e380b9314bc2a0fa76461653))
+* restore align functionality with route props and speech synthesis ([a1076f4](https://github.com/Pablomonte/lime-app/commit/a1076f44ef349f232b1975ad11d70d804399fa8d))
+* restore align functionality with route props and speech synthesis ([65f509d](https://github.com/Pablomonte/lime-app/commit/65f509df1ebe1522391135f6a62f7749f033c31a))
+* restore Babel links visualization in mesh-wide map ([5317c3a](https://github.com/Pablomonte/lime-app/commit/5317c3ade41741df665f9b70e40982f5cab5dd3f))
+
 ### [0.2.27](https://github.com/Pablomonte/lime-app/compare/v0.2.26...v0.2.27) (2025-08-29)
 
 
