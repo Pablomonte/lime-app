@@ -49,7 +49,7 @@ const Ports = ({ switches }: { switches: SwitchStatus[] }) => {
                             </h2>
                             <EthConfigButton
                                 device={device}
-                                currentRole={displayRole}
+                                currentRole={firstPort.eth_role || "default"}
                             />
                         </div>
                         <div className={"flex flex-row gap-3"}>

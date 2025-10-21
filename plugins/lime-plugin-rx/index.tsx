@@ -3,8 +3,8 @@ import { RxMenu } from "./src/rxMenu";
 import Rx from "./src/rxPage";
 
 // Wrapper to pass query params as props
-const EthConfigProgressPageWrapper = ({ device, role, password }: any) => (
-    <EthConfigProgressPage device={device} role={role} password={password} />
+const EthConfigProgressPageWrapper = ({ device, role }: any) => (
+    <EthConfigProgressPage device={device} role={role} />
 );
 
 export default {

@@ -220,13 +220,11 @@ const EthConfigPasswordRequest = ({
 interface EthConfigProgressPageProps {
     device?: string;
     role?: string;
-    password?: string;
 }
 
 export const EthConfigProgressPage = ({
     device = "eth0",
     role = "mesh",
-    password: initialPassword,
 }: EthConfigProgressPageProps) => {
     const totalTime = 45; // 45 seconds for network restart
     const [elapsedTime, setElapsedTime] = useState(0);
@@ -234,7 +232,6 @@ export const EthConfigProgressPage = ({
         "password_request" | "sending" | "progress" | "success" | "error"
     >("password_request");
     const [apiError, setApiError] = useState<string | null>(null);
-    const [password, setPassword] = useState("");
 
     const { mutateAsync } = useSetEthConfig();
 
@@ -269,22 +266,33 @@ export const EthConfigProgressPage = ({
 
     const sendConfig = async (pwd: string) => {
         setConfigState("sending");
-        setPassword(pwd);
 
         try {
-            // Note: We don't await the full response because the network restart
-            // may cut the SSH connection before we receive a response.
-            // We just fire and forget, then start the progress timer.
+            // Send the command - the network will restart immediately
             await mutateAsync({ device, role: role as any, password: pwd });
 
             // If we get here, the command was sent successfully
-            // (though the response might not arrive due to network restart)
             setConfigState("progress");
         } catch (err) {
-            // Only catch errors that happen before the network restart
-            // (e.g., SSH connection refused, wrong password, etc.)
-            setApiError(String(err));
-            setConfigState("error");
+            // Network errors are expected when the network restarts
+            // (connection lost, timeout, etc.) - treat these as success
+            const errorStr = String(err).toLowerCase();
+            const isNetworkError =
+                errorStr.includes("cannot do remote call") ||
+                errorStr.includes("parallelmutationerror") ||
+                errorStr.includes("fetch") ||
+                errorStr.includes("network") ||
+                errorStr.includes("timeout") ||
+                errorStr.includes("aborted");
+
+            if (isNetworkError) {
+                // Network restarted - this is expected, proceed to progress
+                setConfigState("progress");
+            } else {
+                // Real error (wrong password, etc.)
+                setApiError(String(err));
+                setConfigState("error");
+            }
         }
     };
 
