@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/macro";
-import L, { LatLngExpression, icon } from "leaflet";
+import { LatLngExpression, icon } from "leaflet";
 import { useEffect, useRef, useState } from "preact/hooks";
 import { LayersControl, MapContainer, Marker, TileLayer } from "react-leaflet";
 
@@ -9,12 +9,8 @@ import {
     useChangeLocation,
     useLoadLeaflet,
     useLocation,
-    useNodesandlinks,
 } from "plugins/lime-plugin-locate/src/locateQueries";
 
-import { useBoardData } from "utils/queries";
-
-import { getCommunityGeoJSON } from "./communityGeoJSON";
 import { homeIcon } from "./leafletUtils";
 import style from "./style.less";
 
@@ -26,27 +22,7 @@ const gmSatellite = "https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}";
 const gmHybrid = "https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}";
 const gmSubdomains = ["mt0", "mt1", "mt2", "mt3"];
 
-function getCommunityLayer(nodeHostname, stationLat, stationLon, nodesData) {
-    /** Create a Leaflet layer with community nodes and links to be added to the map*/
-    if (nodesData[nodeHostname]) {
-        nodesData[nodeHostname].data.coordinates = {
-            lat: stationLat,
-            lon: stationLon,
-        };
-    }
-    // Get community GeoJSON, filter out nodes in same location as station host.
-    const geoJSON = getCommunityGeoJSON(nodesData, [stationLon, stationLat]);
-    return L.geoJSON(geoJSON, {
-        onEachFeature: (feature, layer) => {
-            if (feature.properties && feature.properties.name) {
-                layer.bindTooltip(feature.properties.name).openTooltip();
-            }
-        },
-    });
-}
-
 export const LocatePage = () => {
-    const { data: boardData } = useBoardData();
     const {
         isError: isAssetError,
         isFetchedAfterMount: assetsLoaded,
@@ -58,13 +34,8 @@ export const LocatePage = () => {
     const {
         data: nodeLocation,
         isLoading: isLoadingLocation,
-        isFetched: locationLoaded,
     } = useLocation({
         enabled: assetsLoaded,
-    });
-
-    const { data: nodesData } = useNodesandlinks({
-        enabled: locationLoaded,
     });
 
     const { mutate: changeLocation, isLoading: submitting } = useChangeLocation(
@@ -89,7 +60,6 @@ export const LocatePage = () => {
 
     const [editting, setEditting] = useState(false);
     const [nodeMarker, setNodeMarker] = useState<LatLngExpression>(null);
-    const [communityLayer, setCommunityLayer] = useState(null);
 
     const mapRef = useRef<L.Map | null>();
 
@@ -117,26 +87,6 @@ export const LocatePage = () => {
     function onConfirmLocation() {
         const position = mapRef.current.getCenter();
         changeLocation({ lat: position.lat, lon: position.lng });
-        if (communityLayer) {
-            // Hide the community view, to avoid outdated links
-            toogleCommunityLayer();
-        }
-    }
-
-    function toogleCommunityLayer() {
-        if (communityLayer) {
-            mapRef.current.removeLayer(communityLayer);
-            setCommunityLayer(null);
-        } else {
-            const layer = getCommunityLayer(
-                boardData.hostname,
-                stationLat,
-                stationLon,
-                nodesData
-            );
-            layer.addTo(mapRef.current);
-            setCommunityLayer(layer);
-        }
     }
 
     function isReady() {
@@ -211,16 +161,6 @@ export const LocatePage = () => {
                             <Trans>confirm location</Trans>
                         </button>
                     )}
-                    {!editting && (
-                        <button onClick={toogleCommunityLayer}>
-                            {communityLayer ? (
-                                <Trans>hide community</Trans>
-                            ) : (
-                                <Trans>show community</Trans>
-                            )}
-                        </button>
-                    )}
-
                     <button onClick={toogleEdition}>
                         {editting && <Trans>cancel</Trans>}
                         {!editting && hasLocation && (
