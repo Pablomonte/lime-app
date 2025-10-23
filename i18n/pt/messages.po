@@ -304,7 +304,7 @@ msgstr "Instruções para celular"
 msgid "Chains"
 msgstr ""
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:111
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:113
 msgid "Change"
 msgstr "Mudar"
 
@@ -355,7 +355,7 @@ msgid "Choose a name for your network"
 msgstr "Escolha um nome para a sua rede"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:97
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:78
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:80
 msgid "Choose a shared password for network administration"
 msgstr "Escolha uma senha compartilhada para administração da rede"
 
@@ -1331,11 +1331,11 @@ msgid "Packet loss"
 msgstr "Perda de pacotes"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:104
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:84
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:86
 msgid "Password"
 msgstr "Senha"
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:122
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:124
 msgid "Password updated! Redirecting to apply configuration..."
 msgstr ""
 
@@ -1405,12 +1405,12 @@ msgid "Radio {radioNumber}"
 msgstr "Rádio {radioNumber}"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:116
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:95
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:97
 msgid "Re-enter Password"
 msgstr "Coloque a senha novamente"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:111
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:91
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:93
 msgid "Re-enter the shared password"
 msgstr "Coloque a senha compartilhada novamente"
 
@@ -1691,7 +1691,7 @@ msgstr "Configurando a rede"
 msgid "Setting up main node"
 msgstr ""
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:117
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:119
 msgid "Setting up new password"
 msgstr "Configurando uma nova senha"
 
@@ -1910,7 +1910,7 @@ msgid "The password should have:"
 msgstr "A senha deve incluir:"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:124
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:102
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:104
 msgid "The passwords do not match!"
 msgstr "As senhas não conincidem!"
 
@@ -1978,7 +1978,7 @@ msgstr "Esses são os nós associados a este rádio"
 msgid "This Link is not registered on the reference state"
 msgstr ""
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:71
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:72
 msgid "This action will make configuration changes to all accessible nodes in the network, this may take several minutes. You must confirm the changes at the end of the procedure."
 msgstr ""
 
@@ -2013,7 +2013,7 @@ msgstr "Este campo é necessário"
 msgid "This is a main node"
 msgstr ""
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:63
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:64
 msgid "This is not the same password as the WiFi signal. If they have been configured the same, change immediately to improve the security of the node and the network."
 msgstr ""
 
