@@ -288,7 +288,7 @@ msgstr ""
 msgid "Cannot connect to the remote support server"
 msgstr "Não foi possível conectar ao servidor de suporte remoto"
 
-#: plugins/lime-plugin-locate/src/locatePage.tsx:153
+#: plugins/lime-plugin-locate/src/locatePage.tsx:103
 msgid "Cannot load map, check your internet connection"
 msgstr "Não foi possível carregar o mapa, verifique sua conexão"
 
@@ -304,7 +304,7 @@ msgstr "Instruções para celular"
 msgid "Chains"
 msgstr ""
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:76
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:87
 msgid "Change"
 msgstr "Mudar"
 
@@ -312,9 +312,9 @@ msgstr "Mudar"
 msgid "Change LiMe Config"
 msgstr ""
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:40
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:46
 msgid "Change Shared Password"
-msgstr "Mudar senha compartilhada"
+msgstr ""
 
 #: plugins/lime-plugin-mesh-wide-config/src/components/FormFooter.tsx:40
 msgid "Changes made"
@@ -355,7 +355,7 @@ msgid "Choose a name for your network"
 msgstr "Escolha um nome para a sua rede"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:97
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:43
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:54
 msgid "Choose a shared password for network administration"
 msgstr "Escolha uma senha compartilhada para administração da rede"
 
@@ -752,7 +752,7 @@ msgstr ""
 msgid "Error getting scan results"
 msgstr ""
 
-#: plugins/lime-plugin-mesh-wide/src/meshWidePage.tsx:38
+#: plugins/lime-plugin-mesh-wide/src/meshWidePage.tsx:42
 msgid "Error loading leaflet"
 msgstr ""
 
@@ -1327,9 +1327,13 @@ msgid "Packet loss"
 msgstr "Perda de pacotes"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:104
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:49
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:60
 msgid "Password"
 msgstr "Senha"
+
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:98
+msgid "Password updated! Redirecting to apply configuration..."
+msgstr ""
 
 #: plugins/lime-plugin-node-admin/src/screens/hotspot/src/hotspotPage.js:87
 msgid "Password: {password}"
@@ -1397,12 +1401,12 @@ msgid "Radio {radioNumber}"
 msgstr "Rádio {radioNumber}"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:116
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:60
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:71
 msgid "Re-enter Password"
 msgstr "Coloque a senha novamente"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:111
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:56
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:67
 msgid "Re-enter the shared password"
 msgstr "Coloque a senha compartilhada novamente"
 
@@ -1683,7 +1687,7 @@ msgstr "Configurando a rede"
 msgid "Setting up main node"
 msgstr ""
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:82
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:93
 msgid "Setting up new password"
 msgstr "Configurando uma nova senha"
 
@@ -1707,10 +1711,6 @@ msgstr "Compartilhe sua conexão móvel conectando o nó a um ponto de acesso m�
 #: src/containers/SharedPasswordLogin/sharedPasswordLogin.tsx:48
 msgid "Shared Password"
 msgstr "Senha Compartilhada"
-
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:87
-msgid "Shared Password changed successfully"
-msgstr "Senha compartilhada alterada com sucesso"
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ShowErrorsDetail.tsx:68
 msgid "Shared state error"
@@ -1906,7 +1906,7 @@ msgid "The password should have:"
 msgstr "A senha deve incluir:"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:124
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:67
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:78
 msgid "The passwords do not match!"
 msgstr "As senhas não conincidem!"
 
@@ -2085,6 +2085,10 @@ msgstr ""
 #: plugins/lime-plugin-align/src/alignPage.js:136
 msgid "This radio is not associated with other nodes"
 msgstr "Esse rádio não está conectado a outros nós"
+
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:49
+msgid "This will change the password for ALL nodes in the network"
+msgstr ""
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/ClearLinkReferenceBtn.tsx:106
 msgid "This will remove the reference state for the link between {nodeNames}. You can set a new reference state later."
@@ -2367,15 +2371,15 @@ msgstr "Seu nó não tem conexão com a internet"
 msgid "Your router has not been configured yet. You can use our assistant to add it to an existing network or create a new one. If you ignore this message, it will continue working with the default configuration."
 msgstr ""
 
-#: plugins/lime-plugin-locate/src/locatePage.tsx:225
+#: plugins/lime-plugin-locate/src/locatePage.tsx:165
 msgid "cancel"
 msgstr "cancelar"
 
-#: plugins/lime-plugin-locate/src/locatePage.tsx:211
+#: plugins/lime-plugin-locate/src/locatePage.tsx:161
 msgid "confirm location"
 msgstr "confirmar localização"
 
-#: plugins/lime-plugin-locate/src/locatePage.tsx:227
+#: plugins/lime-plugin-locate/src/locatePage.tsx:167
 msgid "edit location"
 msgstr "editar localização"
 
@@ -2383,25 +2387,17 @@ msgstr "editar localização"
 msgid "for the following nodes: {nodes}"
 msgstr ""
 
-#: plugins/lime-plugin-locate/src/locatePage.tsx:217
-msgid "hide community"
-msgstr "esconder comunidade"
-
 #: plugins/lime-plugin-mesh-wide-config/src/components/modals.tsx:117
 msgid "key"
 msgstr ""
 
-#: plugins/lime-plugin-locate/src/locatePage.tsx:230
+#: plugins/lime-plugin-locate/src/locatePage.tsx:170
 msgid "locate my node"
 msgstr "localizar meu nó"
 
 #: plugins/lime-plugin-align/src/components/secondsAgo.js:22
 msgid "more than a minute ago"
 msgstr "faz mais de um minuto"
-
-#: plugins/lime-plugin-locate/src/locatePage.tsx:219
-msgid "show community"
-msgstr "mostrar comunidade"
 
 #: plugins/lime-plugin-firmware/src/confirmPage/confirmPage.js:14
 msgid "to keep the current configuration. Or ..."
