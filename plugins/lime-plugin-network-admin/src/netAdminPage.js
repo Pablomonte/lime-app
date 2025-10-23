@@ -50,6 +50,32 @@ export const NetAdmin = ({ submitting, success, submitSharedPassword }) => {
                     This will change the password for ALL nodes in the network
                 </Trans>
             </p>
+            <p className="text-warning">
+                ⚠{" "}
+                <Trans>
+                    It is important to decide this action jointly with the
+                    people who administer the network, it is not a personal
+                    decision but modifies the password to act on the entire
+                    network.
+                </Trans>
+            </p>
+            <p className="text-warning">
+                ⚠{" "}
+                <Trans>
+                    This is not the same password as the WiFi signal. If they
+                    have been configured the same, change immediately to improve
+                    the security of the node and the network.
+                </Trans>
+            </p>
+            <p className="text-warning">
+                ⚠{" "}
+                <Trans>
+                    This action will make configuration changes to all
+                    accessible nodes in the network, this may take several
+                    minutes. You must confirm the changes at the end of the
+                    procedure.
+                </Trans>
+            </p>
             <label>
                 <Trans>
                     Choose a shared password for network administration

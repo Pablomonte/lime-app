@@ -304,7 +304,7 @@ msgstr "Instrucciones para el celular"
 msgid "Chains"
 msgstr "Cadenas (chains)"
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:87
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:111
 msgid "Change"
 msgstr "Cambiar"
 
@@ -355,7 +355,7 @@ msgid "Choose a name for your network"
 msgstr "Elija el nombre para la red"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:97
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:54
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:78
 msgid "Choose a shared password for network administration"
 msgstr "Elija una contraseña compartida para la administración de la red"
 
@@ -752,7 +752,7 @@ msgstr "Error al descargar lime community."
 msgid "Error getting scan results"
 msgstr "Error recibiendo los resultados del escaneo."
 
-#: plugins/lime-plugin-mesh-wide/src/meshWidePage.tsx:42
+#: plugins/lime-plugin-mesh-wide/src/meshWidePage.tsx:38
 msgid "Error loading leaflet"
 msgstr "Error cargando leaflet."
 
@@ -1004,6 +1004,10 @@ msgstr "Está deshabilitado en forma predeterminada en {communityName}."
 #: plugins/lime-plugin-node-admin/src/screens/roamingAP.js:87
 msgid "It is enabled by default in {communityName}"
 msgstr "Está habilitado en forma predeterminada en {communityName}."
+
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:55
+msgid "It is important to decide this action jointly with the people who administer the network, it is not a personal decision but modifies the password to act on the entire network."
+msgstr "Es importante decidir esta acción en forma conjunta con las personas que administren la red, no es una decisión personal sino que modifica la contraseña para accionar sobre toda la red."
 
 #: plugins/lime-plugin-pirania/src/screens/wellcomeScreenEditor.js:138
 #: plugins/lime-plugin-pirania/src/screens/wellcomeScreenEditor.js:150
@@ -1327,11 +1331,11 @@ msgid "Packet loss"
 msgstr "Paquetes perdidos"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:104
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:60
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:84
 msgid "Password"
 msgstr "Contraseña"
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:98
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:122
 msgid "Password updated! Redirecting to apply configuration..."
 msgstr "¡Contraseña actualizada! Redirigiendo para aplicar la configuración..."
 
@@ -1401,12 +1405,12 @@ msgid "Radio {radioNumber}"
 msgstr "Radio {radioNumber}"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:116
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:71
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:95
 msgid "Re-enter Password"
 msgstr "Reingrese la contraseña"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:111
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:67
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:91
 msgid "Re-enter the shared password"
 msgstr "Reingrese la contraseña compartida"
 
@@ -1687,7 +1691,7 @@ msgstr "Configurando red"
 msgid "Setting up main node"
 msgstr "Configurando el nodo principal"
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:93
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:117
 msgid "Setting up new password"
 msgstr "Configurando la nueva contraseña"
 
@@ -1906,7 +1910,7 @@ msgid "The password should have:"
 msgstr "La contraseña debe incluir:"
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:124
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:78
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:102
 msgid "The passwords do not match!"
 msgstr "Las contraseñas no coinciden!"
 
@@ -1974,6 +1978,10 @@ msgstr "Estos son los nodos asociados a esta radio."
 msgid "This Link is not registered on the reference state"
 msgstr "Este enlace no está registrado en el estado de referencia."
 
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:71
+msgid "This action will make configuration changes to all accessible nodes in the network, this may take several minutes. You must confirm the changes at the end of the procedure."
+msgstr "Esta acción realizará cambios en la configuración de todos los nodos accesibles de la red, esto puede tomar varios minutos. Deberás confirmar los cambios al finalizar el procedimiento."
+
 #: plugins/lime-plugin-firmware/src/upgradePage/upgradePage.js:35
 msgid "This device does not support secure rollback to previous version if something goes wrong"
 msgstr "Este dispositivo está habilitado para revertir la actualización en caso de errores."
@@ -2004,6 +2012,10 @@ msgstr "Este campo es requerido"
 #: plugins/lime-plugin-mesh-wide-upgrade/src/utils/upgradeStatusMessages.tsx:93
 msgid "This is a main node"
 msgstr "Este es un nodo principal"
+
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:63
+msgid "This is not the same password as the WiFi signal. If they have been configured the same, change immediately to improve the security of the node and the network."
+msgstr "No es la misma contraseña que la de la señal de WiFi. En caso de haberlas configurado igual, cambiar inmediatamente para mejorar la seguridad del nodo y de la red."
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:441
 msgid "This link has errors"

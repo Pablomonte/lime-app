@@ -304,7 +304,7 @@ msgstr "Cellphone Instructions"
 msgid "Chains"
 msgstr "Chains"
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:87
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:111
 msgid "Change"
 msgstr ""
 
@@ -355,7 +355,7 @@ msgid "Choose a name for your network"
 msgstr ""
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:97
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:54
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:78
 msgid "Choose a shared password for network administration"
 msgstr ""
 
@@ -752,7 +752,7 @@ msgstr "Error downloading lime community"
 msgid "Error getting scan results"
 msgstr "Error getting scan results"
 
-#: plugins/lime-plugin-mesh-wide/src/meshWidePage.tsx:42
+#: plugins/lime-plugin-mesh-wide/src/meshWidePage.tsx:38
 msgid "Error loading leaflet"
 msgstr "Error loading leaflet"
 
@@ -1004,6 +1004,10 @@ msgstr ""
 #: plugins/lime-plugin-node-admin/src/screens/roamingAP.js:87
 msgid "It is enabled by default in {communityName}"
 msgstr ""
+
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:55
+msgid "It is important to decide this action jointly with the people who administer the network, it is not a personal decision but modifies the password to act on the entire network."
+msgstr "It is important to decide this action jointly with the people who administer the network, it is not a personal decision but modifies the password to act on the entire network."
 
 #: plugins/lime-plugin-pirania/src/screens/wellcomeScreenEditor.js:138
 #: plugins/lime-plugin-pirania/src/screens/wellcomeScreenEditor.js:150
@@ -1327,11 +1331,11 @@ msgid "Packet loss"
 msgstr ""
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:104
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:60
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:84
 msgid "Password"
 msgstr ""
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:98
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:122
 msgid "Password updated! Redirecting to apply configuration..."
 msgstr "Password updated! Redirecting to apply configuration..."
 
@@ -1401,12 +1405,12 @@ msgid "Radio {radioNumber}"
 msgstr ""
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:116
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:71
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:95
 msgid "Re-enter Password"
 msgstr ""
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:111
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:67
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:91
 msgid "Re-enter the shared password"
 msgstr ""
 
@@ -1687,7 +1691,7 @@ msgstr ""
 msgid "Setting up main node"
 msgstr "Setting up main node"
 
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:93
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:117
 msgid "Setting up new password"
 msgstr ""
 
@@ -1906,7 +1910,7 @@ msgid "The password should have:"
 msgstr ""
 
 #: plugins/lime-plugin-fbw/src/containers/NetworkForm.js:124
-#: plugins/lime-plugin-network-admin/src/netAdminPage.js:78
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:102
 msgid "The passwords do not match!"
 msgstr ""
 
@@ -1974,6 +1978,10 @@ msgstr ""
 msgid "This Link is not registered on the reference state"
 msgstr "This Link is not registered on the reference state"
 
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:71
+msgid "This action will make configuration changes to all accessible nodes in the network, this may take several minutes. You must confirm the changes at the end of the procedure."
+msgstr "This action will make configuration changes to all accessible nodes in the network, this may take several minutes. You must confirm the changes at the end of the procedure."
+
 #: plugins/lime-plugin-firmware/src/upgradePage/upgradePage.js:35
 msgid "This device does not support secure rollback to previous version if something goes wrong"
 msgstr ""
@@ -2004,6 +2012,10 @@ msgstr "This field is required"
 #: plugins/lime-plugin-mesh-wide-upgrade/src/utils/upgradeStatusMessages.tsx:93
 msgid "This is a main node"
 msgstr "This is a main node"
+
+#: plugins/lime-plugin-network-admin/src/netAdminPage.js:63
+msgid "This is not the same password as the WiFi signal. If they have been configured the same, change immediately to improve the security of the node and the network."
+msgstr "This is not the same password as the WiFi signal. If they have been configured the same, change immediately to improve the security of the node and the network."
 
 #: plugins/lime-plugin-mesh-wide/src/components/FeatureDetail/LinkDetail.tsx:441
 msgid "This link has errors"
