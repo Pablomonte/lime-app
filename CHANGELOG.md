@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.29](https://github.com/Pablomonte/lime-app/compare/v0.2.28...v0.2.29) (2025-10-24)
+
+
+### Features
+
+* **locate:** remove show/hide community button ([6dd30d6](https://github.com/Pablomonte/lime-app/commit/6dd30d6411d038642dc48d3cb01520d3abf10e9d))
+* **meshwide:** improve map UX with responsive bottom sheet and fixed tooltips ([cbb0d01](https://github.com/Pablomonte/lime-app/commit/cbb0d01a01070fa0af449033279ab29f37ecc016))
+* **netadmin:** add detailed warning messages for password change ([51fb8de](https://github.com/Pablomonte/lime-app/commit/51fb8dec6e07a7fadb17cab168b13a461ccd21af))
+* **netadmin:** implement mesh-wide shared password change ([04ff7ea](https://github.com/Pablomonte/lime-app/commit/04ff7eab70de2cd3462ae94ee871048e4223ba0c))
+* **rx:** improve ethernet port role configuration UX ([e87b2b3](https://github.com/Pablomonte/lime-app/commit/e87b2b3baffc263eb0f276b2a9464d95a210027b))
+
+
+### Bug Fixes
+
+* **meshwide:** remove tap highlight from all map interactive elements ([f7a3e26](https://github.com/Pablomonte/lime-app/commit/f7a3e2678d193dfe904053179131d799c8b39220))
+
 ### [0.2.28](https://github.com/Pablomonte/lime-app/compare/v0.2.26...v0.2.28) (2025-10-21)
 
 
