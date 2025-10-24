@@ -27,6 +27,12 @@
     canvas {
         outline: none !important;
     }
+
+    // Remove tap highlight from all interactive elements
+    * {
+        -webkit-tap-highlight-color: transparent !important;
+        tap-highlight-color: transparent !important;
+    }
 }
 
 // Fix tooltip positioning to prevent clipping at edges
