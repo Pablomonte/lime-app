@@ -13,6 +13,43 @@
     border: none !important;
 }
 
+// Remove tap highlight and focus outlines on map elements
+.leaflet-container {
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+
+    // Remove outline from SVG paths (links)
+    svg path {
+        outline: none !important;
+    }
+
+    // Remove outline from canvas elements
+    canvas {
+        outline: none !important;
+    }
+}
+
+// Fix tooltip positioning to prevent clipping at edges
+:global {
+    .leaflet-tooltip {
+        white-space: nowrap;
+        z-index: 1000 !important;
+        pointer-events: none;
+    }
+
+    // Ensure map panes don't clip tooltips
+    .leaflet-map-pane,
+    .leaflet-popup-pane,
+    .leaflet-marker-pane,
+    .leaflet-tooltip-pane {
+        z-index: auto !important;
+    }
+
+    .leaflet-pane {
+        z-index: auto !important;
+    }
+}
+
 // Default Marker shape
 .defaultMarker {
     position: absolute;

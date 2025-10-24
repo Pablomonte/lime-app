@@ -81,7 +81,13 @@ export const LinkLine = ({ referenceLink, actualLink }: ILinkLineProps) => {
             }}
         >
             {isNewLink && (
-                <Tooltip className={"text-3xl"}>
+                <Tooltip
+                    className={"text-3xl"}
+                    direction="top"
+                    offset={[0, -5]}
+                    permanent={false}
+                    sticky={true}
+                >
                     <Trans>New link</Trans>
                 </Tooltip>
             )}

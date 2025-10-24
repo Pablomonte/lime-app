@@ -63,7 +63,13 @@ const NodeMarker = ({
                 },
             }}
         >
-            <Tooltip className={"text-3xl"}>
+            <Tooltip
+                className={"text-3xl"}
+                direction="top"
+                offset={[0, -10]}
+                permanent={false}
+                sticky={true}
+            >
                 {name} {newNodeTooltip}
             </Tooltip>
         </Marker>
