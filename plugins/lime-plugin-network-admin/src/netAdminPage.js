@@ -181,7 +181,7 @@ const NetAdminHOC = () => {
 
             // Redirect to mesh-wide-config page after 2 seconds
             setTimeout(() => {
-                route("/meshconfig");
+                route("/meshwide/config");
             }, 2000);
         } catch (error) {
             console.error("Failed to set shared password:", error);
