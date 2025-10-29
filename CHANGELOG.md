@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.30](https://github.com/Pablomonte/lime-app/compare/v0.2.29...v0.2.30) (2025-10-29)
+
+
+### Bug Fixes
+
+* **netadmin:** correct mesh-wide config route after password change ([8fbe09c](https://github.com/Pablomonte/lime-app/commit/8fbe09c4c7494f07410650e7ff48c20814f03b18))
+
 ### [0.2.29](https://github.com/Pablomonte/lime-app/compare/v0.2.28...v0.2.29) (2025-10-24)
 
 
